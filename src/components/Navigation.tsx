@@ -75,13 +75,13 @@ export default function Navigation() {
                 onClick={(e) => handleNavClick(e, link.href)}
                 className={`text-sm font-medium transition-colors relative group ${
                   activeSection === link.href.slice(1)
-                    ? "text-purple-400"
+                    ? "text-primary-400"
                     : "text-slate-300 hover:text-white"
                 }`}
               >
                 {link.name}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-400 to-gray-400 transition-all duration-300 ${
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-400 to-secondary-400 transition-all duration-300 ${
                     activeSection === link.href.slice(1)
                       ? "w-full"
                       : "w-0 group-hover:w-full"
@@ -116,7 +116,7 @@ export default function Navigation() {
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={`text-base font-medium transition-colors px-4 py-2 rounded-lg ${
                     activeSection === link.href.slice(1)
-                      ? "text-purple-400 bg-purple-500/10"
+                      ? "text-primary-400 bg-primary-500/10"
                       : "text-slate-300 hover:text-white hover:bg-slate-800/50"
                   }`}
                 >

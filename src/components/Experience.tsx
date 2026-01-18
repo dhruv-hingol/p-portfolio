@@ -118,7 +118,7 @@ export default function Experience() {
           <h2 className="text-5xl md:text-6xl font-bold gradient-text mb-4">
             Work Experience
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-gray-500 mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto rounded-full" />
         </motion.div>
 
         {/* Company Header */}
@@ -129,13 +129,13 @@ export default function Experience() {
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <div className="glass-card p-4 rounded-xl">
-                <Briefcase className="w-8 h-8 text-purple-400" />
+                <Briefcase className="w-8 h-8 text-primary-400" />
               </div>
               <div>
                 <h3 className="text-3xl font-bold text-white">
                   Software Development Engineer
                 </h3>
-                <p className="text-gray-400 text-xl font-medium">
+                <p className="text-secondary-400 text-xl font-medium">
                   Elixir Techne
                 </p>
               </div>
@@ -183,7 +183,7 @@ export default function Experience() {
                       key={i}
                       className="flex items-start gap-3 text-slate-400"
                     >
-                      <span className="text-purple-400 mt-1">▸</span>
+                      <span className="text-primary-400 mt-1">▸</span>
                       <span>{achievement}</span>
                     </li>
                   ))}
@@ -195,7 +195,7 @@ export default function Experience() {
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
-                    className="glass-card px-3 py-1 rounded-full text-sm text-slate-300 hover:glow-purple transition-all duration-300"
+                    className="glass-card px-3 py-1 rounded-full text-sm text-slate-300 hover:glow-cyan transition-all duration-300"
                   >
                     {tech}
                   </span>

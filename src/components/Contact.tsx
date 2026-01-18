@@ -43,7 +43,7 @@ export default function Contact() {
           <h2 className="text-5xl md:text-6xl font-bold gradient-text mb-4">
             Let's Connect
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-gray-500 mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto rounded-full" />
           <p className="text-slate-400 mt-6 text-lg">
             Always up for interesting conversations and new opportunities!
           </p>
@@ -52,7 +52,7 @@ export default function Contact() {
         {/* Contact Card */}
         <motion.div
           variants={itemVariants}
-          className="glass-card-strong rounded-2xl p-10 hover-lift glow-purple"
+          className="glass-card-strong rounded-2xl p-10 hover-lift glow-cyan"
         >
           {/* Contact Info Grid */}
           <div className="grid md:grid-cols-3 gap-8 mb-10">
@@ -60,8 +60,8 @@ export default function Contact() {
               href="mailto:dhruvhingol2210@gmail.com"
               className="flex flex-col items-center text-center group"
             >
-              <div className="glass-card p-4 rounded-full mb-4 group-hover:glow-purple transition-all duration-300">
-                <Mail className="w-8 h-8 text-purple-400 group-hover:scale-110 transition-transform" />
+              <div className="glass-card p-4 rounded-full mb-4 group-hover:glow-cyan transition-all duration-300">
+                <Mail className="w-8 h-8 text-primary-400 group-hover:scale-110 transition-transform" />
               </div>
               <h4 className="text-white font-semibold mb-2">Email</h4>
               <p className="text-slate-400 text-sm break-all">
@@ -73,8 +73,8 @@ export default function Contact() {
               href="tel:+918735099370"
               className="flex flex-col items-center text-center group"
             >
-              <div className="glass-card p-4 rounded-full mb-4 group-hover:glow-gray transition-all duration-300">
-                <Phone className="w-8 h-8 text-gray-400 group-hover:scale-110 transition-transform" />
+              <div className="glass-card p-4 rounded-full mb-4 group-hover:glow-slate transition-all duration-300">
+                <Phone className="w-8 h-8 text-secondary-400 group-hover:scale-110 transition-transform" />
               </div>
               <h4 className="text-white font-semibold mb-2">Phone</h4>
               <p className="text-slate-400 text-sm">+91 8735099370</p>
@@ -82,7 +82,7 @@ export default function Contact() {
 
             <div className="flex flex-col items-center text-center">
               <div className="glass-card p-4 rounded-full mb-4">
-                <MapPin className="w-8 h-8 text-purple-400" />
+                <MapPin className="w-8 h-8 text-primary-400" />
               </div>
               <h4 className="text-white font-semibold mb-2">Location</h4>
               <p className="text-slate-400 text-sm">Ahmedabad, India</p>
@@ -102,19 +102,19 @@ export default function Contact() {
                 href="https://linkedin.com/in/yourprofile"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-card p-6 rounded-xl hover-lift glow-purple group"
+                className="glass-card p-6 rounded-xl hover-lift glow-cyan group"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="w-8 h-8 text-purple-400 group-hover:scale-110 transition-transform" />
+                <Linkedin className="w-8 h-8 text-primary-400 group-hover:scale-110 transition-transform" />
               </a>
               <a
                 href="https://github.com/yourprofile"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-card p-6 rounded-xl hover-lift glow-gray group"
+                className="glass-card p-6 rounded-xl hover-lift glow-slate group"
                 aria-label="GitHub"
               >
-                <Github className="w-8 h-8 text-gray-400 group-hover:scale-110 transition-transform" />
+                <Github className="w-8 h-8 text-secondary-400 group-hover:scale-110 transition-transform" />
               </a>
             </div>
           </div>
@@ -123,7 +123,7 @@ export default function Contact() {
           <div className="mt-10 text-center">
             <a
               href="mailto:dhruvhingol2210@gmail.com"
-              className="inline-flex items-center gap-3 glass-card-strong px-8 py-4 rounded-xl font-semibold text-lg hover-lift glow-purple group"
+              className="inline-flex items-center gap-3 glass-card-strong px-8 py-4 rounded-xl font-semibold text-lg hover-lift glow-cyan group"
             >
               <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               Drop Me a Line

@@ -42,7 +42,7 @@ export default function Hero() {
       >
         {/* Greeting */}
         <motion.div variants={itemVariants} className="mb-4">
-          <span className="text-purple-400 text-lg font-medium">
+          <span className="text-primary-400 text-lg font-medium">
             Hey there! 👋 I'm
           </span>
         </motion.div>
@@ -87,7 +87,7 @@ export default function Hero() {
           ].map((tech) => (
             <span
               key={tech}
-              className="glass-card px-4 py-2 rounded-full text-sm font-medium text-purple-300 hover:glow-purple transition-all duration-300"
+              className="glass-card px-4 py-2 rounded-full text-sm font-medium text-primary-300 hover:glow-cyan transition-all duration-300"
             >
               {tech}
             </span>
@@ -111,14 +111,14 @@ export default function Hero() {
         >
           <a
             href="#contact"
-            className="glass-card-strong px-8 py-4 rounded-xl font-semibold hover-lift glow-purple flex items-center gap-2 group"
+            className="glass-card-strong px-8 py-4 rounded-xl font-semibold hover-lift glow-cyan flex items-center gap-2 group"
           >
             <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
             Let's Chat
           </a>
           <a
             href="#projects"
-            className="glass-card px-8 py-4 rounded-xl font-semibold hover-lift flex items-center gap-2 group border-purple-500/30"
+            className="glass-card px-8 py-4 rounded-xl font-semibold hover-lift flex items-center gap-2 group border-primary-500/30"
           >
             See My Projects
             <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -132,14 +132,14 @@ export default function Hero() {
         >
           <a
             href="mailto:dhruvhingol2210@gmail.com"
-            className="flex items-center gap-2 hover:text-purple-400 transition-colors"
+            className="flex items-center gap-2 hover:text-primary-400 transition-colors"
           >
             <Mail className="w-5 h-5" />
             <span className="hidden sm:inline">dhruvhingol2210@gmail.com</span>
           </a>
           <a
             href="tel:+918735099370"
-            className="flex items-center gap-2 hover:text-purple-400 transition-colors"
+            className="flex items-center gap-2 hover:text-primary-400 transition-colors"
           >
             <Phone className="w-5 h-5" />
             <span className="hidden sm:inline">+91 8735099370</span>
@@ -159,7 +159,7 @@ export default function Hero() {
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="glass-card p-4 rounded-full hover-lift glow-purple group"
+            className="glass-card p-4 rounded-full hover-lift glow-cyan group"
             aria-label="LinkedIn"
           >
             <Linkedin className="w-6 h-6 group-hover:scale-110 transition-transform" />
@@ -168,7 +168,7 @@ export default function Hero() {
             href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="glass-card p-4 rounded-full hover-lift glow-gray group"
+            className="glass-card p-4 rounded-full hover-lift glow-slate group"
             aria-label="GitHub"
           >
             <Github className="w-6 h-6 group-hover:scale-110 transition-transform" />
@@ -188,8 +188,8 @@ export default function Hero() {
         }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >
-        <div className="w-6 h-10 border-2 border-purple-400/50 rounded-full flex justify-center p-2">
-          <div className="w-1 h-3 bg-purple-400 rounded-full animate-bounce" />
+        <div className="w-6 h-10 border-2 border-primary-400/50 rounded-full flex justify-center p-2">
+          <div className="w-1 h-3 bg-primary-400 rounded-full animate-bounce" />
         </div>
       </motion.div>
     </section>

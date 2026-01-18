@@ -2,7 +2,8 @@
 
 @layer base {
   body {
-    @apply bg-black text-white;
+    @apply text-white;
+    background-color: #0B0E14;
     font-family:
       "Inter",
       -apple-system,
@@ -26,11 +27,12 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-gradient-to-b from-purple-500 to-purple-700 rounded-full;
+    background: linear-gradient(to bottom, #2FF3E0, #00b8a9);
+    border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply from-purple-400 to-purple-600;
+    background: linear-gradient(to bottom, #4dfffa, #2FF3E0);
   }
 }
 
@@ -61,11 +63,17 @@
 
   /* Gradient Text */
   .gradient-text {
-    @apply bg-gradient-to-r from-purple-400 via-purple-300 to-gray-300 bg-clip-text text-transparent;
+    background: linear-gradient(to right, #2FF3E0, #D2A8FF, #E6EDF3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .gradient-text-bright {
-    @apply bg-gradient-to-r from-purple-300 via-purple-200 to-gray-200 bg-clip-text text-transparent;
+    background: linear-gradient(to right, #4dfffa, #D2A8FF, #E6EDF3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   /* Animated Gradient Background */
@@ -82,22 +90,22 @@
   }
 
   /* Glow Effects */
+  .glow-cyan {
+    box-shadow:
+      0 0 20px rgba(47, 243, 224, 0.4),
+      0 0 40px rgba(47, 243, 224, 0.2);
+  }
+
+  .glow-slate {
+    box-shadow:
+      0 0 20px rgba(139, 148, 158, 0.2),
+      0 0 40px rgba(139, 148, 158, 0.1);
+  }
+
   .glow-purple {
     box-shadow:
-      0 0 20px rgba(139, 92, 246, 0.4),
-      0 0 40px rgba(139, 92, 246, 0.2);
-  }
-
-  .glow-gray {
-    box-shadow:
-      0 0 20px rgba(156, 163, 175, 0.2),
-      0 0 40px rgba(156, 163, 175, 0.1);
-  }
-
-  .glow-accent {
-    box-shadow:
-      0 0 20px rgba(168, 85, 247, 0.4),
-      0 0 40px rgba(168, 85, 247, 0.2);
+      0 0 20px rgba(210, 168, 255, 0.4),
+      0 0 40px rgba(210, 168, 255, 0.2);
   }
 
   /* Hover Lift Effect */
@@ -146,7 +154,7 @@
   height: 500px;
   background: radial-gradient(
     circle,
-    rgba(139, 92, 246, 0.15) 0%,
+    rgba(47, 243, 224, 0.08) 0%,
     transparent 70%
   );
   top: 10%;
@@ -159,7 +167,7 @@
   height: 400px;
   background: radial-gradient(
     circle,
-    rgba(156, 163, 175, 0.1) 0%,
+    rgba(210, 168, 255, 0.06) 0%,
     transparent 70%
   );
   bottom: 10%;

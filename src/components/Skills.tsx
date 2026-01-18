@@ -86,7 +86,7 @@ export default function Skills() {
           <h2 className="text-5xl md:text-6xl font-bold gradient-text mb-4">
             Technical Skills
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-gray-500 mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto rounded-full" />
           <p className="text-slate-400 mt-6 text-lg">My toolbox of choice</p>
         </motion.div>
 
@@ -147,7 +147,7 @@ export default function Skills() {
         {/* Additional Skills */}
         <motion.div variants={itemVariants} className="mt-12">
           <div className="glass-card rounded-2xl p-8">
-            <h3 className="text-xl font-bold text-purple-300 mb-6 text-center">
+            <h3 className="text-xl font-bold text-primary-300 mb-6 text-center">
               Additional Expertise
             </h3>
             <div className="flex flex-wrap justify-center gap-3">
@@ -167,7 +167,7 @@ export default function Skills() {
               ].map((skill) => (
                 <span
                   key={skill}
-                  className="glass-card-strong px-4 py-2 rounded-full text-sm text-slate-300 hover:glow-purple transition-all duration-300"
+                  className="glass-card-strong px-4 py-2 rounded-full text-sm text-slate-300 hover:glow-cyan transition-all duration-300"
                 >
                   {skill}
                 </span>

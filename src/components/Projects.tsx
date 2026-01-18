@@ -28,7 +28,7 @@ export default function Projects() {
         "TypeScript",
       ],
       icon: Chrome,
-      gradient: "from-purple-500 to-purple-700",
+      gradient: "from-accent-500 to-accent-700",
       links: {
         live: "#",
         github: "#",
@@ -47,7 +47,7 @@ export default function Projects() {
       ],
       tech: ["Next.js", "Tailwind CSS", "Redux Toolkit", "TypeScript"],
       icon: ShoppingCart,
-      gradient: "from-gray-500 to-gray-700",
+      gradient: "from-secondary-500 to-secondary-700",
       links: {
         live: "#",
         github: "#",
@@ -88,7 +88,7 @@ export default function Projects() {
           <h2 className="text-5xl md:text-6xl font-bold gradient-text mb-4">
             Personal Projects
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-gray-500 mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-gradient-to-r from-accent-500 to-secondary-500 mx-auto rounded-full" />
           <p className="text-slate-400 mt-6 text-lg">
             Things I've built that I'm proud of
           </p>
@@ -120,7 +120,7 @@ export default function Projects() {
                 <h3 className="text-2xl font-bold text-white mb-2">
                   {project.name}
                 </h3>
-                <p className="text-purple-400 font-medium mb-4">
+                <p className="text-accent-400 font-medium mb-4">
                   {project.subtitle}
                 </p>
 
@@ -140,7 +140,7 @@ export default function Projects() {
                         key={i}
                         className="flex items-start gap-2 text-slate-400 text-sm"
                       >
-                        <span className="text-purple-400 mt-1">▸</span>
+                        <span className="text-accent-400 mt-1">▸</span>
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -165,14 +165,14 @@ export default function Projects() {
                 <div className="flex gap-4 pt-4 border-t border-slate-700/50">
                   <a
                     href={project.links.live}
-                    className="flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors"
+                    className="flex items-center gap-2 text-accent-400 hover:text-accent-300 transition-colors"
                   >
                     <ExternalLink className="w-4 h-4" />
                     <span className="text-sm font-medium">Live Demo</span>
                   </a>
                   <a
                     href={project.links.github}
-                    className="flex items-center gap-2 text-gray-400 hover:text-gray-300 transition-colors"
+                    className="flex items-center gap-2 text-secondary-400 hover:text-secondary-300 transition-colors"
                   >
                     <Github className="w-4 h-4" />
                     <span className="text-sm font-medium">Source Code</span>
@@ -191,7 +191,7 @@ export default function Projects() {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-purple-400 hover:text-purple-300 font-medium"
+              className="text-accent-400 hover:text-accent-300 font-medium"
             >
               GitHub
             </a>
