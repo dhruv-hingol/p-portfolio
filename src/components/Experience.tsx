@@ -33,7 +33,7 @@ export default function Experience() {
     },
     {
       name: "RenCoach",
-      role: "Full Stack Developer",
+      role: "Frontend Developer",
       description:
         "Developed a web application from scratch using React.js and Redux.",
       achievements: [

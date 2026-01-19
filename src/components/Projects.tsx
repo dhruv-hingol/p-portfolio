@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { ExternalLink, Github, Chrome, ShoppingCart } from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  Chrome,
+  ShoppingCart,
+  Sparkles,
+} from "lucide-react";
 
 export default function Projects() {
   const [ref, inView] = useInView({
@@ -51,6 +57,31 @@ export default function Projects() {
       links: {
         live: "#",
         github: "#",
+      },
+    },
+    {
+      name: "Daily Muse",
+      subtitle: "AI-Powered Daily Inspiration",
+      description:
+        "Interactive AI chatbot providing inspirational quotes, jokes, and news using Google Gemini API with modern React architecture.",
+      features: [
+        "AI-powered chat using Google Gemini API",
+        "Generates quotes with author attribution and interpretation",
+        "Provides jokes and latest news on user topics",
+        "Local storage for persistent chat history",
+      ],
+      tech: [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Google Gemini",
+        "Lucide Icons",
+      ],
+      icon: Sparkles,
+      gradient: "from-purple-500 to-pink-600",
+      links: {
+        live: "https://dhruv-hingol.github.io/daily-muse/",
+        github: "https://github.com/dhruv-hingol/daily-muse",
       },
     },
   ];

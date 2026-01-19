@@ -99,7 +99,7 @@ export default function Contact() {
             </h3>
             <div className="flex justify-center gap-6">
               <a
-                href="https://linkedin.com/in/yourprofile"
+                href="https://linkedin.com/in/dhruvhingol"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-card p-6 rounded-xl hover-lift glow-cyan group"
@@ -108,7 +108,7 @@ export default function Contact() {
                 <Linkedin className="w-8 h-8 text-primary-400 group-hover:scale-110 transition-transform" />
               </a>
               <a
-                href="https://github.com/yourprofile"
+                href="https://github.com/dhruv-hingol"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-card p-6 rounded-xl hover-lift glow-slate group"
@@ -137,10 +137,6 @@ export default function Contact() {
           className="mt-12 text-center text-slate-500"
         >
           <p className="mb-2">© 2026 Dhruv Hingol. All rights reserved.</p>
-          <p className="text-sm">
-            Built with <span className="text-red-400">♥</span> using React 19,
-            TypeScript, and Vite 7
-          </p>
         </motion.div>
       </motion.div>
     </section>
