@@ -1,14 +1,26 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import {
   Github,
   Linkedin,
   Mail,
   Phone,
   MapPin,
-  ExternalLink,
+  Copy,
+  Download,
+  Check,
 } from "lucide-react";
+import { PERSONAL_INFO, SOCIAL_LINKS, TECH_STACK } from "../constants";
 
 export default function Hero() {
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText(PERSONAL_INFO.email);
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -31,7 +43,6 @@ export default function Hero() {
 
   return (
     <section id="hero" className="section-container relative">
-      {/* Background Decoration */}
       <div className="background-decoration" />
 
       <motion.div
@@ -40,135 +51,132 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
       >
-        {/* Greeting */}
         <motion.div variants={itemVariants} className="mb-4">
-          <span className="text-primary-400 text-lg font-medium">
+          <span className="text-primary-500 text-lg font-medium">
             Hey there! 👋 I'm
           </span>
         </motion.div>
-
-        {/* Name with Gradient */}
         <motion.h1
           variants={itemVariants}
-          className="text-6xl md:text-8xl font-bold mb-6 gradient-text-bright"
+          className="text-6xl md:text-8xl font-bold mb-6 leading-28 gradient-text-bright"
         >
-          Dhruv Hingol
+          {PERSONAL_INFO.name}
         </motion.h1>
 
-        {/* Title */}
         <motion.h2
           variants={itemVariants}
           className="text-2xl md:text-4xl font-semibold mb-6 text-slate-200"
         >
-          Software Development Engineer
+          {PERSONAL_INFO.title}
         </motion.h2>
 
-        {/* Subtitle */}
         <motion.p
           variants={itemVariants}
           className="text-xl md:text-2xl text-slate-300 mb-4"
         >
-          Crafting Modern Web Experiences with React & Next.js
+          {PERSONAL_INFO.tagline}
         </motion.p>
 
-        {/* Tech Stack Pills */}
         <motion.div
           variants={itemVariants}
           className="flex flex-wrap justify-center gap-3 mb-8 max-w-3xl mx-auto"
         >
-          {[
-            "React 19",
-            "TypeScript 5.8",
-            "Next.js",
-            "Vite 7",
-            "Zustand",
-            "TanStack Query",
-            "Tailwind CSS 4.1",
-          ].map((tech) => (
+          {TECH_STACK.map((tech) => (
             <span
               key={tech}
-              className="glass-card px-4 py-2 rounded-full text-sm font-medium text-primary-300 hover:glow-cyan transition-all duration-300"
+              className="glass-card px-4 py-2 rounded-full text-sm font-medium text-primary-400 hover:glow-teal hover:border-primary-500/30 transition-all duration-300 border border-primary-500/20"
             >
               {tech}
             </span>
           ))}
         </motion.div>
 
-        {/* Description */}
         <motion.p
           variants={itemVariants}
           className="text-lg text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed"
         >
-          I love turning ideas into elegant, performant web experiences. With
-          2.5+ years building enterprise frontends, I focus on writing clean
-          code that actually makes a difference for users.
+          {PERSONAL_INFO.description}
         </motion.p>
 
-        {/* CTA Buttons */}
         <motion.div
           variants={itemVariants}
           className="flex flex-wrap justify-center gap-4 mb-12"
         >
           <a
             href="#contact"
-            className="glass-card-strong px-8 py-4 rounded-xl font-semibold hover-lift glow-cyan flex items-center gap-2 group"
+            className="glass-card-strong px-8 py-4 rounded-xl font-semibold hover-lift glow-teal flex items-center gap-2 group bg-gradient-to-r from-primary-600 to-primary-500 border border-primary-400/20"
           >
             <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
             Let's Chat
           </a>
-          <a
-            href="#projects"
-            className="glass-card px-8 py-4 rounded-xl font-semibold hover-lift flex items-center gap-2 group border-primary-500/30"
+          <button
+            onClick={copyEmail}
+            className="glass-card px-8 py-4 rounded-xl font-semibold hover-lift flex items-center gap-2 group border-accent-500/30 hover:border-accent-400/50 transition-all"
           >
-            See My Projects
-            <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            {emailCopied ? (
+              <>
+                <Check className="w-5 h-5 text-accent-400" />
+                Email Copied!
+              </>
+            ) : (
+              <>
+                <Copy className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                Copy Email
+              </>
+            )}
+          </button>
+          <a
+            href="/resume.pdf"
+            download
+            className="glass-card px-8 py-4 rounded-xl font-semibold hover-lift flex items-center gap-2 group border-coral-500/30 hover:border-coral-400/50 transition-all"
+          >
+            <Download className="w-5 h-5 group-hover:scale-110 transition-transform" />
+            Resume
           </a>
         </motion.div>
 
-        {/* Contact Info & Social Links */}
         <motion.div
           variants={itemVariants}
           className="flex flex-wrap justify-center gap-6 text-slate-400"
         >
           <a
-            href="mailto:dhruvhingol2210@gmail.com"
+            href={`mailto:${PERSONAL_INFO.email}`}
             className="flex items-center gap-2 hover:text-primary-400 transition-colors"
           >
             <Mail className="w-5 h-5" />
-            <span className="hidden sm:inline">dhruvhingol2210@gmail.com</span>
+            <span className="hidden sm:inline">{PERSONAL_INFO.email}</span>
           </a>
           <a
-            href="tel:+918735099370"
-            className="flex items-center gap-2 hover:text-primary-400 transition-colors"
+            href={`tel:${PERSONAL_INFO.phone}`}
+            className="flex items:center gap-2 hover:text-primary-400 transition-colors"
           >
             <Phone className="w-5 h-5" />
-            <span className="hidden sm:inline">+91 8735099370</span>
+            <span className="hidden sm:inline">{PERSONAL_INFO.phone}</span>
           </a>
           <span className="flex items-center gap-2">
             <MapPin className="w-5 h-5" />
-            Ahmedabad, India
+            {PERSONAL_INFO.location}
           </span>
         </motion.div>
 
-        {/* Social Links */}
         <motion.div
           variants={itemVariants}
           className="flex justify-center gap-4 mt-8"
         >
           <a
-            href="https://linkedin.com"
+            href={SOCIAL_LINKS.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="glass-card p-4 rounded-full hover-lift glow-cyan group"
+            className="glass-card p-4 rounded-full hover-lift glow-teal group"
             aria-label="LinkedIn"
           >
             <Linkedin className="w-6 h-6 group-hover:scale-110 transition-transform" />
           </a>
           <a
-            href="https://github.com"
+            href={SOCIAL_LINKS.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="glass-card p-4 rounded-full hover-lift glow-slate group"
+            className="glass-card p-4 rounded-full hover-lift glow-amber group"
             aria-label="GitHub"
           >
             <Github className="w-6 h-6 group-hover:scale-110 transition-transform" />
@@ -176,7 +184,6 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

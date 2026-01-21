@@ -1,26 +1,17 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { NAV_LINKS, NAV_HEIGHT } from "../constants";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
 
-  const navLinks = [
-    { name: "Home", href: "#hero" },
-    { name: "About", href: "#about" },
-    { name: "Experience", href: "#experience" },
-    { name: "Projects", href: "#projects" },
-    { name: "Skills", href: "#skills" },
-    { name: "Contact", href: "#contact" },
-  ];
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Update active section based on scroll position
-      const sections = navLinks.map((link) => link.href.slice(1));
+      const sections = NAV_LINKS.map((link) => link.href.slice(1));
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -44,7 +35,14 @@ export default function Navigation() {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const navHeight = NAV_HEIGHT;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
       setIsMobileMenuOpen(false);
     }
   };
@@ -57,7 +55,6 @@ export default function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <a
             href="#hero"
             onClick={(e) => handleNavClick(e, "#hero")}
@@ -66,9 +63,8 @@ export default function Navigation() {
             DH
           </a>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
@@ -81,7 +77,7 @@ export default function Navigation() {
               >
                 {link.name}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-400 to-secondary-400 transition-all duration-300 ${
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 transition-all duration-300 ${
                     activeSection === link.href.slice(1)
                       ? "w-full"
                       : "w-0 group-hover:w-full"
@@ -91,7 +87,6 @@ export default function Navigation() {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             className="md:hidden glass-card p-2 rounded-lg"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -105,11 +100,10 @@ export default function Navigation() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 glass-card rounded-xl p-4 animate-fade-in">
             <div className="flex flex-col gap-4">
-              {navLinks.map((link) => (
+              {NAV_LINKS.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}

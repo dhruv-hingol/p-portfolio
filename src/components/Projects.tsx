@@ -1,90 +1,13 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import {
-  ExternalLink,
-  Github,
-  Chrome,
-  ShoppingCart,
-  Sparkles,
-} from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
+import { PROJECTS } from "../constants";
 
 export default function Projects() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-
-  const projects = [
-    {
-      name: "Aegis Tracker",
-      subtitle: "Privacy-First Productivity Analyzer",
-      description:
-        "Chrome Extension for tracking browsing productivity with 100% local storage and smart idle detection.",
-      features: [
-        "Privacy-first architecture with chrome.storage.local",
-        "Smart idle detection algorithm for accurate tracking",
-        "Daily/weekly analytics with Recharts visualization",
-        "CSV data export for portability",
-      ],
-      tech: [
-        "React 19",
-        "Vite",
-        "Chrome Extension API",
-        "Recharts",
-        "TypeScript",
-      ],
-      icon: Chrome,
-      gradient: "from-accent-500 to-accent-700",
-      links: {
-        live: "#",
-        github: "#",
-      },
-    },
-    {
-      name: "Purchase Store",
-      subtitle: "E-Commerce Platform",
-      description:
-        "Commercial e-commerce application with dynamic cart management and real-time price adjustments.",
-      features: [
-        "Built with Next.js for optimal SEO and performance",
-        "Dynamic cart with real-time price calculations",
-        "Responsive design with Tailwind CSS",
-        "Redux Toolkit for state management",
-      ],
-      tech: ["Next.js", "Tailwind CSS", "Redux Toolkit", "TypeScript"],
-      icon: ShoppingCart,
-      gradient: "from-secondary-500 to-secondary-700",
-      links: {
-        live: "#",
-        github: "#",
-      },
-    },
-    {
-      name: "Daily Muse",
-      subtitle: "AI-Powered Daily Inspiration",
-      description:
-        "Interactive AI chatbot providing inspirational quotes, jokes, and news using Google Gemini API with modern React architecture.",
-      features: [
-        "AI-powered chat using Google Gemini API",
-        "Generates quotes with author attribution and interpretation",
-        "Provides jokes and latest news on user topics",
-        "Local storage for persistent chat history",
-      ],
-      tech: [
-        "Next.js 16",
-        "React 19",
-        "TypeScript",
-        "Google Gemini",
-        "Lucide Icons",
-      ],
-      icon: Sparkles,
-      gradient: "from-purple-500 to-pink-600",
-      links: {
-        live: "https://dhruv-hingol.github.io/daily-muse/",
-        github: "https://github.com/dhruv-hingol/daily-muse",
-      },
-    },
-  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -114,20 +37,18 @@ export default function Projects() {
         animate={inView ? "visible" : "hidden"}
         className="max-w-6xl mx-auto"
       >
-        {/* Section Title */}
         <motion.div variants={itemVariants} className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-bold gradient-text mb-4">
             Personal Projects
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-accent-500 to-secondary-500 mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 via-accent-500 to-coral-500 mx-auto rounded-full" />
           <p className="text-slate-400 mt-6 text-lg">
             Things I've built that I'm proud of
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project) => {
+          {PROJECTS?.map((project) => {
             const Icon = project.icon;
             return (
               <motion.div
@@ -135,32 +56,27 @@ export default function Projects() {
                 variants={itemVariants}
                 className="glass-card rounded-2xl p-8 hover-lift group relative overflow-hidden"
               >
-                {/* Gradient Accent */}
                 <div
                   className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${project.gradient}`}
                 />
 
-                {/* Icon */}
                 <div
                   className={`inline-flex p-4 rounded-xl glass-card-strong mb-6 bg-gradient-to-br ${project.gradient} bg-opacity-10`}
                 >
                   <Icon className="w-8 h-8 text-white" />
                 </div>
 
-                {/* Title */}
                 <h3 className="text-2xl font-bold text-white mb-2">
                   {project.name}
                 </h3>
-                <p className="text-accent-400 font-medium mb-4">
+                <p className="text-primary-400 font-medium mb-4">
                   {project.subtitle}
                 </p>
 
-                {/* Description */}
                 <p className="text-slate-300 leading-relaxed mb-6">
                   {project.description}
                 </p>
 
-                {/* Features */}
                 <div className="mb-6">
                   <h4 className="text-sm font-semibold text-slate-400 uppercase mb-3">
                     Key Features
@@ -171,14 +87,13 @@ export default function Projects() {
                         key={i}
                         className="flex items-start gap-2 text-slate-400 text-sm"
                       >
-                        <span className="text-accent-400 mt-1">▸</span>
+                        <span className="text-primary-400 mt-1">▸</span>
                         <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Tech Stack */}
                 <div className="mb-6">
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
@@ -192,17 +107,22 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Links */}
                 <div className="flex gap-4 pt-4 border-t border-slate-700/50">
+                  {project?.links?.live && (
+                    <a
+                      href={project?.links?.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-primary-400 hover:text-primary-300 transition-colors"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      <span className="text-sm font-medium">Live Demo</span>
+                    </a>
+                  )}
                   <a
-                    href={project.links.live}
-                    className="flex items-center gap-2 text-accent-400 hover:text-accent-300 transition-colors"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    <span className="text-sm font-medium">Live Demo</span>
-                  </a>
-                  <a
-                    href={project.links.github}
+                    href={project?.links?.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-2 text-secondary-400 hover:text-secondary-300 transition-colors"
                   >
                     <Github className="w-4 h-4" />
@@ -214,15 +134,14 @@ export default function Projects() {
           })}
         </div>
 
-        {/* More Projects Note */}
         <motion.div variants={itemVariants} className="text-center mt-12">
           <p className="text-slate-400">
             View more projects on my{" "}
             <a
-              href="https://github.com"
+              href="https://github.com/dhruv-hingol"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-accent-400 hover:text-accent-300 font-medium"
+              className="text-primary-400 hover:text-primary-300 font-medium"
             >
               GitHub
             </a>
