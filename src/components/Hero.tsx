@@ -40,6 +40,17 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
       >
+        {/* Available for Hire Badge */}
+        <motion.div variants={itemVariants} className="mb-6 inline-flex justify-center">
+          <span className="glass-card-strong px-4 py-2 rounded-full text-xs md:text-sm font-semibold text-accent-400 flex items-center gap-2 border border-accent-500/30 glow-cyan">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-500"></span>
+            </span>
+            Available for Freelance Contract / Retainer
+          </span>
+        </motion.div>
+
         {/* Greeting */}
         <motion.div variants={itemVariants} className="mb-4">
           <span className="text-primary-400 text-lg font-medium">
@@ -58,17 +69,17 @@ export default function Hero() {
         {/* Title */}
         <motion.h2
           variants={itemVariants}
-          className="text-2xl md:text-4xl font-semibold mb-6 text-slate-200"
+          className="text-2xl md:text-4xl font-bold mb-6 text-slate-200"
         >
-          Software Development Engineer
+          Frontend & React Native Developer
         </motion.h2>
 
         {/* Subtitle */}
         <motion.p
           variants={itemVariants}
-          className="text-xl md:text-2xl text-slate-300 mb-4"
+          className="text-xl md:text-2xl text-slate-300 mb-6 max-w-3xl mx-auto leading-relaxed"
         >
-          Crafting Modern Web Experiences with React & Next.js
+          I build responsive web platforms and cross-platform mobile apps that turn your ideas into functional products.
         </motion.p>
 
         {/* Tech Stack Pills */}
@@ -78,6 +89,7 @@ export default function Hero() {
         >
           {[
             "React 19",
+            "React Native",
             "TypeScript 5.8",
             "Next.js",
             "Vite 7",
@@ -99,9 +111,8 @@ export default function Hero() {
           variants={itemVariants}
           className="text-lg text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed"
         >
-          I love turning ideas into elegant, performant web experiences. With
-          2.5+ years building enterprise frontends, I focus on writing clean
-          code that actually makes a difference for users.
+          I design high-performance React Native mobile apps and interactive React web applications.
+          Focused on pixel-perfect UI/UX, state management, remote collaboration, and rapid delivery to scale your startup.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -111,16 +122,16 @@ export default function Hero() {
         >
           <a
             href="#contact"
-            className="glass-card-strong px-8 py-4 rounded-xl font-semibold hover-lift glow-cyan flex items-center gap-2 group"
+            className="glass-card-strong px-8 py-4 rounded-xl font-semibold hover-lift glow-cyan flex items-center gap-2 group text-white"
           >
             <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
-            Let's Chat
+            Let's Discuss Your Project
           </a>
           <a
             href="#projects"
-            className="glass-card px-8 py-4 rounded-xl font-semibold hover-lift flex items-center gap-2 group border-primary-500/30"
+            className="glass-card px-8 py-4 rounded-xl font-semibold hover-lift flex items-center gap-2 group border-accent-500/30 text-accent-300 hover:glow-cyan"
           >
-            See My Projects
+            See Case Studies
             <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
           </a>
         </motion.div>

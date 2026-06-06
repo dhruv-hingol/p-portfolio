@@ -13,12 +13,12 @@ export default function Experience() {
       name: "Heptaverse-FE",
       role: "Lead Frontend",
       description:
-        "Architected a production-ready enterprise frontend using React 19.1, TypeScript 5.8, and Vite 7.",
+        "Architected a production-ready B2B platform under tight launch deadlines, managing features end-to-end.",
       achievements: [
-        "Implemented high-performance state management using Zustand 5.0 and TanStack React Query 5.85",
-        "Designed secure B2B interface using Tailwind CSS 4.1 and Radix UI primitives",
-        "Integrated TipTap 3.4 for rich text editing and Recharts 3.2 for data visualization",
-        "Managed containerization with Docker and CI/CD via Bitbucket Pipelines",
+        "Led remote frontend alignment and development in a distributed team, accelerating feature release cycles",
+        "Spearheaded performance optimizations using Zustand and React Query, cutting client-side load times",
+        "Autonomously built complex B2B client interfaces using Tailwind CSS and Radix UI with zero supervision",
+        "Dockerized frontend environments and built automated CI/CD pipelines, removing manual release bottlenecks",
       ],
       tech: [
         "React 19",
@@ -33,13 +33,13 @@ export default function Experience() {
     },
     {
       name: "RenCoach",
-      role: "Full Stack Developer",
+      role: "Frontend Developer",
       description:
-        "Developed a web application from scratch using React.js and Redux.",
+        "Owned development of complex client-side portals, operating with high autonomy and direct communication.",
       achievements: [
-        "Optimized storage to reduce API calls by 25%",
-        "Boosted performance by 20% via lazy loading implementation",
-        "Implemented comprehensive state management with Redux",
+        "Optimized frontend data storage and caching to reduce costly API traffic by 25%",
+        "Boosted page performance by 20% within weeks through aggressive lazy loading and assets cleanup",
+        "Translated business wireframes into functional, production-ready code with weekly client demos",
       ],
       tech: ["React.js", "Redux", "JavaScript"],
       color: "secondary",
@@ -48,11 +48,11 @@ export default function Experience() {
       name: "Bizzmitr",
       role: "Frontend Developer",
       description:
-        "Leveraged Next.js for server-side rendering (SSR) and optimized load times.",
+        "Collaborated remotely to migrate legacy pages to high-performance Next.js architectures.",
       achievements: [
-        "Implemented efficient code splitting and lazy loading",
-        "Optimized SSR for improved SEO and performance",
-        "Enhanced user experience with faster page loads",
+        "Autonomously set up code splitting and lazy loading structures, slashing initial bundle sizes",
+        "Optimized Next.js Server-Side Rendering (SSR) to boost SEO rankings and speed up indexing",
+        "Independently managed tasks and deadlines in a fully remote setup, maintaining high delivery speed",
       ],
       tech: ["Next.js", "SSR", "React", "Code Splitting"],
       color: "accent",
@@ -61,11 +61,11 @@ export default function Experience() {
       name: "React Native App",
       role: "Mobile Developer",
       description:
-        "Engineered a mobile application for real-time dealer purchasing.",
+        "Engineered a cross-platform mobile application for dealer inventory and purchasing.",
       achievements: [
-        "Integrated live product synchronization via RESTful APIs",
-        "Developed cross-platform mobile solution",
-        "Implemented real-time data updates",
+        "Designed and implemented live product syncing and real-time purchasing logs via REST APIs",
+        "Developed cross-platform mobile builds in record time, allowing early client testing",
+        "Configured robust local database storage to ensure app utility during offline client visits",
       ],
       tech: ["React Native", "RESTful APIs", "Mobile Development"],
       color: "primary",
@@ -74,11 +74,11 @@ export default function Experience() {
       name: "Ariel AI",
       role: "Frontend Developer",
       description:
-        "Developed interactive AI features including status change and feedback loops.",
+        "Built interactive AI features, cooperating with AI engineers to deploy streaming feedback loops.",
       achievements: [
-        "Built modern UI using Next UI and Tailwind CSS",
-        "Implemented real-time AI interaction features",
-        "Created responsive feedback mechanisms",
+        "Created modern, responsive user interfaces with custom UI libraries and Tailwind CSS",
+        "Implemented real-time visual feedback loops and streaming text states for AI interactions",
+        "Iterated rapidly in fast-paced sprint cycles based on direct stakeholder and user feedback",
       ],
       tech: ["Next.js", "Next UI", "Tailwind CSS", "AI Integration"],
       color: "secondary",
