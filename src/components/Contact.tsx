@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Mail, Phone, MapPin, Send, Linkedin, Github, CheckCircle2, Loader2, Calendar } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Linkedin, Github, CheckCircle2, Loader2, MessageSquare, ChevronDown } from "lucide-react";
 
 export default function Contact() {
   const [ref, inView] = useInView({
@@ -263,25 +263,28 @@ export default function Contact() {
                         <label htmlFor="service" className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
                           Service Needed
                         </label>
-                        <select
-                          id="service"
-                          name="service"
-                          value={formData.service}
-                          onChange={handleChange}
-                          className="w-full bg-slate-950/60 border border-slate-800/80 focus:border-primary-500 focus:outline-none rounded-xl px-4 py-3 text-sm text-white transition-all duration-300"
-                        >
-                          <option value="Mobile App (React Native)" className="bg-slate-950">Mobile App (React Native)</option>
-                          <option value="Web App (React/Next.js)" className="bg-slate-950">Web App (React/Next.js)</option>
-                          <option value="SaaS & Client Dashboard" className="bg-slate-950">SaaS & Client Dashboard</option>
-                          <option value="E-Commerce Web Store" className="bg-slate-950">E-Commerce Web Store</option>
-                          <option value="Landing Page & Marketing Site" className="bg-slate-950">Landing Page & Marketing Site</option>
-                          <option value="Chrome Extension Development" className="bg-slate-950">Chrome Extension Development</option>
-                          <option value="Frontend Performance Audit" className="bg-slate-950">Frontend Performance Audit</option>
-                          <option value="UI/UX Implementation (Figma to Code)" className="bg-slate-950">UI/UX Implementation (Figma to Code)</option>
-                          <option value="Custom Component Library" className="bg-slate-950">Custom Component Library</option>
-                          <option value="Progressive Web App (PWA)" className="bg-slate-950">Progressive Web App (PWA)</option>
-                          <option value="Other" className="bg-slate-950">Other (Write Custom Service...)</option>
-                        </select>
+                        <div className="relative">
+                          <select
+                            id="service"
+                            name="service"
+                            value={formData.service}
+                            onChange={handleChange}
+                            className="w-full appearance-none bg-slate-950/60 border border-slate-800/80 focus:border-primary-500 focus:outline-none rounded-xl pl-4 pr-12 py-3 text-sm text-white transition-all duration-300"
+                          >
+                            <option value="Mobile App (React Native)" className="bg-slate-950">Mobile App (React Native)</option>
+                            <option value="Web App (React/Next.js)" className="bg-slate-950">Web App (React/Next.js)</option>
+                            <option value="SaaS & Client Dashboard" className="bg-slate-950">SaaS & Client Dashboard</option>
+                            <option value="E-Commerce Web Store" className="bg-slate-950">E-Commerce Web Store</option>
+                            <option value="Landing Page & Marketing Site" className="bg-slate-950">Landing Page & Marketing Site</option>
+                            <option value="Chrome Extension Development" className="bg-slate-950">Chrome Extension Development</option>
+                            <option value="Frontend Performance Audit" className="bg-slate-950">Frontend Performance Audit</option>
+                            <option value="UI/UX Implementation (Figma to Code)" className="bg-slate-950">UI/UX Implementation (Figma to Code)</option>
+                            <option value="Custom Component Library" className="bg-slate-950">Custom Component Library</option>
+                            <option value="Progressive Web App (PWA)" className="bg-slate-950">Progressive Web App (PWA)</option>
+                            <option value="Other" className="bg-slate-950">Other (Write Custom Service...)</option>
+                          </select>
+                          <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                        </div>
                         <AnimatePresence>
                           {formData.service === "Other" && (
                             <motion.div
@@ -308,23 +311,26 @@ export default function Contact() {
                         <label htmlFor="budget" className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
                           Estimated Budget Tier
                         </label>
-                        <select
-                          id="budget"
-                          name="budget"
-                          value={formData.budget}
-                          onChange={handleChange}
-                          className="w-full bg-slate-950/60 border border-slate-800/80 focus:border-primary-500 focus:outline-none rounded-xl px-4 py-3 text-sm text-white transition-all duration-300"
-                        >
-                          <option value="Under $1,000" className="bg-slate-950">Under $1,000</option>
-                          <option value="$1,000 - $2,500" className="bg-slate-950">$1,000 - $2,500</option>
-                          <option value="$2,500 - $5,000" className="bg-slate-950">$2,500 - $5,000</option>
-                          <option value="$5,000 - $7,500" className="bg-slate-950">$5,000 - $7,500</option>
-                          <option value="$7,500 - $10,000" className="bg-slate-950">$7,500 - $10,000</option>
-                          <option value="$10,000 - $15,000" className="bg-slate-950">$10,000 - $15,000</option>
-                          <option value="$15,000 - $25,000" className="bg-slate-950">$15,000 - $25,000</option>
-                          <option value="$25,000+" className="bg-slate-950">$25,000+ (Enterprise)</option>
-                          <option value="Other" className="bg-slate-950">Other (Write Custom Budget...)</option>
-                        </select>
+                        <div className="relative">
+                          <select
+                            id="budget"
+                            name="budget"
+                            value={formData.budget}
+                            onChange={handleChange}
+                            className="w-full appearance-none bg-slate-950/60 border border-slate-800/80 focus:border-primary-500 focus:outline-none rounded-xl pl-4 pr-12 py-3 text-sm text-white transition-all duration-300"
+                          >
+                            <option value="Under $1,000" className="bg-slate-950">Under $1,000</option>
+                            <option value="$1,000 - $2,500" className="bg-slate-950">$1,000 - $2,500</option>
+                            <option value="$2,500 - $5,000" className="bg-slate-950">$2,500 - $5,000</option>
+                            <option value="$5,000 - $7,500" className="bg-slate-950">$5,000 - $7,500</option>
+                            <option value="$7,500 - $10,000" className="bg-slate-950">$7,500 - $10,000</option>
+                            <option value="$10,000 - $15,000" className="bg-slate-950">$10,000 - $15,000</option>
+                            <option value="$15,000 - $25,000" className="bg-slate-950">$15,000 - $25,000</option>
+                            <option value="$25,000+" className="bg-slate-950">$25,000+ (Enterprise)</option>
+                            <option value="Other" className="bg-slate-950">Other (Write Custom Budget...)</option>
+                          </select>
+                          <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                        </div>
                         <AnimatePresence>
                           {formData.budget === "Other" && (
                             <motion.div
@@ -403,14 +409,15 @@ export default function Contact() {
                     </p>
 
                     <div className="pt-6 border-t border-slate-800/60 max-w-md mx-auto">
-                      <p className="text-xs text-slate-500 mb-4">Want to secure a slot in my calendar immediately?</p>
+                      <p className="text-xs text-slate-500 mb-4">Want to connect immediately?</p>
                       <a
-                        href="#"
-                        onClick={(e) => { e.preventDefault(); alert("Calendar booking would open here!"); }}
+                        href="https://wa.me/918735099370?text=Hi%20Dhruv%2c%20I%20just%20submitted%20a%20project%20inquiry%20on%20your%20portfolio.%20Let's%20connect!"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 glass-card-strong px-6 py-3 rounded-lg text-sm font-semibold text-primary-300 hover:glow-orange transition-all"
                       >
-                        <Calendar className="w-4 h-4" />
-                        <span>Book a 15-Min Discovery Call</span>
+                        <MessageSquare className="w-4 h-4 text-primary-400" />
+                        <span>Chat on WhatsApp</span>
                       </a>
                     </div>
 

@@ -13,40 +13,62 @@ export default function Projects() {
       name: "Food For Good",
       subtitle: "Surplus Food Redistribution Platform (React Native)",
       image: "/assets/food_for_good.png",
-      challenge: "Food insecurity exists alongside massive commercial surplus food waste. Coordination between busy restaurants and local shelters is slow, manual, and offline.",
-      solution: "Engineered a high-performance cross-platform mobile app using React Native, Expo, and Firebase, featuring real-time maps and push notification sync.",
-      results: "Rescued 150kg+ of surplus food daily. Reduced pickup coordination time by 80%, enabling shelters to receive fresh meals within hours of donor listings.",
-      tech: ["React Native", "Expo", "TypeScript", "Firebase", "Google Maps API", "Push Notifications"],
+      challenge:
+        "Food insecurity exists alongside massive commercial surplus food waste. Coordination between busy restaurants and local shelters is slow, manual, and offline.",
+      solution:
+        "Engineered a high-performance cross-platform mobile app using React Native, Expo, and Firebase, featuring real-time maps and push notification sync.",
+      results:
+        "Rescued 150kg+ of surplus food daily. Reduced pickup coordination time by 80%, enabling shelters to receive fresh meals within hours of donor listings.",
+      tech: [
+        "React Native",
+        "Expo",
+        "TypeScript",
+        "Firebase",
+        "Google Maps API",
+        "Push Notifications",
+      ],
       icon: Heart,
       gradient: "from-emerald-500 to-teal-700",
-      links: {
-        live: "#",
-        github: "#",
-      },
+      links: null,
     },
     {
       name: "Kidi Makodo Chapo Chap",
       subtitle: "Traditional Folk Game App (React Native)",
       image: "/assets/gujarati_folk_game.png",
-      challenge: "Traditional board games are disappearing, lacking modern interactive digital forms that appeal to the younger generation.",
-      solution: "Developed a vibrant mobile board game using React Native Canvas. Added smooth animations, custom sound effects, local multiplayer, and digital dice rolls.",
-      results: "Digitally preserved a classic folk game. Achieved 60fps performance on low-end devices and received enthusiastic response from cultural gaming communities.",
-      tech: ["React Native", "TypeScript", "Custom Canvas", "Audio Players", "Zustand State"],
+      challenge:
+        "Traditional board games are disappearing, lacking modern interactive digital forms that appeal to the younger generation.",
+      solution:
+        "Developed a vibrant mobile board game using React Native Canvas. Added smooth animations, custom sound effects, local multiplayer, and digital dice rolls.",
+      results:
+        "Digitally preserved a classic folk game. Achieved 60fps performance on low-end devices and received enthusiastic response from cultural gaming communities.",
+      tech: [
+        "React Native",
+        "TypeScript",
+        "Custom Canvas",
+        "Audio Players",
+        "Zustand State",
+      ],
       icon: Gamepad2,
       gradient: "from-amber-500 to-orange-700",
-      links: {
-        live: "#",
-        github: "#",
-      },
+      links: null,
     },
     {
       name: "Aegis Tracker",
       subtitle: "Privacy-First Productivity Extension (React)",
       image: "/assets/aegis_tracker.png",
-      challenge: "Tracking productivity usually requires sending user browser data to external servers, violating user privacy.",
-      solution: "Created a secure Chrome Extension using React 19 and Vite with 100% local storage and smart idle detection.",
-      results: "Secured 5,000+ active users with zero data leaks. Provided clean visual analytics using Recharts charts.",
-      tech: ["React 19", "Vite 7", "Chrome Extension API", "Recharts", "TypeScript"],
+      challenge:
+        "Tracking productivity usually requires sending user browser data to external servers, violating user privacy.",
+      solution:
+        "Created a secure Chrome Extension using React 19 and Vite with 100% local storage and smart idle detection.",
+      results:
+        "Secured 5,000+ active users with zero data leaks. Provided clean visual analytics using Recharts charts.",
+      tech: [
+        "React 19",
+        "Vite 7",
+        "Chrome Extension API",
+        "Recharts",
+        "TypeScript",
+      ],
       icon: Cpu,
       gradient: "from-cyan-500 to-blue-700",
       links: {
@@ -94,7 +116,8 @@ export default function Projects() {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full" />
           <p className="text-slate-400 mt-6 text-lg max-w-xl mx-auto">
-            Real problems solved with robust frontend structures, React Native apps, and fluid user experiences.
+            Real problems solved with robust frontend structures, React Native
+            apps, and fluid user experiences.
           </p>
         </motion.div>
 
@@ -122,9 +145,11 @@ export default function Projects() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80" />
-                    
+
                     {/* Floating Icon */}
-                    <div className={`absolute bottom-3 right-3 p-2.5 rounded-xl glass-card-strong bg-gradient-to-br ${project.gradient} bg-opacity-20`}>
+                    <div
+                      className={`absolute bottom-3 right-3 p-2.5 rounded-xl glass-card-strong bg-gradient-to-br ${project.gradient} bg-opacity-20`}
+                    >
                       <Icon className="w-5 h-5 text-white" />
                     </div>
                   </div>
@@ -185,22 +210,24 @@ export default function Projects() {
                   </div>
 
                   {/* Links */}
-                  <div className="flex gap-4 pt-4 border-t border-slate-800/50">
-                    <a
-                      href={project.links.live}
-                      className="flex items-center gap-1.5 text-accent-400 hover:text-accent-300 transition-colors text-xs font-semibold"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5" />
-                      <span>Live Demo</span>
-                    </a>
-                    <a
-                      href={project.links.github}
-                      className="flex items-center gap-1.5 text-slate-400 hover:text-slate-200 transition-colors text-xs font-semibold"
-                    >
-                      <Github className="w-3.5 h-3.5" />
-                      <span>Source Code</span>
-                    </a>
-                  </div>
+                  {project.links && (
+                    <div className="flex gap-4 pt-4 border-t border-slate-800/50">
+                      <a
+                        href={project.links.live}
+                        className="flex items-center gap-1.5 text-accent-400 hover:text-accent-300 transition-colors text-xs font-semibold"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        <span>Live Demo</span>
+                      </a>
+                      <a
+                        href={project.links.github}
+                        className="flex items-center gap-1.5 text-slate-400 hover:text-slate-200 transition-colors text-xs font-semibold"
+                      >
+                        <Github className="w-3.5 h-3.5" />
+                        <span>Source Code</span>
+                      </a>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             );
