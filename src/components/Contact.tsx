@@ -13,7 +13,9 @@ export default function Contact() {
     name: "",
     email: "",
     service: "Mobile App (React Native)",
-    budget: "$2,000 - $5,000",
+    customService: "",
+    budget: "$2,500 - $5,000",
+    customBudget: "",
     details: "",
   });
 
@@ -33,12 +35,53 @@ export default function Contact() {
       alert("Please fill in all required fields.");
       return;
     }
+
+    if (formData.service === "Other" && !formData.customService) {
+      alert("Please specify the custom service needed.");
+      return;
+    }
+    if (formData.budget === "Other" && !formData.customBudget) {
+      alert("Please specify your custom budget.");
+      return;
+    }
+
     setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1800);
+
+    const finalService = formData.service === "Other" ? formData.customService : formData.service;
+    const finalBudget = formData.budget === "Other" ? formData.customBudget : formData.budget;
+
+    fetch("https://formsubmit.co/ajax/dhruvhingol2210@gmail.com", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        "Client Name": formData.name,
+        "Client Email": formData.email,
+        "Requested Service": finalService,
+        "Estimated Budget": finalBudget,
+        "Project Details": formData.details,
+        "_subject": `[Client Inquiry] ${finalService} from ${formData.name}`,
+        "_replyto": formData.email,
+        "_template": "box"
+      })
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error("Form submission failed");
+      })
+      .then(() => {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+      })
+      .catch((error) => {
+        console.error("Submission error:", error);
+        alert("Failed to send inquiry. Please try again or email dhruvhingol2210@gmail.com directly.");
+        setIsSubmitting(false);
+      });
   };
 
   const containerVariants = {
@@ -79,7 +122,7 @@ export default function Contact() {
           <h2 className="text-5xl md:text-6xl font-bold gradient-text mt-2 mb-4">
             Start Your Project
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto rounded-full" />
+          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full" />
           <p className="text-slate-400 mt-6 text-lg max-w-xl mx-auto">
             Ready to turn your idea into a functional product? Tell me about it below and let's build together.
           </p>
@@ -228,10 +271,37 @@ export default function Contact() {
                           className="w-full bg-slate-950/60 border border-slate-800/80 focus:border-primary-500 focus:outline-none rounded-xl px-4 py-3 text-sm text-white transition-all duration-300"
                         >
                           <option value="Mobile App (React Native)" className="bg-slate-950">Mobile App (React Native)</option>
-                          <option value="Web App Development (React/Next.js)" className="bg-slate-950">Web App (React/Next.js)</option>
+                          <option value="Web App (React/Next.js)" className="bg-slate-950">Web App (React/Next.js)</option>
+                          <option value="SaaS & Client Dashboard" className="bg-slate-950">SaaS & Client Dashboard</option>
+                          <option value="E-Commerce Web Store" className="bg-slate-950">E-Commerce Web Store</option>
+                          <option value="Landing Page & Marketing Site" className="bg-slate-950">Landing Page & Marketing Site</option>
+                          <option value="Chrome Extension Development" className="bg-slate-950">Chrome Extension Development</option>
                           <option value="Frontend Performance Audit" className="bg-slate-950">Frontend Performance Audit</option>
-                          <option value="UI/UX Implementation" className="bg-slate-950">UI/UX Implementation</option>
+                          <option value="UI/UX Implementation (Figma to Code)" className="bg-slate-950">UI/UX Implementation (Figma to Code)</option>
+                          <option value="Custom Component Library" className="bg-slate-950">Custom Component Library</option>
+                          <option value="Progressive Web App (PWA)" className="bg-slate-950">Progressive Web App (PWA)</option>
+                          <option value="Other" className="bg-slate-950">Other (Write Custom Service...)</option>
                         </select>
+                        <AnimatePresence>
+                          {formData.service === "Other" && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                              animate={{ opacity: 1, height: "auto", marginTop: 8 }}
+                              exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                              className="overflow-hidden"
+                            >
+                              <input
+                                type="text"
+                                name="customService"
+                                required
+                                value={formData.customService}
+                                onChange={handleChange}
+                                placeholder="Describe custom service (e.g. Map Widget, Code Review)..."
+                                className="w-full bg-slate-950/60 border border-slate-800/80 focus:border-primary-500 focus:outline-none rounded-xl px-4 py-2.5 text-sm text-white transition-all duration-300 placeholder-slate-600"
+                              />
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
 
                       <div className="space-y-2">
@@ -245,11 +315,36 @@ export default function Contact() {
                           onChange={handleChange}
                           className="w-full bg-slate-950/60 border border-slate-800/80 focus:border-primary-500 focus:outline-none rounded-xl px-4 py-3 text-sm text-white transition-all duration-300"
                         >
-                          <option value="Under $2,000" className="bg-slate-950">Under $2,000</option>
-                          <option value="$2,000 - $5,000" className="bg-slate-950">$2,000 - $5,000</option>
-                          <option value="$5,000 - $10,000" className="bg-slate-950">$5,000 - $10,000</option>
-                          <option value="$10,000+" className="bg-slate-950">$10,000+ (Large project)</option>
+                          <option value="Under $1,000" className="bg-slate-950">Under $1,000</option>
+                          <option value="$1,000 - $2,500" className="bg-slate-950">$1,000 - $2,500</option>
+                          <option value="$2,500 - $5,000" className="bg-slate-950">$2,500 - $5,000</option>
+                          <option value="$5,000 - $7,500" className="bg-slate-950">$5,000 - $7,500</option>
+                          <option value="$7,500 - $10,000" className="bg-slate-950">$7,500 - $10,000</option>
+                          <option value="$10,000 - $15,000" className="bg-slate-950">$10,000 - $15,000</option>
+                          <option value="$15,000 - $25,000" className="bg-slate-950">$15,000 - $25,000</option>
+                          <option value="$25,000+" className="bg-slate-950">$25,000+ (Enterprise)</option>
+                          <option value="Other" className="bg-slate-950">Other (Write Custom Budget...)</option>
                         </select>
+                        <AnimatePresence>
+                          {formData.budget === "Other" && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0, marginTop: 0 }}
+                              animate={{ opacity: 1, height: "auto", marginTop: 8 }}
+                              exit={{ opacity: 0, height: 0, marginTop: 0 }}
+                              className="overflow-hidden"
+                            >
+                              <input
+                                type="text"
+                                name="customBudget"
+                                required
+                                value={formData.customBudget}
+                                onChange={handleChange}
+                                placeholder="Describe custom budget (e.g. $150/hr retainer)..."
+                                className="w-full bg-slate-950/60 border border-slate-800/80 focus:border-primary-500 focus:outline-none rounded-xl px-4 py-2.5 text-sm text-white transition-all duration-300 placeholder-slate-600"
+                              />
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </div>
                     </div>
 
@@ -301,7 +396,7 @@ export default function Contact() {
                     </div>
                     <h3 className="text-3xl font-bold text-white">Inquiry Received!</h3>
                     <p className="text-slate-350 max-w-md mx-auto text-sm leading-relaxed">
-                      Thank you, <span className="text-primary-300 font-semibold">{formData.name}</span>! I've received your request to discuss a <span className="text-accent-400 font-semibold">{formData.service}</span>.
+                      Thank you, <span className="text-primary-300 font-semibold">{formData.name}</span>! I've received your request.
                     </p>
                     <p className="text-slate-400 max-w-sm mx-auto text-xs">
                       I will review your project details and get back to you within 24 hours with some initial implementation ideas.
@@ -321,7 +416,15 @@ export default function Contact() {
 
                     <button
                       onClick={() => {
-                        setFormData({ name: "", email: "", service: "Mobile App (React Native)", budget: "$2,000 - $5,000", details: "" });
+                        setFormData({
+                          name: "",
+                          email: "",
+                          service: "Mobile App (React Native)",
+                          customService: "",
+                          budget: "$2,500 - $5,000",
+                          customBudget: "",
+                          details: ""
+                        });
                         setIsSubmitted(false);
                       }}
                       className="text-slate-500 hover:text-slate-300 transition-colors text-xs underline block mx-auto pt-4 cursor-pointer"
