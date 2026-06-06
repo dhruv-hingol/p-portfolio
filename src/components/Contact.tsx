@@ -273,7 +273,7 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full glass-card-strong px-8 py-4 rounded-xl font-bold text-white hover-lift glow-cyan flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full glass-card-strong px-8 py-4 rounded-xl font-bold text-white hover-lift glow-orange flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
                         <>
@@ -296,7 +296,7 @@ export default function Contact() {
                     transition={{ type: "spring", stiffness: 200, damping: 20 }}
                     className="text-center space-y-6 py-8"
                   >
-                    <div className="inline-flex p-4 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 mb-2">
+                    <div className="inline-flex p-4 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 mb-2">
                       <CheckCircle2 className="w-16 h-16 animate-pulse" />
                     </div>
                     <h3 className="text-3xl font-bold text-white">Inquiry Received!</h3>
@@ -312,7 +312,7 @@ export default function Contact() {
                       <a
                         href="#"
                         onClick={(e) => { e.preventDefault(); alert("Calendar booking would open here!"); }}
-                        className="inline-flex items-center gap-2 glass-card-strong px-6 py-3 rounded-lg text-sm font-semibold text-primary-300 hover:glow-cyan transition-all"
+                        className="inline-flex items-center gap-2 glass-card-strong px-6 py-3 rounded-lg text-sm font-semibold text-primary-300 hover:glow-orange transition-all"
                       >
                         <Calendar className="w-4 h-4" />
                         <span>Book a 15-Min Discovery Call</span>

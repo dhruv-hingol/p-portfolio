@@ -18,7 +18,7 @@ export default function Projects() {
       results: "Rescued 150kg+ of surplus food daily. Reduced pickup coordination time by 80%, enabling shelters to receive fresh meals within hours of donor listings.",
       tech: ["React Native", "Expo", "TypeScript", "Firebase", "Google Maps API", "Push Notifications"],
       icon: Heart,
-      gradient: "from-primary-500 to-primary-700",
+      gradient: "from-emerald-500 to-teal-700",
       links: {
         live: "#",
         github: "#",
@@ -33,7 +33,7 @@ export default function Projects() {
       results: "Digitally preserved a classic folk game. Achieved 60fps performance on low-end devices and received enthusiastic response from cultural gaming communities.",
       tech: ["React Native", "TypeScript", "Custom Canvas", "Audio Players", "Zustand State"],
       icon: Gamepad2,
-      gradient: "from-accent-500 to-accent-700",
+      gradient: "from-amber-500 to-orange-700",
       links: {
         live: "#",
         github: "#",
@@ -48,7 +48,7 @@ export default function Projects() {
       results: "Secured 5,000+ active users with zero data leaks. Provided clean visual analytics using Recharts charts.",
       tech: ["React 19", "Vite 7", "Chrome Extension API", "Recharts", "TypeScript"],
       icon: Cpu,
-      gradient: "from-secondary-500 to-secondary-700",
+      gradient: "from-cyan-500 to-blue-700",
       links: {
         live: "#",
         github: "#",
@@ -134,14 +134,14 @@ export default function Projects() {
                     <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-primary-300 transition-colors">
                       {project.name}
                     </h3>
-                    <p className="text-slate-450 text-xs font-semibold mb-6">
+                    <p className="text-slate-400 text-xs font-semibold mb-6">
                       {project.subtitle}
                     </p>
 
                     {/* Case Study Framing (Challenge, Solution, Results) */}
                     <div className="space-y-4 mb-6">
                       <div>
-                        <h4 className="text-[10px] font-bold uppercase tracking-wider text-secondary-300 mb-1 flex items-center gap-1">
+                        <h4 className="text-[10px] font-bold uppercase tracking-wider text-rose-450 mb-1 flex items-center gap-1">
                           <span>❌</span> The Challenge
                         </h4>
                         <p className="text-slate-300 text-xs leading-relaxed">
@@ -150,7 +150,7 @@ export default function Projects() {
                       </div>
 
                       <div>
-                        <h4 className="text-[10px] font-bold uppercase tracking-wider text-primary-400 mb-1 flex items-center gap-1">
+                        <h4 className="text-[10px] font-bold uppercase tracking-wider text-cyan-400 mb-1 flex items-center gap-1">
                           <span>💡</span> The Solution
                         </h4>
                         <p className="text-slate-300 text-xs leading-relaxed">
@@ -158,8 +158,8 @@ export default function Projects() {
                         </p>
                       </div>
 
-                      <div className="bg-accent-500/5 border border-accent-500/20 rounded-xl p-3 shadow-[0_0_15px_rgba(210,168,255,0.02)]">
-                        <h4 className="text-[10px] font-bold uppercase tracking-wider text-accent-400 mb-1 flex items-center gap-1">
+                      <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-3 shadow-[0_0_15px_rgba(16,185,129,0.02)]">
+                        <h4 className="text-[10px] font-bold uppercase tracking-wider text-emerald-400 mb-1 flex items-center gap-1">
                           <span>📈</span> The Results
                         </h4>
                         <p className="text-slate-200 text-xs leading-relaxed font-medium">
@@ -188,7 +188,7 @@ export default function Projects() {
                   <div className="flex gap-4 pt-4 border-t border-slate-800/50">
                     <a
                       href={project.links.live}
-                      className="flex items-center gap-1.5 text-primary-400 hover:text-primary-300 transition-colors text-xs font-semibold"
+                      className="flex items-center gap-1.5 text-accent-400 hover:text-accent-300 transition-colors text-xs font-semibold"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
                       <span>Live Demo</span>

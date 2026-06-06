@@ -167,7 +167,7 @@ export default function Skills() {
               ].map((skill) => (
                 <span
                   key={skill}
-                  className="glass-card-strong px-4 py-2 rounded-full text-sm text-slate-300 hover:glow-cyan transition-all duration-300"
+                  className="glass-card-strong px-4 py-2 rounded-full text-sm text-slate-300 hover:glow-orange transition-all duration-300"
                 >
                   {skill}
                 </span>

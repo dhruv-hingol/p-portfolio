@@ -195,7 +195,7 @@ export default function Experience() {
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
-                    className="glass-card px-3 py-1 rounded-full text-sm text-slate-300 hover:glow-cyan transition-all duration-300"
+                    className="glass-card px-3 py-1 rounded-full text-sm text-slate-300 hover:glow-orange transition-all duration-300"
                   >
                     {tech}
                   </span>
