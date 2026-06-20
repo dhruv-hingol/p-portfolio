@@ -1,13 +1,27 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Mail, Phone, MapPin, Send, Linkedin, Github, CheckCircle2, Loader2, MessageSquare, ChevronDown } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Linkedin,
+  Github,
+  CheckCircle2,
+  Loader2,
+  MessageSquare,
+  ChevronDown,
+} from "lucide-react";
+import portfolioData from "../data/portfolioData.json";
 
 export default function Contact() {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  const { personalInfo, contactSection } = portfolioData;
 
   const [formData, setFormData] = useState({
     name: "",
@@ -23,7 +37,9 @@ export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -47,14 +63,16 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
-    const finalService = formData.service === "Other" ? formData.customService : formData.service;
-    const finalBudget = formData.budget === "Other" ? formData.customBudget : formData.budget;
+    const finalService =
+      formData.service === "Other" ? formData.customService : formData.service;
+    const finalBudget =
+      formData.budget === "Other" ? formData.customBudget : formData.budget;
 
-    fetch("https://formsubmit.co/ajax/dhruvhingol2210@gmail.com", {
+    fetch(`https://formsubmit.co/ajax/${personalInfo.email}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json"
+        Accept: "application/json",
       },
       body: JSON.stringify({
         "Client Name": formData.name,
@@ -62,10 +80,10 @@ export default function Contact() {
         "Requested Service": finalService,
         "Estimated Budget": finalBudget,
         "Project Details": formData.details,
-        "_subject": `[Client Inquiry] ${finalService} from ${formData.name}`,
-        "_replyto": formData.email,
-        "_template": "box"
-      })
+        _subject: `[Client Inquiry] ${finalService} from ${formData.name}`,
+        _replyto: formData.email,
+        _template: "box",
+      }),
     })
       .then((res) => {
         if (res.ok) {
@@ -79,7 +97,9 @@ export default function Contact() {
       })
       .catch((error) => {
         console.error("Submission error:", error);
-        alert("Failed to send inquiry. Please try again or email dhruvhingol2210@gmail.com directly.");
+        alert(
+          `Failed to send inquiry. Please try again or email ${personalInfo.email} directly.`,
+        );
         setIsSubmitting(false);
       });
   };
@@ -106,7 +126,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section-container">
+    <section id="contact" className="section-container !pb-4">
       <motion.div
         ref={ref}
         variants={containerVariants}
@@ -117,77 +137,80 @@ export default function Contact() {
         {/* Section Title */}
         <motion.div variants={itemVariants} className="text-center mb-16">
           <span className="text-primary-400 text-sm font-semibold tracking-wider uppercase">
-            Let's Collaborate
+            {contactSection.badge}
           </span>
           <h2 className="text-5xl md:text-6xl font-bold gradient-text mt-2 mb-4">
-            Start Your Project
+            {contactSection.title}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-accent-500 mx-auto rounded-full" />
-          <p className="text-slate-400 mt-6 text-lg max-w-xl mx-auto">
-            Ready to turn your idea into a functional product? Tell me about it below and let's build together.
+          <p className="text-slate-300 mt-6 text-lg max-w-xl mx-auto">
+            {contactSection.description}
           </p>
         </motion.div>
 
         {/* Layout Grid */}
-        <div className="grid lg:grid-cols-12 gap-8 items-start">
+        <div className="grid lg:grid-cols-12 gap-8 items-stretch">
           {/* Contact Details & Trust Indicators (Left) */}
-          <motion.div variants={itemVariants} className="lg:col-span-4 space-y-6">
+          <motion.div
+            variants={itemVariants}
+            className="lg:col-span-4 space-y-6"
+          >
             {/* Value card */}
             <div className="glass-card rounded-2xl p-6 border-l-4 border-accent-500">
-              <h3 className="text-lg font-bold text-white mb-2">Why work with me?</h3>
-              <ul className="space-y-3 text-sm text-slate-350">
-                <li className="flex gap-2">
-                  <span className="text-accent-400 font-bold">✓</span>
-                  <span>Direct communication, no agency layers</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-accent-400 font-bold">✓</span>
-                  <span>Rapid turnaround with production-ready code</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-accent-400 font-bold">✓</span>
-                  <span>End-to-end support from cloud setup to App Stores</span>
-                </li>
+              <h3 className="text-lg font-bold text-white mb-2">
+                {contactSection.whyWorkWithMe.title}
+              </h3>
+              <ul className="space-y-3 text-sm text-slate-355">
+                {contactSection.whyWorkWithMe.points.map((point, index) => (
+                  <li key={index} className="flex gap-2">
+                    <span className="text-accent-400 font-bold">✓</span>
+                    <span>{point}</span>
+                  </li>
+                ))}
               </ul>
             </div>
 
             {/* Coordinates Card */}
             <div className="glass-card-strong rounded-2xl p-6 space-y-6">
-              <h3 className="text-lg font-bold text-white">Direct Coordinates</h3>
+              <h3 className="text-lg font-bold text-white">
+                {contactSection.directCoordinatesTitle}
+              </h3>
               <div className="space-y-4">
                 <a
-                  href="mailto:dhruvhingol2210@gmail.com"
+                  href={`mailto:${personalInfo.email}`}
                   className="flex items-center gap-3 text-slate-300 hover:text-primary-400 transition-colors text-sm group"
                 >
                   <div className="p-2.5 rounded-lg glass-card group-hover:bg-primary-500/10">
                     <Mail className="w-5 h-5 text-primary-400" />
                   </div>
-                  <span className="truncate">dhruvhingol2210@gmail.com</span>
+                  <span className="truncate">{personalInfo.email}</span>
                 </a>
 
                 <a
-                  href="tel:+918735099370"
+                  href={`tel:${personalInfo.phone.replace(/\s+/g, "")}`}
                   className="flex items-center gap-3 text-slate-300 hover:text-primary-400 transition-colors text-sm group"
                 >
                   <div className="p-2.5 rounded-lg glass-card group-hover:bg-primary-500/10">
                     <Phone className="w-5 h-5 text-primary-400" />
                   </div>
-                  <span>+91 8735099370</span>
+                  <span>{personalInfo.phone}</span>
                 </a>
 
                 <div className="flex items-center gap-3 text-slate-300 text-sm">
                   <div className="p-2.5 rounded-lg glass-card">
                     <MapPin className="w-5 h-5 text-primary-400" />
                   </div>
-                  <span>Ahmedabad, India (GMT+5:30)</span>
+                  <span>{personalInfo.locationWithTime}</span>
                 </div>
               </div>
 
               <div className="border-t border-slate-800/60 pt-6">
-                <h4 className="text-sm font-semibold text-white mb-3">Connect Socially</h4>
+                <h4 className="text-sm font-semibold text-white mb-3">
+                  {contactSection.connectSociallyTitle}
+                </h4>
                 <div className="flex gap-3">
                   <a
-                    href="https://linkedin.com"
+                    href={personalInfo.socials.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-3 rounded-xl glass-card hover:text-primary-400 transition-colors"
@@ -196,7 +219,7 @@ export default function Contact() {
                     <Linkedin className="w-5 h-5" />
                   </a>
                   <a
-                    href="https://github.com"
+                    href={personalInfo.socials.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-3 rounded-xl glass-card hover:text-primary-400 transition-colors"
@@ -210,8 +233,8 @@ export default function Contact() {
           </motion.div>
 
           {/* Form Card (Right) */}
-          <motion.div variants={itemVariants} className="lg:col-span-8">
-            <div className="glass-card-strong rounded-2xl p-8 md:p-10 relative overflow-hidden min-h-[500px] flex flex-col justify-center">
+          <motion.div variants={itemVariants} className="lg:col-span-8 h-full">
+            <div className="glass-card-strong rounded-2xl p-8 md:p-10 relative overflow-hidden flex flex-col h-full">
               <AnimatePresence mode="wait">
                 {!isSubmitted ? (
                   <motion.form
@@ -222,11 +245,16 @@ export default function Contact() {
                     onSubmit={handleSubmit}
                     className="space-y-6 w-full"
                   >
-                    <h3 className="text-2xl font-bold text-white mb-4">Project Inquiry Form</h3>
+                    <h3 className="text-2xl font-bold text-white mb-4">
+                      {contactSection.formTitle}
+                    </h3>
 
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label htmlFor="name" className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                        <label
+                          htmlFor="name"
+                          className="text-xs font-semibold text-slate-300 uppercase tracking-wider"
+                        >
                           Your Name <span className="text-rose-500">*</span>
                         </label>
                         <input
@@ -242,7 +270,10 @@ export default function Contact() {
                       </div>
 
                       <div className="space-y-2">
-                        <label htmlFor="email" className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                        <label
+                          htmlFor="email"
+                          className="text-xs font-semibold text-slate-300 uppercase tracking-wider"
+                        >
                           Email Address <span className="text-rose-500">*</span>
                         </label>
                         <input
@@ -260,7 +291,10 @@ export default function Contact() {
 
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label htmlFor="service" className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                        <label
+                          htmlFor="service"
+                          className="text-xs font-semibold text-slate-300 uppercase tracking-wider"
+                        >
                           Service Needed
                         </label>
                         <div className="relative">
@@ -271,17 +305,69 @@ export default function Contact() {
                             onChange={handleChange}
                             className="w-full appearance-none bg-slate-950/60 border border-slate-800/80 focus:border-primary-500 focus:outline-none rounded-xl pl-4 pr-12 py-3 text-sm text-white transition-all duration-300"
                           >
-                            <option value="Mobile App (React Native)" className="bg-slate-950">Mobile App (React Native)</option>
-                            <option value="Web App (React/Next.js)" className="bg-slate-950">Web App (React/Next.js)</option>
-                            <option value="SaaS & Client Dashboard" className="bg-slate-950">SaaS & Client Dashboard</option>
-                            <option value="E-Commerce Web Store" className="bg-slate-950">E-Commerce Web Store</option>
-                            <option value="Landing Page & Marketing Site" className="bg-slate-950">Landing Page & Marketing Site</option>
-                            <option value="Chrome Extension Development" className="bg-slate-950">Chrome Extension Development</option>
-                            <option value="Frontend Performance Audit" className="bg-slate-950">Frontend Performance Audit</option>
-                            <option value="UI/UX Implementation (Figma to Code)" className="bg-slate-950">UI/UX Implementation (Figma to Code)</option>
-                            <option value="Custom Component Library" className="bg-slate-950">Custom Component Library</option>
-                            <option value="Progressive Web App (PWA)" className="bg-slate-950">Progressive Web App (PWA)</option>
-                            <option value="Other" className="bg-slate-950">Other (Write Custom Service...)</option>
+                            <option
+                              value="Mobile App (React Native)"
+                              className="bg-slate-950"
+                            >
+                              Mobile App (React Native)
+                            </option>
+                            <option
+                              value="Web App (React/Next.js)"
+                              className="bg-slate-950"
+                            >
+                              Web App (React/Next.js)
+                            </option>
+                            <option
+                              value="SaaS & Client Dashboard"
+                              className="bg-slate-950"
+                            >
+                              SaaS & Client Dashboard
+                            </option>
+                            <option
+                              value="E-Commerce Web Store"
+                              className="bg-slate-950"
+                            >
+                              E-Commerce Web Store
+                            </option>
+                            <option
+                              value="Landing Page & Marketing Site"
+                              className="bg-slate-950"
+                            >
+                              Landing Page & Marketing Site
+                            </option>
+                            <option
+                              value="Chrome Extension Development"
+                              className="bg-slate-950"
+                            >
+                              Chrome Extension Development
+                            </option>
+                            <option
+                              value="Frontend Performance Audit"
+                              className="bg-slate-950"
+                            >
+                              Frontend Performance Audit
+                            </option>
+                            <option
+                              value="UI/UX Implementation (Figma to Code)"
+                              className="bg-slate-950"
+                            >
+                              UI/UX Implementation (Figma to Code)
+                            </option>
+                            <option
+                              value="Custom Component Library"
+                              className="bg-slate-950"
+                            >
+                              Custom Component Library
+                            </option>
+                            <option
+                              value="Progressive Web App (PWA)"
+                              className="bg-slate-950"
+                            >
+                              Progressive Web App (PWA)
+                            </option>
+                            <option value="Other" className="bg-slate-950">
+                              Other (Write Custom Service...)
+                            </option>
                           </select>
                           <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
                         </div>
@@ -289,7 +375,11 @@ export default function Contact() {
                           {formData.service === "Other" && (
                             <motion.div
                               initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                              animate={{ opacity: 1, height: "auto", marginTop: 8 }}
+                              animate={{
+                                opacity: 1,
+                                height: "auto",
+                                marginTop: 8,
+                              }}
                               exit={{ opacity: 0, height: 0, marginTop: 0 }}
                               className="overflow-hidden"
                             >
@@ -308,7 +398,10 @@ export default function Contact() {
                       </div>
 
                       <div className="space-y-2">
-                        <label htmlFor="budget" className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                        <label
+                          htmlFor="budget"
+                          className="text-xs font-semibold text-slate-300 uppercase tracking-wider"
+                        >
                           Estimated Budget Tier
                         </label>
                         <div className="relative">
@@ -319,15 +412,54 @@ export default function Contact() {
                             onChange={handleChange}
                             className="w-full appearance-none bg-slate-950/60 border border-slate-800/80 focus:border-primary-500 focus:outline-none rounded-xl pl-4 pr-12 py-3 text-sm text-white transition-all duration-300"
                           >
-                            <option value="Under $1,000" className="bg-slate-950">Under $1,000</option>
-                            <option value="$1,000 - $2,500" className="bg-slate-950">$1,000 - $2,500</option>
-                            <option value="$2,500 - $5,000" className="bg-slate-950">$2,500 - $5,000</option>
-                            <option value="$5,000 - $7,500" className="bg-slate-950">$5,000 - $7,500</option>
-                            <option value="$7,500 - $10,000" className="bg-slate-950">$7,500 - $10,000</option>
-                            <option value="$10,000 - $15,000" className="bg-slate-950">$10,000 - $15,000</option>
-                            <option value="$15,000 - $25,000" className="bg-slate-950">$15,000 - $25,000</option>
-                            <option value="$25,000+" className="bg-slate-950">$25,000+ (Enterprise)</option>
-                            <option value="Other" className="bg-slate-950">Other (Write Custom Budget...)</option>
+                            <option
+                              value="Under $1,000"
+                              className="bg-slate-950"
+                            >
+                              Under $1,000
+                            </option>
+                            <option
+                              value="$1,000 - $2,500"
+                              className="bg-slate-950"
+                            >
+                              $1,000 - $2,500
+                            </option>
+                            <option
+                              value="$2,500 - $5,000"
+                              className="bg-slate-950"
+                            >
+                              $2,500 - $5,000
+                            </option>
+                            <option
+                              value="$5,000 - $7,500"
+                              className="bg-slate-950"
+                            >
+                              $5,000 - $7,500
+                            </option>
+                            <option
+                              value="$7,500 - $10,000"
+                              className="bg-slate-950"
+                            >
+                              $7,500 - $10,000
+                            </option>
+                            <option
+                              value="$10,000 - $15,000"
+                              className="bg-slate-950"
+                            >
+                              $10,000 - $15,000
+                            </option>
+                            <option
+                              value="$15,000 - $25,000"
+                              className="bg-slate-950"
+                            >
+                              $15,000 - $25,000
+                            </option>
+                            <option value="$25,000+" className="bg-slate-950">
+                              $25,000+ (Enterprise)
+                            </option>
+                            <option value="Other" className="bg-slate-950">
+                              Other (Write Custom Budget...)
+                            </option>
                           </select>
                           <ChevronDown className="absolute right-5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
                         </div>
@@ -335,7 +467,11 @@ export default function Contact() {
                           {formData.budget === "Other" && (
                             <motion.div
                               initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                              animate={{ opacity: 1, height: "auto", marginTop: 8 }}
+                              animate={{
+                                opacity: 1,
+                                height: "auto",
+                                marginTop: 8,
+                              }}
                               exit={{ opacity: 0, height: 0, marginTop: 0 }}
                               className="overflow-hidden"
                             >
@@ -355,9 +491,16 @@ export default function Contact() {
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="details" className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
-                        Project Details / Challenge to Solve <span className="text-rose-500">*</span>
-                        <span className="text-[10px] text-slate-500 lowercase normal-case block mt-0.5">Please describe what you want built and any specific performance/deadline requirements.</span>
+                      <label
+                        htmlFor="details"
+                        className="text-xs font-semibold text-slate-300 uppercase tracking-wider"
+                      >
+                        Project Details / Challenge to Solve{" "}
+                        <span className="text-rose-500">*</span>
+                        <span className="text-[10px] text-slate-355 lowercase normal-case block mt-0.5">
+                          Please describe what you want built and any specific
+                          performance/deadline requirements.
+                        </span>
                       </label>
                       <textarea
                         id="details"
@@ -374,7 +517,7 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full glass-card-strong px-8 py-4 rounded-xl font-bold text-white hover-lift glow-orange flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full glass-card-strong px-8 py-4 rounded-xl font-bold text-white hover-lift flex items-center justify-center gap-2 group cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
                         <>
@@ -400,24 +543,28 @@ export default function Contact() {
                     <div className="inline-flex p-4 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 mb-2">
                       <CheckCircle2 className="w-16 h-16 animate-pulse" />
                     </div>
-                    <h3 className="text-3xl font-bold text-white">Inquiry Received!</h3>
-                    <p className="text-slate-350 max-w-md mx-auto text-sm leading-relaxed">
-                      Thank you, <span className="text-primary-300 font-semibold">{formData.name}</span>! I've received your request.
+                    <h3 className="text-3xl font-bold text-white">
+                      {contactSection.successTitle}
+                    </h3>
+                    <p className="text-slate-355 max-w-md mx-auto text-sm leading-relaxed">
+                      {contactSection.successMessage.replace("{name}", formData.name)}
                     </p>
-                    <p className="text-slate-400 max-w-sm mx-auto text-xs">
-                      I will review your project details and get back to you within 24 hours with some initial implementation ideas.
+                    <p className="text-slate-300 max-w-sm mx-auto text-xs">
+                      {contactSection.successSubtitle}
                     </p>
 
                     <div className="pt-6 border-t border-slate-800/60 max-w-md mx-auto">
-                      <p className="text-xs text-slate-500 mb-4">Want to connect immediately?</p>
+                      <p className="text-xs text-slate-300 mb-4">
+                        {contactSection.successConnectText}
+                      </p>
                       <a
-                        href="https://wa.me/918735099370?text=Hi%20Dhruv%2c%20I%20just%20submitted%20a%20project%20inquiry%20on%20your%20portfolio.%20Let's%20connect!"
+                        href={personalInfo.whatsapp}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 glass-card-strong px-6 py-3 rounded-lg text-sm font-semibold text-primary-300 hover:glow-orange transition-all"
                       >
                         <MessageSquare className="w-4 h-4 text-primary-400" />
-                        <span>Chat on WhatsApp</span>
+                        <span>{contactSection.successWhatsAppText}</span>
                       </a>
                     </div>
 
@@ -430,13 +577,13 @@ export default function Contact() {
                           customService: "",
                           budget: "$2,500 - $5,000",
                           customBudget: "",
-                          details: ""
+                          details: "",
                         });
                         setIsSubmitted(false);
                       }}
-                      className="text-slate-500 hover:text-slate-300 transition-colors text-xs underline block mx-auto pt-4 cursor-pointer"
+                      className="text-slate-355 hover:text-slate-200 transition-colors text-xs underline block mx-auto pt-4 cursor-pointer"
                     >
-                      Submit another inquiry
+                      {contactSection.submitAnotherText}
                     </button>
                   </motion.div>
                 )}
@@ -448,12 +595,9 @@ export default function Contact() {
         {/* Footer */}
         <motion.div
           variants={itemVariants}
-          className="mt-20 text-center text-slate-500 text-xs md:text-sm border-t border-slate-900 pt-8"
+          className="mt-10 text-center text-slate-400 text-xs md:text-sm border-t border-slate-900 pt-4"
         >
-          <p className="mb-2">© 2026 Dhruv Hingol. All rights reserved.</p>
-          <p>
-            Designed with a client-first mindset. Built with React 19, TypeScript, and Tailwind CSS.
-          </p>
+          <p>{contactSection.copyrightText}</p>
         </motion.div>
       </motion.div>
     </section>

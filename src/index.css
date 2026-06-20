@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
 @layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #ff6b00 rgba(15, 23, 42, 0.5);
+  }
+
   body {
     @apply text-white;
     background-color: #0B0E14;
@@ -19,7 +24,8 @@
 
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 6px;
+    height: 6px;
   }
 
   ::-webkit-scrollbar-track {
@@ -124,7 +130,7 @@
 
   /* Section Spacing */
   .section-container {
-    @apply min-h-screen flex items-center justify-center px-6 py-20;
+    @apply min-h-screen flex items-center justify-center px-6 py-10;
   }
 }
 

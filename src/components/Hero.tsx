@@ -7,6 +7,7 @@ import {
   MapPin,
   ExternalLink,
 } from "lucide-react";
+import portfolioData from "../data/portfolioData.json";
 
 export default function Hero() {
   const containerVariants = {
@@ -21,7 +22,7 @@ export default function Hero() {
   };
 
   const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
+    hidden: { y: 0, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
@@ -30,7 +31,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="section-container relative">
+    <section id="hero" className="section-container relative !pt-20">
       {/* Background Decoration */}
       <div className="background-decoration" />
 
@@ -50,7 +51,7 @@ export default function Hero() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-500"></span>
             </span>
-            Available for Freelance Contract / Retainer
+            {portfolioData.personalInfo.subtitle}
           </span>
         </motion.div>
 
@@ -66,7 +67,7 @@ export default function Hero() {
           variants={itemVariants}
           className="text-6xl md:text-8xl leading-normal font-bold mb-6 gradient-text-bright"
         >
-          Dhruv Hingol
+          {portfolioData.personalInfo.name}
         </motion.h1>
 
         {/* Title */}
@@ -74,7 +75,7 @@ export default function Hero() {
           variants={itemVariants}
           className="text-2xl md:text-4xl font-bold mb-6 text-slate-200"
         >
-          Frontend & React Native Developer
+          {portfolioData.personalInfo.title}
         </motion.h2>
 
         {/* Subtitle */}
@@ -91,16 +92,7 @@ export default function Hero() {
           variants={itemVariants}
           className="flex flex-wrap justify-center gap-3 mb-8 max-w-3xl mx-auto"
         >
-          {[
-            "React 19",
-            "React Native",
-            "TypeScript 5.8",
-            "Next.js",
-            "Vite 7",
-            "Zustand",
-            "TanStack Query",
-            "Tailwind CSS 4.1",
-          ].map((tech) => (
+          {portfolioData.personalInfo.featuredTechs.map((tech) => (
             <span
               key={tech}
               className="glass-card px-4 py-2 rounded-full text-sm font-medium text-primary-300 hover:glow-orange transition-all duration-300"
@@ -115,10 +107,7 @@ export default function Hero() {
           variants={itemVariants}
           className="text-lg text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed"
         >
-          I design high-performance React Native mobile apps and interactive
-          React web applications. Focused on pixel-perfect UI/UX, state
-          management, remote collaboration, and rapid delivery to scale your
-          startup.
+          {portfolioData.personalInfo.bio}
         </motion.p>
 
         {/* CTA Buttons */}
@@ -148,22 +137,26 @@ export default function Hero() {
           className="flex flex-wrap justify-center gap-6 text-slate-400"
         >
           <a
-            href="mailto:dhruvhingol2210@gmail.com"
+            href={`mailto:${portfolioData.personalInfo.email}`}
             className="flex items-center gap-2 hover:text-primary-400 transition-colors"
           >
             <Mail className="w-5 h-5" />
-            <span className="hidden sm:inline">dhruvhingol2210@gmail.com</span>
+            <span className="hidden sm:inline">
+              {portfolioData.personalInfo.email}
+            </span>
           </a>
           <a
-            href="tel:+918735099370"
+            href={`tel:${portfolioData.personalInfo.phone.replace(/\s+/g, "")}`}
             className="flex items-center gap-2 hover:text-primary-400 transition-colors"
           >
             <Phone className="w-5 h-5" />
-            <span className="hidden sm:inline">+91 8735099370</span>
+            <span className="hidden sm:inline">
+              {portfolioData.personalInfo.phone}
+            </span>
           </a>
           <span className="flex items-center gap-2">
             <MapPin className="w-5 h-5" />
-            Ahmedabad, India
+            {portfolioData.personalInfo.location}
           </span>
         </motion.div>
 
@@ -173,7 +166,7 @@ export default function Hero() {
           className="flex justify-center gap-4 mt-8"
         >
           <a
-            href="https://linkedin.com"
+            href={portfolioData.personalInfo.socials.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="glass-card p-4 rounded-full hover-lift glow-orange group"
@@ -182,7 +175,7 @@ export default function Hero() {
             <Linkedin className="w-6 h-6 group-hover:scale-110 transition-transform" />
           </a>
           <a
-            href="https://github.com"
+            href={portfolioData.personalInfo.socials.github}
             target="_blank"
             rel="noopener noreferrer"
             className="glass-card p-4 rounded-full hover-lift glow-slate group"
@@ -191,23 +184,6 @@ export default function Hero() {
             <Github className="w-6 h-6 group-hover:scale-110 transition-transform" />
           </a>
         </motion.div>
-      </motion.div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 2,
-          duration: 1,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-      >
-        <div className="w-6 h-10 border-2 border-primary-400/50 rounded-full flex justify-center p-2">
-          <div className="w-1 h-3 bg-primary-400 rounded-full animate-bounce" />
-        </div>
       </motion.div>
     </section>
   );

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Code, Palette, Database, Wrench } from "lucide-react";
+import * as LucideIcons from "lucide-react";
+import portfolioData from "../data/portfolioData.json";
 
 export default function Skills() {
   const [ref, inView] = useInView({
@@ -8,50 +9,7 @@ export default function Skills() {
     threshold: 0.2,
   });
 
-  const skillCategories = [
-    {
-      name: "Languages",
-      icon: Code,
-      color: "primary",
-      skills: [
-        { name: "JavaScript (ES6+)", level: 95 },
-        { name: "TypeScript 5.8", level: 90 },
-      ],
-    },
-    {
-      name: "Frontend",
-      icon: Palette,
-      color: "secondary",
-      skills: [
-        { name: "React 19", level: 95 },
-        { name: "Next.js", level: 85 },
-        { name: "React Native", level: 80 },
-      ],
-    },
-    {
-      name: "State & Data",
-      icon: Database,
-      color: "accent",
-      skills: [
-        { name: "Zustand", level: 90 },
-        { name: "TanStack Query", level: 85 },
-        { name: "Redux Toolkit", level: 90 },
-        { name: "Axios", level: 95 },
-      ],
-    },
-    {
-      name: "Styling & Tools",
-      icon: Wrench,
-      color: "primary",
-      skills: [
-        { name: "Tailwind CSS 4.1", level: 95 },
-        { name: "Radix UI", level: 85 },
-        { name: "Vite 7", level: 90 },
-        { name: "Docker", level: 75 },
-        { name: "Git & GitHub", level: 90 },
-      ],
-    },
-  ];
+  const { skillsSection } = portfolioData;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -84,16 +42,16 @@ export default function Skills() {
         {/* Section Title */}
         <motion.div variants={itemVariants} className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-bold gradient-text mb-4">
-            Technical Skills
+            {skillsSection.title}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto rounded-full" />
-          <p className="text-slate-400 mt-6 text-lg">My toolbox of choice</p>
+          <p className="text-slate-300 mt-6 text-lg">{skillsSection.subtitle}</p>
         </motion.div>
 
         {/* Skills Grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {skillCategories.map((category) => {
-            const Icon = category.icon;
+          {skillsSection.categories.map((category) => {
+            const Icon = (LucideIcons[category.iconName as keyof typeof LucideIcons] || LucideIcons.HelpCircle) as React.ComponentType<any>;
             return (
               <motion.div
                 key={category.name}
@@ -113,29 +71,14 @@ export default function Skills() {
                 </div>
 
                 {/* Skills List */}
-                <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-x-4 gap-y-3">
                   {category.skills.map((skill) => (
-                    <div key={skill.name}>
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-slate-300 font-medium">
-                          {skill.name}
-                        </span>
-                        <span
-                          className={`text-${category.color}-400 text-sm font-semibold`}
-                        >
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <div className="h-2 bg-slate-800/50 rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={
-                            inView ? { width: `${skill.level}%` } : { width: 0 }
-                          }
-                          transition={{ duration: 1, delay: 0.2 }}
-                          className={`h-full bg-gradient-to-r from-${category.color}-500 to-${category.color}-600 rounded-full`}
-                        />
-                      </div>
+                    <div
+                      key={skill}
+                      className={`flex items-center gap-3 bg-slate-900/30 border border-slate-800/40 rounded-xl px-4 py-2.5 hover:border-${category.color}-500/30 hover:bg-slate-900/60 transition-all duration-300 group/item`}
+                    >
+                      <span className={`w-1.5 h-1.5 rounded-full bg-${category.color}-500 shrink-0 group-hover/item:scale-125 transition-transform`} />
+                      <span className="text-sm font-medium text-slate-300 group-hover/item:text-white transition-colors">{skill}</span>
                     </div>
                   ))}
                 </div>
@@ -148,23 +91,10 @@ export default function Skills() {
         <motion.div variants={itemVariants} className="mt-12">
           <div className="glass-card rounded-2xl p-8">
             <h3 className="text-xl font-bold text-primary-300 mb-6 text-center">
-              Additional Expertise
+              {skillsSection.additionalTitle}
             </h3>
             <div className="flex flex-wrap justify-center gap-3">
-              {[
-                "RESTful APIs",
-                "Chrome Extensions",
-                "Responsive Design",
-                "Performance Optimization",
-                "CI/CD Pipelines",
-                "Bitbucket",
-                "Code Splitting",
-                "Lazy Loading",
-                "SSR/SSG",
-                "Micro-animations",
-                "State Management",
-                "Component Architecture",
-              ].map((skill) => (
+              {skillsSection.additionalExpertise.map((skill) => (
                 <span
                   key={skill}
                   className="glass-card-strong px-4 py-2 rounded-full text-sm text-slate-300 hover:glow-orange transition-all duration-300"
