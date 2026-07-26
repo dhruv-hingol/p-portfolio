@@ -1,6 +1,7 @@
 {
   "short_name": "Dhruv Hingol",
-  "name": "Dhruv Hingol | Software Developer Portfolio",
+  "name": "Dhruv Hingol | Frontend Developer & SDE",
+  "description": "Portfolio of Dhruv Hingol, Software Development Engineer specializing in React 19, Next.js 15, React Native, and TypeScript.",
   "icons": [
     {
       "src": "/assets/profile.jpg",
@@ -14,7 +15,7 @@
     }
   ],
   "start_url": "/",
-  "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "background_color": "#FCFCFD",
+  "theme_color": "#2563EB",
   "display": "standalone"
 }

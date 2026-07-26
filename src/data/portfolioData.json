@@ -43,7 +43,9 @@
     { "name": "Projects", "href": "#projects" },
     { "name": "Skills", "href": "#skills" },
     { "name": "Impact", "href": "#achievements" },
+    { "name": "Education", "href": "#education" },
     { "name": "Games", "href": "#game-challenge" },
+    { "name": "FAQ", "href": "#faq" },
     { "name": "Contact", "href": "#contact" }
   ],
   "about": {
@@ -147,7 +149,7 @@
         "subtitle": "Spatial VR/AR Enterprise Asset Management Platform",
         "category": "Enterprise",
         "industry": "Spatial Computing & Enterprise Asset Management",
-        "role": "Senior Frontend Developer",
+        "role": "Frontend Developer",
         "description": "Enterprise WebGL dashboard enabling B2B clients to inspect, configure, and manage 3D spatial assets and virtual environment permissions.",
         "challenge": "Managing complex 3D WebGL scenes alongside real-time asset metadata synchronization.",
         "solution": "Integrated Three.js and React Three Fiber with custom instanced geometry rendering and modular scene graph controls.",

@@ -30,6 +30,8 @@ export default function Navigation({ onLogoClick }: NavigationProps) {
     { name: "Projects", href: "#projects", id: "projects" },
     { name: "Skills", href: "#skills", id: "skills" },
     { name: "Impact", href: "#achievements", id: "achievements" },
+    { name: "Education", href: "#education", id: "education" },
+    { name: "FAQ", href: "#faq", id: "faq" },
     { name: "Contact", href: "#contact", id: "contact" },
   ];
 
@@ -41,6 +43,8 @@ export default function Navigation({ onLogoClick }: NavigationProps) {
     { name: "Projects", href: "#projects", id: "projects" },
     { name: "Skills", href: "#skills", id: "skills" },
     { name: "Impact", href: "#achievements", id: "achievements" },
+    { name: "Education", href: "#education", id: "education" },
+    { name: "FAQ", href: "#faq", id: "faq" },
     { name: "Contact", href: "#contact", id: "contact" },
   ];
 

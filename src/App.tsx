@@ -7,6 +7,7 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Achievements from "./components/Achievements";
 import DeveloperGame from "./components/DeveloperGame";
+import FaqSection from "./components/FaqSection";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import LayeredBackground from "./components/LayeredBackground";
@@ -69,6 +70,9 @@ function App() {
 
         {/* Redesigned Apple-Style Mini-Game Hub */}
         <DeveloperGame onGameComplete={incrementGameCount} />
+
+        {/* Semantic FAQ & AI Discoverability */}
+        <FaqSection />
 
         {/* Direct Inquiries & Contact Form */}
         <Contact />
