@@ -161,21 +161,30 @@ export default function DeveloperCoreCanvas({
   const [isVisible, setIsVisible] = useState(true);
   const [shouldMountCanvas, setShouldMountCanvas] = useState(false);
 
-  // Defer Three.js WebGL Canvas mounting until main thread is idle after initial paint
+  // Defer Three.js WebGL Canvas mounting until user interaction or 2.5s post-load timer
   useEffect(() => {
-    if ("requestIdleCallback" in window) {
-      const handle = (window as unknown as { requestIdleCallback: (cb: () => void) => number }).requestIdleCallback(() => {
-        setShouldMountCanvas(true);
-      });
-      return () => {
-        if ("cancelIdleCallback" in window) {
-          (window as unknown as { cancelIdleCallback: (id: number) => void }).cancelIdleCallback(handle);
-        }
-      };
-    } else {
-      const timer = setTimeout(() => setShouldMountCanvas(true), 600);
-      return () => clearTimeout(timer);
-    }
+    let timer: ReturnType<typeof setTimeout>;
+
+    const triggerMount = () => {
+      setShouldMountCanvas(true);
+      window.removeEventListener("scroll", triggerMount);
+      window.removeEventListener("mousemove", triggerMount);
+      window.removeEventListener("touchstart", triggerMount);
+      if (timer) clearTimeout(timer);
+    };
+
+    window.addEventListener("scroll", triggerMount, { passive: true });
+    window.addEventListener("mousemove", triggerMount, { passive: true });
+    window.addEventListener("touchstart", triggerMount, { passive: true });
+
+    timer = setTimeout(triggerMount, 2500);
+
+    return () => {
+      window.removeEventListener("scroll", triggerMount);
+      window.removeEventListener("mousemove", triggerMount);
+      window.removeEventListener("touchstart", triggerMount);
+      if (timer) clearTimeout(timer);
+    };
   }, []);
 
   // Pause WebGL rendering loop when Canvas is scrolled offscreen or window is hidden

@@ -50,12 +50,7 @@ export default function Hero({ wireframeMode = false }: HeroProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Main Hero Copy (Left 7 Cols) */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 flex flex-col items-start"
-          >
+          <div className="lg:col-span-7 flex flex-col items-start">
             {/* Status Pill Badge */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold mb-6 shadow-2xs">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -144,7 +139,7 @@ export default function Hero({ wireframeMode = false }: HeroProps) {
                 <span>Contact Me</span>
               </MagneticButton>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Profile & Visual Card (Right 5 Cols) */}
           <motion.div
