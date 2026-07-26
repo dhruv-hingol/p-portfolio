@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ShieldCheck, Cpu, Smartphone, Layers, GraduationCap, CheckCircle2 } from "lucide-react";
+import { ShieldCheck, Cpu, Smartphone, Layers, CheckCircle2 } from "lucide-react";
 import portfolioData from "../data/portfolioData.json";
 
 export default function About() {
@@ -44,7 +44,7 @@ export default function About() {
         </div>
 
         {/* 4 Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {pillars.map((item, idx) => {
             const Icon = item.icon;
             return (
@@ -68,54 +68,35 @@ export default function About() {
           })}
         </div>
 
-        {/* Detailed Engineering Context & Education Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Detailed Paragraph (8 Cols) */}
-          <div className="lg:col-span-8 glass-card p-8 rounded-3xl flex flex-col justify-between">
-            <div>
-              <h3 className="text-xl font-bold text-slate-900 mb-4">
-                Enterprise Product Development & Delivery
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                {portfolioData.about.bioParagraphs[1]}
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-900">Reusable Component Systems</h4>
-                    <p className="text-[11px] text-slate-500">Atomic structure with Radix UI & Tailwind CSS</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <h4 className="text-xs font-bold text-slate-900">Zero-to-One Product Launch</h4>
-                    <p className="text-[11px] text-slate-500">From wireframe prototypes to production deployment</p>
-                  </div>
-                </div>
+        {/* Enterprise Delivery Banner */}
+        <div className="glass-card p-8 sm:p-10 rounded-3xl border border-slate-200">
+          <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 mb-3">
+            Enterprise Product Development & Delivery
+          </h3>
+          <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6 max-w-4xl">
+            {portfolioData.about.bioParagraphs[1]}
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-100">
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <h4 className="text-xs font-bold text-slate-900">Reusable Component Systems</h4>
+                <p className="text-[11px] text-slate-500">Atomic structure with Radix UI & Tailwind CSS</p>
               </div>
             </div>
-          </div>
-
-          {/* Education Card (4 Cols) */}
-          <div className="lg:col-span-4 glass-card p-8 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 text-white flex flex-col justify-between">
-            <div>
-              <div className="w-10 h-10 rounded-xl bg-white/10 text-white flex items-center justify-center mb-6">
-                <GraduationCap className="w-5 h-5" />
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <h4 className="text-xs font-bold text-slate-900">Zero-to-One Product Launch</h4>
+                <p className="text-[11px] text-slate-500">From wireframe prototypes to production deployment</p>
               </div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-blue-400 mb-1 block">
-                Educational Background
-              </span>
-              <h3 className="text-lg font-bold mb-1">{portfolioData.about.education.degree}</h3>
-              <p className="text-xs text-slate-300 mb-4">{portfolioData.about.education.field}</p>
-              <p className="text-xs text-slate-400 mb-6">{portfolioData.about.education.institution}</p>
             </div>
-            <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-              <span className="text-xs text-slate-400">Graduation Score</span>
-              <span className="text-sm font-extrabold text-blue-400 bg-blue-500/20 px-3 py-1 rounded-full border border-blue-400/30">
-                {portfolioData.about.education.cgpa}
-              </span>
+            <div className="flex items-start gap-3">
+              <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <h4 className="text-xs font-bold text-slate-900">3+ Years SDE Experience</h4>
+                <p className="text-[11px] text-slate-500">Full-time Software Development Engineer at Elixir Techne</p>
+              </div>
             </div>
           </div>
         </div>

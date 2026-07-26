@@ -19,7 +19,7 @@ export default function MagneticButton({
   href,
   target,
   rel,
-  strength = 0.35,
+  strength = 0.2,
 }: MagneticButtonProps) {
   const { ref, position } = useMagnetic(strength);
 

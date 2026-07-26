@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, ArrowUpRight, Award } from "lucide-react";
+import { Github, ArrowUpRight, Award, Layers } from "lucide-react";
 import portfolioData from "../data/portfolioData.json";
 import TiltCard from "./TiltCard";
 
@@ -14,8 +14,20 @@ export default function Projects({ onProjectView }: ProjectsProps) {
   const filteredProjects = portfolioData.projectsSection.projects.filter(
     (project) => {
       if (activeCategory === "All") return true;
+      if (activeCategory === "Web Applications") {
+        return project.category === "Web Applications" || project.tech.includes("React") || project.tech.includes("Next.js");
+      }
+      if (activeCategory === "React") {
+        return project.tech.includes("React") || project.tech.includes("React 19");
+      }
+      if (activeCategory === "Next.js") {
+        return project.tech.includes("Next.js");
+      }
+      if (activeCategory === "React Native") {
+        return project.category === "React Native" || project.tech.includes("React Native");
+      }
       return project.category === activeCategory;
-    },
+    }
   );
 
   return (
@@ -24,12 +36,14 @@ export default function Projects({ onProjectView }: ProjectsProps) {
       className="section-padding relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
         {/* Section Header */}
         <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-semibold uppercase tracking-wider mb-4">
-            <span>Production Case Studies</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-semibold uppercase tracking-wider mb-4">
+            <Layers className="w-3.5 h-3.5" />
+            <span>Production Portfolio Case Studies</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
             {portfolioData.projectsSection.title}
           </h2>
           <p className="text-base sm:text-lg text-slate-600">
@@ -37,7 +51,7 @@ export default function Projects({ onProjectView }: ProjectsProps) {
           </p>
         </div>
 
-        {/* Category Filters */}
+        {/* Category Filters Bar */}
         <div className="flex flex-wrap items-center gap-2 mb-12">
           {portfolioData.projectsSection.categories.map((cat) => (
             <button
@@ -45,7 +59,7 @@ export default function Projects({ onProjectView }: ProjectsProps) {
               onClick={() => setActiveCategory(cat)}
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 cursor-pointer ${
                 activeCategory === cat
-                  ? "bg-blue-600 text-white shadow-md shadow-blue-500/20"
+                  ? "bg-blue-600 text-white shadow-md shadow-blue-500/20 scale-102"
                   : "bg-white text-slate-600 border border-slate-200 hover:border-slate-300 hover:text-slate-900"
               }`}
             >
@@ -63,11 +77,12 @@ export default function Projects({ onProjectView }: ProjectsProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
               >
                 <TiltCard className="glass-card rounded-3xl p-6 sm:p-10 border border-slate-200 overflow-hidden">
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    {/* Content Column */}
+                    
+                    {/* Left Details Column (7 Cols) */}
                     <div className="lg:col-span-7 flex flex-col justify-between">
                       <div>
                         {/* Meta Tags */}
@@ -75,20 +90,20 @@ export default function Projects({ onProjectView }: ProjectsProps) {
                           <span className="text-xs font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-md border border-blue-100 uppercase tracking-wider">
                             {project.category}
                           </span>
-                          <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-md border border-slate-200">
-                            Role: {project.role}
+                          <span className="text-xs font-semibold text-slate-600 bg-slate-100 px-3 py-1 rounded-md border border-slate-200">
+                            {project.industry}
                           </span>
                           <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-md border border-emerald-200 flex items-center gap-1.5">
-                            <Award className="w-3.5 h-3.5" />
+                            <Award className="w-3.5 h-3.5 text-emerald-600" />
                             {project.metrics}
                           </span>
                         </div>
 
-                        <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">
+                        <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-1">
                           {project.title}
                         </h3>
-                        <p className="text-sm font-semibold text-blue-600 mb-4">
-                          {project.subtitle}
+                        <p className="text-xs sm:text-sm font-semibold text-blue-600 mb-4">
+                          {project.subtitle} • Role: {project.role}
                         </p>
 
                         <p className="text-sm text-slate-600 leading-relaxed mb-6">
@@ -130,7 +145,7 @@ export default function Projects({ onProjectView }: ProjectsProps) {
                         </div>
 
                         <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-slate-100">
-                          {project.links.live && project.links.live !== "#" && (
+                          {project.links.live && (
                             <a
                               href={project.links.live}
                               target="_blank"
@@ -159,7 +174,7 @@ export default function Projects({ onProjectView }: ProjectsProps) {
                       </div>
                     </div>
 
-                    {/* Visual Presentation Card (5 Cols) */}
+                    {/* Right Visual Window Column (5 Cols) */}
                     <div className="lg:col-span-5 flex justify-center">
                       <div className="w-full bg-gradient-to-br from-slate-900 to-slate-800 p-6 rounded-2xl text-white shadow-xl flex flex-col justify-between min-h-[280px]">
                         <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
@@ -169,23 +184,23 @@ export default function Projects({ onProjectView }: ProjectsProps) {
                             <span className="w-3 h-3 rounded-full bg-green-500/80" />
                           </div>
                           <span className="text-[11px] font-mono text-slate-400">
-                            production_build_v1.0
+                            case_study_v1.0
                           </span>
                         </div>
 
                         <div className="space-y-4 my-auto">
                           <div className="flex items-center justify-between bg-white/5 p-3 rounded-xl border border-white/10">
                             <span className="text-xs font-semibold text-slate-300">
-                              Target Environment
+                              Industry Domain
                             </span>
                             <span className="text-xs font-mono font-bold text-blue-400">
-                              Enterprise Web / Mobile
+                              {project.industry}
                             </span>
                           </div>
 
                           <div className="flex items-center justify-between bg-white/5 p-3 rounded-xl border border-white/10">
                             <span className="text-xs font-semibold text-slate-300">
-                              Measured Impact
+                              Engineering Outcome
                             </span>
                             <span className="text-xs font-mono font-bold text-emerald-400">
                               {project.metrics}
@@ -195,17 +210,19 @@ export default function Projects({ onProjectView }: ProjectsProps) {
 
                         <div className="pt-4 border-t border-white/10 text-right">
                           <span className="text-[11px] text-slate-400">
-                            Verified by Frontend Audit
+                            Built at Elixir Techne
                           </span>
                         </div>
                       </div>
                     </div>
+
                   </div>
                 </TiltCard>
               </motion.div>
             ))}
           </AnimatePresence>
         </div>
+
       </div>
     </section>
   );

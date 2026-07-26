@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 
-export function useMagnetic(strength: number = 0.3) {
+export function useMagnetic(strength: number = 0.2) {
   const ref = useRef<HTMLDivElement | HTMLButtonElement | HTMLAnchorElement | null>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
@@ -8,34 +8,41 @@ export function useMagnetic(strength: number = 0.3) {
     const el = ref.current;
     if (!el) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
+    let isHovering = false;
+
+    const handleMouseEnter = () => {
+      isHovering = true;
+    };
+
+    const handleMouseMove = (evt: Event) => {
+      if (!isHovering) return;
+      const e = evt as MouseEvent;
       const { left, top, width, height } = el.getBoundingClientRect();
       const centerX = left + width / 2;
       const centerY = top + height / 2;
 
-      const distanceX = e.clientX - centerX;
-      const distanceY = e.clientY - centerY;
+      const rawX = (e.clientX - centerX) * strength;
+      const rawY = (e.clientY - centerY) * strength;
 
-      // Only apply magnetic pull if mouse is reasonably close
-      if (Math.abs(distanceX) < width * 1.2 && Math.abs(distanceY) < height * 1.2) {
-        setPosition({
-          x: distanceX * strength,
-          y: distanceY * strength,
-        });
-      } else {
-        setPosition({ x: 0, y: 0 });
-      }
+      // Clamp max magnetic pull to ±6px to guarantee buttons NEVER overlap!
+      const clampedX = Math.min(Math.max(rawX, -6), 6);
+      const clampedY = Math.min(Math.max(rawY, -6), 6);
+
+      setPosition({ x: clampedX, y: clampedY });
     };
 
     const handleMouseLeave = () => {
+      isHovering = false;
       setPosition({ x: 0, y: 0 });
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    el.addEventListener("mouseenter", handleMouseEnter);
+    el.addEventListener("mousemove", handleMouseMove);
     el.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      el.removeEventListener("mouseenter", handleMouseEnter);
+      el.removeEventListener("mousemove", handleMouseMove);
       el.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, [strength]);

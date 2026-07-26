@@ -1,6 +1,7 @@
 import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import Education from "./components/Education";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
@@ -48,13 +49,13 @@ function App() {
         {/* Signature 3D Developer Core Hero */}
         <Hero wireframeMode={wireframeMode} />
 
-        {/* Engineering Pillars & Education */}
+        {/* Engineering Pillars & Delivery */}
         <About />
 
-        {/* Career Timeline */}
+        {/* Career Record (Elixir Techne SDE) */}
         <Experience />
 
-        {/* Case Studies with 3D Tilt Cards */}
+        {/* Case Studies with 3D Tilt Cards & Category Filters */}
         <Projects onProjectView={logProjectView} />
 
         {/* Skills Cards Grid */}
@@ -63,7 +64,10 @@ function App() {
         {/* Quantifiable Impact Metrics */}
         <Achievements />
 
-        {/* Redesigned Apple-Style Tic-Tac-Toe AI Game */}
+        {/* Standalone Apple x Linear Education Card */}
+        <Education />
+
+        {/* Redesigned Apple-Style Mini-Game Hub */}
         <DeveloperGame onGameComplete={incrementGameCount} />
 
         {/* Direct Inquiries & Contact Form */}
