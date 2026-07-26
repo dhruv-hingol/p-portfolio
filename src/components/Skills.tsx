@@ -1,111 +1,66 @@
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import * as LucideIcons from "lucide-react";
+import { Code2, Database, Palette, Wrench, Shield } from "lucide-react";
 import portfolioData from "../data/portfolioData.json";
 
 export default function Skills() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.2,
-  });
-
-  const { skillsSection } = portfolioData;
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.5 },
-    },
-  };
+  const categoryIcons = [Code2, Database, Palette, Wrench, Shield];
 
   return (
-    <section id="skills" className="section-container bg-slate-950/30">
-      <motion.div
-        ref={ref}
-        variants={containerVariants}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-        className="max-w-6xl mx-auto"
-      >
-        {/* Section Title */}
-        <motion.div variants={itemVariants} className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold gradient-text mb-4">
-            {skillsSection.title}
+    <section id="skills" className="py-24 bg-white relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Section Header */}
+        <div className="max-w-3xl mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 text-xs font-semibold uppercase tracking-wider mb-4">
+            <span>Technical Competencies</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mb-4">
+            {portfolioData.skillsSection.title}
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 mx-auto rounded-full" />
-          <p className="text-slate-300 mt-6 text-lg">{skillsSection.subtitle}</p>
-        </motion.div>
+          <p className="text-base sm:text-lg text-slate-600">
+            {portfolioData.skillsSection.subtitle}
+          </p>
+        </div>
 
-        {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {skillsSection.categories.map((category) => {
-            const Icon = (LucideIcons[category.iconName as keyof typeof LucideIcons] || LucideIcons.HelpCircle) as React.ComponentType<any>;
+        {/* Skills Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {portfolioData.skillsSection.categories.map((cat, idx) => {
+            const Icon = categoryIcons[idx % categoryIcons.length];
             return (
               <motion.div
-                key={category.name}
-                variants={itemVariants}
-                className="glass-card rounded-2xl p-8 hover-lift"
+                key={cat.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="glass-card p-8 rounded-3xl flex flex-col justify-between"
               >
-                {/* Category Header */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div
-                    className={`glass-card-strong p-3 rounded-xl bg-${category.color}-500/10`}
-                  >
-                    <Icon className={`w-6 h-6 text-${category.color}-400`} />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white">
-                    {category.name}
-                  </h3>
-                </div>
-
-                {/* Skills List */}
-                <div className="grid grid-cols-2 gap-x-4 gap-y-3">
-                  {category.skills.map((skill) => (
-                    <div
-                      key={skill}
-                      className={`flex items-center gap-3 bg-slate-900/30 border border-slate-800/40 rounded-xl px-4 py-2.5 hover:border-${category.color}-500/30 hover:bg-slate-900/60 transition-all duration-300 group/item`}
-                    >
-                      <span className={`w-1.5 h-1.5 rounded-full bg-${category.color}-500 shrink-0 group-hover/item:scale-125 transition-transform`} />
-                      <span className="text-sm font-medium text-slate-300 group-hover/item:text-white transition-colors">{skill}</span>
+                <div>
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center">
+                      <Icon className="w-5 h-5" />
                     </div>
-                  ))}
+                    <h3 className="text-lg font-bold text-slate-900">{cat.name}</h3>
+                  </div>
+
+                  {/* Skill Badges */}
+                  <div className="flex flex-wrap gap-2">
+                    {cat.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-slate-700 bg-slate-50 hover:bg-blue-50 hover:text-blue-600 border border-slate-200/80 hover:border-blue-200 transition-all duration-200 cursor-default"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             );
           })}
         </div>
 
-        {/* Additional Skills */}
-        <motion.div variants={itemVariants} className="mt-12">
-          <div className="glass-card rounded-2xl p-8">
-            <h3 className="text-xl font-bold text-primary-300 mb-6 text-center">
-              {skillsSection.additionalTitle}
-            </h3>
-            <div className="flex flex-wrap justify-center gap-3">
-              {skillsSection.additionalExpertise.map((skill) => (
-                <span
-                  key={skill}
-                  className="glass-card-strong px-4 py-2 rounded-full text-sm text-slate-300 hover:glow-orange transition-all duration-300"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

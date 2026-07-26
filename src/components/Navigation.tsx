@@ -1,25 +1,28 @@
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import portfolioData from "../data/portfolioData.json";
 
 export default function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
-
-  const navLinks = portfolioData.navigationLinks;
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
 
-      // Update active section based on scroll position
-      const sections = navLinks.map((link) => link.href.slice(1));
+      const sections = portfolioData.navigationLinks.map((link) =>
+        link.href.replace("#", ""),
+      );
+      const scrollPosition = window.scrollY + 200;
+
       for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 150 && rect.bottom >= 150) {
+        const el = document.getElementById(section);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
             setActiveSection(section);
             break;
           }
@@ -31,96 +34,155 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (
+  const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
   ) => {
     e.preventDefault();
-    const element = document.querySelector(href);
+    const targetId = href.replace("#", "");
+    const element = document.getElementById(targetId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
+      setMobileMenuOpen(false);
     }
   };
 
   return (
-    <nav
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "glass-nav py-4" : "bg-transparent py-6"
+        isScrolled
+          ? "bg-white/85 backdrop-blur-md border-b border-slate-200/80 shadow-sm py-3"
+          : "bg-transparent py-5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a
-            href="#hero"
-            onClick={(e) => handleNavClick(e, "#hero")}
-            className="text-2xl font-bold gradient-text-bright"
-          >
-            DH
-          </a>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        {/* Brand Logo */}
+        <a
+          href="#hero"
+          onClick={(e) => scrollToSection(e, "#hero")}
+          className="flex items-center gap-2.5 group"
+        >
+          <div className="w-9 h-9 rounded-xl overflow-hidden border border-slate-200/80 shadow-xs group-hover:border-blue-500 transition-colors flex-shrink-0 bg-slate-100">
+            <img
+              src="/assets/profile.jpg"
+              alt="Dhruv Hingol"
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className="flex flex-col">
+            <span className="font-bold text-slate-900 text-base leading-tight tracking-tight group-hover:text-blue-600 transition-colors">
+              {portfolioData.personalInfo.name}
+            </span>
+            <span className="text-[11px] font-medium text-slate-500 tracking-wide uppercase">
+              Software Developer
+            </span>
+          </div>
+        </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+        {/* Desktop Nav Items */}
+        <nav className="hidden md:flex items-center gap-1 bg-slate-100/70 p-1.5 rounded-full border border-slate-200/60 shadow-inner">
+          {portfolioData.navigationLinks.map((link) => {
+            const sectionId = link.href.replace("#", "");
+            const isActive = activeSection === sectionId;
+            return (
               <a
                 key={link.name}
                 href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`text-sm font-medium transition-colors relative group ${
-                  activeSection === link.href.slice(1)
-                    ? "text-primary-400"
-                    : "text-slate-300 hover:text-white"
+                onClick={(e) => scrollToSection(e, link.href)}
+                className={`relative px-4 py-1.5 text-xs font-semibold rounded-full transition-colors duration-200 ${
+                  isActive
+                    ? "text-slate-900"
+                    : "text-slate-600 hover:text-slate-900"
                 }`}
               >
-                {link.name}
-                <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-primary-400 to-secondary-400 transition-all duration-300 ${
-                    activeSection === link.href.slice(1)
-                      ? "w-full"
-                      : "w-0 group-hover:w-full"
-                  }`}
-                />
+                {isActive && (
+                  <motion.div
+                    layoutId="activeNavTab"
+                    className="absolute inset-0 bg-white rounded-full shadow-xs border border-slate-200/50"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{link.name}</span>
               </a>
-            ))}
-          </div>
+            );
+          })}
+        </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden glass-card p-2 rounded-lg"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
+        {/* CTA Actions */}
+        <div className="hidden sm:flex items-center gap-3">
+          <a
+            href={portfolioData.contactSection.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-blue-600 px-3.5 py-2 rounded-lg border border-slate-200 hover:border-blue-300 hover:bg-blue-50/50 transition-all duration-200"
           >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-white" />
-            ) : (
-              <Menu className="w-6 h-6 text-white" />
-            )}
-          </button>
+            <span>Resume</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </a>
+          <a
+            href="#contact"
+            onClick={(e) => scrollToSection(e, "#contact")}
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-slate-900 hover:bg-blue-600 px-4 py-2 rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
+          >
+            <span>Contact</span>
+          </a>
         </div>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 glass-card rounded-xl p-4 animate-fade-in">
-            <div className="flex flex-col gap-4">
-              {navLinks.map((link) => (
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="md:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition-colors"
+          aria-label="Toggle Navigation Menu"
+        >
+          {mobileMenuOpen ? (
+            <X className="w-6 h-6" />
+          ) : (
+            <Menu className="w-6 h-6" />
+          )}
+        </button>
+      </div>
+
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-white border-b border-slate-200 px-6 py-4 shadow-lg overflow-hidden"
+          >
+            <div className="flex flex-col gap-3">
+              {portfolioData.navigationLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className={`text-base font-medium transition-colors px-4 py-2 rounded-lg ${
-                    activeSection === link.href.slice(1)
-                      ? "text-primary-400 bg-primary-500/10"
-                      : "text-slate-300 hover:text-white hover:bg-slate-800/50"
-                  }`}
+                  onClick={(e) => scrollToSection(e, link.href)}
+                  className="text-sm font-semibold text-slate-700 hover:text-blue-600 py-1 transition-colors"
                 >
                   {link.name}
                 </a>
               ))}
+              <div className="pt-3 border-t border-slate-100 flex items-center gap-3">
+                <a
+                  href={portfolioData.contactSection.resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 text-center text-xs font-semibold text-slate-700 bg-slate-100 py-2.5 rounded-lg"
+                >
+                  Resume
+                </a>
+                <a
+                  href="#contact"
+                  onClick={(e) => scrollToSection(e, "#contact")}
+                  className="flex-1 text-center text-xs font-semibold text-white bg-blue-600 py-2.5 rounded-lg shadow-xs"
+                >
+                  Contact
+                </a>
+              </div>
             </div>
-          </div>
+          </motion.div>
         )}
-      </div>
-    </nav>
+      </AnimatePresence>
+    </header>
   );
 }

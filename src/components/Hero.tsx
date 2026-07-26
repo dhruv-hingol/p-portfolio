@@ -1,190 +1,250 @@
 import { motion } from "framer-motion";
 import {
-  Github,
-  Linkedin,
+  ArrowRight,
+  Download,
   Mail,
-  Phone,
-  MapPin,
-  ExternalLink,
+  CheckCircle2,
+  ChevronDown,
+  Code,
+  Smartphone,
+  Zap,
 } from "lucide-react";
 import portfolioData from "../data/portfolioData.json";
+import Hero3DCanvas from "./canvas/Hero3DCanvas";
 
 export default function Hero() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 0, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" },
-    },
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section id="hero" className="section-container relative !pt-20">
-      {/* Background Decoration */}
-      <div className="background-decoration" />
+    <section
+      id="hero"
+      className="relative min-h-screen pt-28 pb-16 flex items-center justify-center bg-white overflow-hidden"
+    >
+      {/* 3D R3F Canvas Background */}
+      <Hero3DCanvas />
 
-      <motion.div
-        className="max-w-6xl mx-auto text-center z-10"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Available for Hire Badge */}
-        <motion.div
-          variants={itemVariants}
-          className="mb-6 inline-flex justify-center"
-        >
-          <span className="glass-card-strong px-4 py-2 rounded-full text-xs md:text-sm font-semibold text-accent-400 flex items-center gap-2 border border-accent-500/30 glow-orange">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-500"></span>
+      {/* Ambient background light glows & patterns */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-blue-100/50 via-slate-100/30 to-indigo-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-60 pointer-events-none -z-10" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          {/* Main Hero Copy (Left 7 Cols) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 flex flex-col items-start"
+          >
+            {/* Status Pill Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold mb-6 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Available for Senior SDE & Enterprise Roles</span>
+            </div>
+
+            {/* Main Name & Title */}
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-4">
+              Dhruv Hingol
+            </h1>
+
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-600">
+                Software Developer
+              </span>
+              <span className="text-slate-300 hidden sm:inline">•</span>
+              <span className="text-sm font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-3 py-1 rounded-md border border-slate-200/80">
+                {portfolioData.personalInfo.stats.experienceYears} Experience
+              </span>
+            </div>
+
+            {/* Subtitle Tech Stack Pills */}
+            <div className="flex flex-wrap items-center gap-2 mb-6">
+              {["React 19", "Next.js", "React Native", "TypeScript"].map(
+                (tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 rounded-lg text-xs font-semibold bg-white text-slate-700 border border-slate-200 shadow-2xs"
+                  >
+                    {tech}
+                  </span>
+                ),
+              )}
+            </div>
+
+            {/* High-Impact Professional Introduction */}
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl font-normal">
+              "{portfolioData.personalInfo.bio}"
+            </p>
+
+            {/* Key Engineering Impact Highlights */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-9 w-full max-w-xl">
+              <div className="flex items-center gap-2.5 text-xs font-medium text-slate-700 bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/70">
+                <CheckCircle2 className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                <span>25% API Latency Reduction</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-xs font-medium text-slate-700 bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/70">
+                <CheckCircle2 className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                <span>5,000+ Active Users</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-xs font-medium text-slate-700 bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/70">
+                <CheckCircle2 className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                <span>60 FPS Native & R3F Animations</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-xs font-medium text-slate-700 bg-slate-50/80 p-2.5 rounded-xl border border-slate-200/70">
+                <CheckCircle2 className="w-4 h-4 text-blue-600 flex-shrink-0" />
+                <span>Production Architecture (Docker/CI)</span>
+              </div>
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap items-center gap-4">
+              <button
+                onClick={() => scrollToSection("projects")}
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
+              >
+                <span>View Projects</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
+              <a
+                href={portfolioData.contactSection.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-semibold text-sm border border-slate-200 shadow-2xs hover:border-slate-300 transition-all duration-200"
+              >
+                <Download className="w-4 h-4 text-slate-500" />
+                <span>Download Resume</span>
+              </a>
+
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm shadow-sm transition-all duration-200 cursor-pointer"
+              >
+                <Mail className="w-4 h-4" />
+                <span>Contact Me</span>
+              </button>
+            </div>
+          </motion.div>
+
+          {/* Right Profile & Visual Card (Right 5 Cols) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 flex justify-center"
+          >
+            <div className="relative w-full max-w-md">
+              {/* Premium Light Card Container */}
+              <div className="glass-card p-6 rounded-3xl relative overflow-hidden">
+                <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-2xl overflow-hidden border border-slate-200 shadow-md flex-shrink-0 bg-slate-100">
+                      <img
+                        src="/assets/profile.jpg"
+                        alt="Dhruv Hingol"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-slate-900 text-base">
+                        Dhruv Hingol
+                      </h3>
+                      <p className="text-xs text-slate-500 font-medium">
+                        Software Development Engineer
+                      </p>
+                    </div>
+                  </div>
+                  <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-100">
+                    SDE @ Elixir Techne
+                  </span>
+                </div>
+
+                {/* Core Competencies Grid */}
+                <div className="space-y-3 mb-6">
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-100">
+                    <div className="flex items-center gap-3">
+                      <Code className="w-5 h-5 text-blue-600" />
+                      <div>
+                        <div className="text-xs font-bold text-slate-900">
+                          Web Architecture
+                        </div>
+                        <div className="text-[11px] text-slate-500">
+                          React 19, Next.js, TypeScript
+                        </div>
+                      </div>
+                    </div>
+                    <span className="text-xs font-bold text-slate-700">
+                      Production
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-100">
+                    <div className="flex items-center gap-3">
+                      <Smartphone className="w-5 h-5 text-blue-600" />
+                      <div>
+                        <div className="text-xs font-bold text-slate-900">
+                          Mobile Engineering
+                        </div>
+                        <div className="text-[11px] text-slate-500">
+                          React Native, Expo, Redux/Zustand
+                        </div>
+                      </div>
+                    </div>
+                    <span className="text-xs font-bold text-slate-700">
+                      iOS & Android
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-100">
+                    <div className="flex items-center gap-3">
+                      <Zap className="w-5 h-5 text-blue-600" />
+                      <div>
+                        <div className="text-xs font-bold text-slate-900">
+                          Performance Engineering
+                        </div>
+                        <div className="text-[11px] text-slate-500">
+                          25% Traffic Saved, Bundle Auditing
+                        </div>
+                      </div>
+                    </div>
+                    <span className="text-xs font-bold text-emerald-600">
+                      Optimum
+                    </span>
+                  </div>
+                </div>
+
+                {/* Tech Pills */}
+                <div className="pt-4 border-t border-slate-100 flex flex-wrap gap-1.5">
+                  {portfolioData.personalInfo.featuredTechs.map((tech) => (
+                    <span
+                      key={tech}
+                      className="text-[11px] font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-md"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="mt-16 flex justify-center">
+          <button
+            onClick={() => scrollToSection("about")}
+            className="flex flex-col items-center gap-2 text-slate-400 hover:text-blue-600 transition-colors cursor-pointer group"
+          >
+            <span className="text-xs font-semibold tracking-wider uppercase">
+              Scroll to explore
             </span>
-            {portfolioData.personalInfo.subtitle}
-          </span>
-        </motion.div>
-
-        {/* Greeting */}
-        <motion.div variants={itemVariants} className="mb-4">
-          <span className="text-primary-400 text-lg font-medium">
-            Hey there! 👋 I'm
-          </span>
-        </motion.div>
-
-        {/* Name with Gradient */}
-        <motion.h1
-          variants={itemVariants}
-          className="text-6xl md:text-8xl leading-normal font-bold mb-6 gradient-text-bright"
-        >
-          {portfolioData.personalInfo.name}
-        </motion.h1>
-
-        {/* Title */}
-        <motion.h2
-          variants={itemVariants}
-          className="text-2xl md:text-4xl font-bold mb-6 text-slate-200"
-        >
-          {portfolioData.personalInfo.title}
-        </motion.h2>
-
-        {/* Subtitle */}
-        <motion.p
-          variants={itemVariants}
-          className="text-xl md:text-2xl text-slate-300 mb-6 max-w-3xl mx-auto leading-relaxed"
-        >
-          I build responsive web platforms and cross-platform mobile apps that
-          turn your ideas into functional products.
-        </motion.p>
-
-        {/* Tech Stack Pills */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-wrap justify-center gap-3 mb-8 max-w-3xl mx-auto"
-        >
-          {portfolioData.personalInfo.featuredTechs.map((tech) => (
-            <span
-              key={tech}
-              className="glass-card px-4 py-2 rounded-full text-sm font-medium text-primary-300 hover:glow-orange transition-all duration-300"
-            >
-              {tech}
-            </span>
-          ))}
-        </motion.div>
-
-        {/* Description */}
-        <motion.p
-          variants={itemVariants}
-          className="text-lg text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed"
-        >
-          {portfolioData.personalInfo.bio}
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-wrap justify-center gap-4 mb-12"
-        >
-          <a
-            href="#contact"
-            className="glass-card-strong px-8 py-4 rounded-xl font-semibold hover-lift glow-orange flex items-center gap-2 group text-white"
-          >
-            <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
-            Let's Discuss Your Project
-          </a>
-          <a
-            href="#projects"
-            className="glass-card px-8 py-4 rounded-xl font-semibold hover-lift flex items-center gap-2 group border-accent-500/30 text-accent-300 hover:glow-orange"
-          >
-            See Case Studies
-            <ExternalLink className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </a>
-        </motion.div>
-
-        {/* Contact Info & Social Links */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-wrap justify-center gap-6 text-slate-400"
-        >
-          <a
-            href={`mailto:${portfolioData.personalInfo.email}`}
-            className="flex items-center gap-2 hover:text-primary-400 transition-colors"
-          >
-            <Mail className="w-5 h-5" />
-            <span className="hidden sm:inline">
-              {portfolioData.personalInfo.email}
-            </span>
-          </a>
-          <a
-            href={`tel:${portfolioData.personalInfo.phone.replace(/\s+/g, "")}`}
-            className="flex items-center gap-2 hover:text-primary-400 transition-colors"
-          >
-            <Phone className="w-5 h-5" />
-            <span className="hidden sm:inline">
-              {portfolioData.personalInfo.phone}
-            </span>
-          </a>
-          <span className="flex items-center gap-2">
-            <MapPin className="w-5 h-5" />
-            {portfolioData.personalInfo.location}
-          </span>
-        </motion.div>
-
-        {/* Social Links */}
-        <motion.div
-          variants={itemVariants}
-          className="flex justify-center gap-4 mt-8"
-        >
-          <a
-            href={portfolioData.personalInfo.socials.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="glass-card p-4 rounded-full hover-lift glow-orange group"
-            aria-label="LinkedIn"
-          >
-            <Linkedin className="w-6 h-6 group-hover:scale-110 transition-transform" />
-          </a>
-          <a
-            href={portfolioData.personalInfo.socials.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="glass-card p-4 rounded-full hover-lift glow-slate group"
-            aria-label="GitHub"
-          >
-            <Github className="w-6 h-6 group-hover:scale-110 transition-transform" />
-          </a>
-        </motion.div>
-      </motion.div>
+            <ChevronDown className="w-4 h-4 animate-bounce group-hover:text-blue-600" />
+          </button>
+        </div>
+      </div>
     </section>
   );
 }

@@ -1,13 +1,13 @@
 {
   "personalInfo": {
     "name": "Dhruv Hingol",
-    "title": "Frontend & React Native Developer",
-    "subtitle": "Available for Freelance Contract / Retainer",
+    "title": "Software Development Engineer",
+    "subtitle": "React.js • Next.js • React Native • TypeScript",
+    "badge": "3+ Years Enterprise Experience",
     "location": "Ahmedabad, India",
     "locationWithTime": "Ahmedabad, India (GMT+5:30)",
     "email": "dhruvhingol2210@gmail.com",
     "phone": "+91 8735099370",
-    "whatsapp": "https://wa.me/918735099370?text=Hi%20Dhruv%2c%20I%20just%20submitted%20a%20project%20inquiry%20on%20your%20portfolio.%20Let's%20connect!",
     "socials": {
       "linkedin": "https://www.linkedin.com/in/dhruvhingol/",
       "github": "https://github.com/dhruv-hingol"
@@ -15,21 +15,22 @@
     "stats": {
       "experienceYears": "3+",
       "performanceBoost": "25%",
-      "projectsCount": "6+"
+      "projectsCount": "20+",
+      "activeUsers": "5,000+"
     },
-    "bio": "Frontend Developer with 3+ years of experience in building responsive and scalable applications. Specializing in React, React Native, and clean UI/UX implementations. Strong track record of launching products from zero to production and optimizing performance speeds (25% boost).",
+    "bio": "I build scalable, performant, and pixel-perfect web applications using modern frontend technologies and engineering best practices.",
     "featuredTechs": [
       "React 19",
+      "Next.js",
       "React Native",
       "TypeScript 5.8",
-      "Next.js",
       "Vite 7",
       "Zustand",
       "TanStack Query",
-      "Tailwind CSS 4.1"
+      "Tailwind CSS 4"
     ],
     "currentJob": {
-      "title": "Software Development Engineer",
+      "title": "Software Development Engineer (SDE)",
       "company": "Elixir Techne",
       "timeline": "Feb 2023 – Present",
       "location": "Ahmedabad, India"
@@ -38,333 +39,250 @@
   "navigationLinks": [
     { "name": "Home", "href": "#hero" },
     { "name": "About", "href": "#about" },
-    { "name": "Services", "href": "#services" },
-    { "name": "Projects", "href": "#projects" },
     { "name": "Experience", "href": "#experience" },
+    { "name": "Projects", "href": "#projects" },
     { "name": "Skills", "href": "#skills" },
+    { "name": "Impact", "href": "#achievements" },
     { "name": "Contact", "href": "#contact" }
   ],
   "about": {
     "title": "About Me",
-    "bioTitle": "A Bit About Me",
+    "subtitle": "Engineering Scalable Web & Mobile Products",
     "bioParagraphs": [
-      "I am a dedicated frontend and mobile developer with <strong>3+ years of experience</strong> in building highly responsive, pixel-perfect, and scalable web and mobile applications. I specialize in launching digital products from zero to production and optimizing web architectures to improve performance (including engineering a <em>25% speed boost</em> on a live product).",
-      "Currently engineering client solutions with modern technologies like <strong>React 19</strong>, <strong>React Native</strong>, <strong>TypeScript 5.8</strong>, and <strong>Vite 7</strong>."
+      "I am a Software Developer with 3+ years of professional experience engineering production-grade web and mobile applications. I specialize in building scalable user interfaces, decoupled state architectures, and optimizing client-side performance.",
+      "Throughout my engineering tenure at Elixir Techne and client enterprises, I have spearheaded frontend initiatives from zero to production, optimizing network performance (cutting redundant API traffic by 25%) and establishing robust UI component standards using React 19, Next.js, TypeScript 5.8, and React Native."
+    ],
+    "pillars": [
+      {
+        "title": "Clean Architecture",
+        "description": "Building modular, decoupled component systems with strict TypeScript typing and predictable state management."
+      },
+      {
+        "title": "Performance Optimization",
+        "description": "Achieving sub-second page loads through aggressive code-splitting, lazy loading, bundle auditing, and smart client caching."
+      },
+      {
+        "title": "Cross-Platform Mobile",
+        "description": "Engineering fluid iOS & Android mobile applications using React Native with 60 FPS animations and offline sync capabilities."
+      },
+      {
+        "title": "Enterprise Reliability",
+        "description": "Implementing WCAG accessibility guidelines, automated CI/CD deployment pipelines, and bulletproof UI testing practices."
+      }
     ],
     "education": {
       "title": "Education",
-      "degree": "Bachelor of Engineering",
+      "degree": "Bachelor of Engineering (B.E.)",
       "field": "Information Technology",
       "institution": "Government Engineering College, Modasa",
-      "cgpa": "8.6"
-    },
-    "highlightsTitle": "Highlights"
+      "cgpa": "8.6 CGPA"
+    }
   },
-  "servicesSection": {
-    "badge": "What I Can Build For You",
-    "title": "Services & Expertise",
-    "description": "I specialize in the React and React Native ecosystem to design pixel-perfect, lightning-fast interfaces.",
-    "services": [
+  "experienceSection": {
+    "title": "Work Experience",
+    "subtitle": "3+ years of hands-on frontend engineering in production environments",
+    "experiences": [
       {
-        "title": "React Native Mobile Apps",
-        "iconName": "Smartphone",
-        "gradient": "from-primary-500 to-primary-700",
-        "description": "High-performance iOS & Android applications built with React Native. I build fluid, native-grade mobile apps that offer seamless user experiences, using a single codebase to save you significant launch time and cost.",
-        "techs": ["React Native", "Expo", "TypeScript", "Redux/Zustand", "Push Notifications", "Firebase"],
-        "benefits": [
-          "Saves 50% development cost using React Native code-sharing",
-          "Fluid 60fps animations with React Native Reanimated",
-          "Seamless deployment to Apple App Store & Google Play"
+        "id": "elixir-techne",
+        "company": "Elixir Techne",
+        "position": "Software Development Engineer (SDE)",
+        "duration": "Feb 2023 – Present",
+        "location": "Ahmedabad, India",
+        "type": "Full-Time",
+        "description": "Leading frontend development for enterprise SaaS web applications and cross-platform mobile apps, owning feature architecture end-to-end.",
+        "responsibilities": [
+          "Architected production-ready web platforms with React 19, Next.js, and TypeScript, delivering robust user interfaces under fast-paced deployment schedules.",
+          "Spearheaded state management & API caching optimizations using Zustand and TanStack Query, cutting redundant client-side network traffic by 25%.",
+          "Engineered enterprise dealer inventory mobile applications using React Native, implementing offline local database persistence and real-time REST API synchronization.",
+          "Containerized frontend development environments with Docker and set up automated GitHub Actions CI/CD pipelines, streamlining release reliability.",
+          "Established reusable UI design system primitives with Tailwind CSS and Radix UI, enforcing accessibility (WCAG) and uniform typography."
+        ],
+        "tech": [
+          "React 19",
+          "Next.js",
+          "React Native",
+          "TypeScript 5.8",
+          "Zustand",
+          "TanStack Query",
+          "Tailwind CSS",
+          "Docker",
+          "CI/CD"
         ]
       },
       {
-        "title": "SaaS & Web Applications",
-        "iconName": "Laptop",
-        "gradient": "from-accent-500 to-accent-700",
-        "description": "Fully responsive and SEO-optimized web applications built using React and Next.js. I design pixel-perfect user interfaces, handle complex client-side state, and optimize performance for the best user experience.",
-        "techs": ["React 19", "Next.js", "TypeScript 5.8", "Zustand", "TanStack Query", "Tailwind CSS"],
-        "benefits": [
-          "SEO-friendly pages with Next.js Server-Side Rendering (SSR)",
-          "Fluid animations and interactive user dashboards",
-          "Optimized Core Web Vitals for faster loading"
-        ]
+        "id": "heptaverse-fe",
+        "company": "Heptaverse Enterprise",
+        "position": "Lead Frontend Engineer",
+        "duration": "2024",
+        "location": "Remote",
+        "type": "Client Engagement",
+        "description": "Architected a high-throughput B2B web application with complex data dashboards and automated build environments.",
+        "responsibilities": [
+          "Led remote frontend architectural decisions and sprint execution, accelerating feature release cycles across distributed engineering teams.",
+          "Optimized bundle size and render paths using Vite 7 and code splitting, slashing initial page load times.",
+          "Autonomously built multi-tenant B2B client management dashboards with Tailwind CSS and custom component libraries."
+        ],
+        "tech": ["React 19", "TypeScript", "Vite 7", "Zustand", "TanStack Query", "Tailwind CSS", "Docker"]
       },
       {
-        "title": "UI Implementation & Optimization",
-        "iconName": "Zap",
-        "gradient": "from-secondary-500 to-secondary-700",
-        "description": "Translating design mockups (Figma, Adobe XD) into high-quality, reusable component structures. I audit bundle sizes, set up code splitting, optimize React rendering behavior, and fix performance bottlenecks.",
-        "techs": ["Figma to React", "Code Splitting", "Lazy Loading", "Radix UI Primitives", "Vite 7", "Accessibility (WCAG)"],
-        "benefits": [
-          "Pixel-perfect implementations matching Figma designs exactly",
-          "Reduced initial bundle sizes by up to 30% for instant loading",
-          "Accessible components conforming to WCAG/WAI-ARIA guidelines"
-        ]
+        "id": "rencoach",
+        "company": "RenCoach Platform",
+        "position": "Software Developer",
+        "duration": "2023 – 2024",
+        "location": "Remote",
+        "type": "Client Engagement",
+        "description": "Owned frontend optimization for multi-user coaching portals, enhancing user retention and interaction speeds.",
+        "responsibilities": [
+          "Refactored state layer caching to reduce expensive API network traffic by 25%.",
+          "Boosted page performance scores by 20% through aggressive image optimization and dynamic component imports.",
+          "Translated complex product wireframes into production-ready UI components with weekly stakeholder demos."
+        ],
+        "tech": ["React.js", "Redux Toolkit", "JavaScript (ES6+)", "RESTful APIs", "CSS Modules"]
+      },
+      {
+        "id": "bizzmitr",
+        "company": "Bizzmitr Systems",
+        "position": "Frontend Architect",
+        "duration": "2023",
+        "location": "Remote",
+        "type": "Client Engagement",
+        "description": "Migrated legacy web applications to Next.js Server-Side Rendering (SSR) architectures.",
+        "responsibilities": [
+          "Engineered Next.js SSR architecture to enhance page indexability and SEO rankings.",
+          "Configured granular code splitting and lazy loading boundaries to minimize initial JavaScript payloads.",
+          "Worked closely with backend engineers to integrate RESTful API contracts with strict TypeScript interfaces."
+        ],
+        "tech": ["Next.js", "SSR", "React", "TypeScript", "Tailwind CSS"]
+      }
+    ]
+  },
+  "projectsSection": {
+    "title": "Featured Case Studies",
+    "subtitle": "Production Applications & Engineering Achievements",
+    "categories": ["All", "SaaS & Enterprise", "Mobile & Web Extensions", "Interactive Web Apps"],
+    "projects": [
+      {
+        "id": "aegis-tracker",
+        "title": "Aegis Tracker",
+        "subtitle": "Privacy-First Productivity Extension (React 19)",
+        "category": "Mobile & Web Extensions",
+        "role": "Lead Frontend Engineer",
+        "description": "Engineered a privacy-centric Chrome Extension using React 19, Vite 7, and Recharts with 100% client-side local storage and smart idle detection.",
+        "challenge": "Productivity trackers frequently transmit sensitive user browsing activity to third-party servers, posing severe security and privacy risks.",
+        "solution": "Built a zero-backend browser extension that processes and visualizes user metrics entirely inside local browser storage, utilizing Chrome Extension API alarms and Recharts.",
+        "results": "Successfully deployed on Chrome Web Store, reaching 5,000+ active weekly users with zero external server dependencies.",
+        "tech": ["React 19", "Vite 7", "Chrome Extension API", "Recharts", "TypeScript", "Tailwind CSS"],
+        "links": {
+          "github": "https://github.com/dhruv-hingol",
+          "live": "https://dhruv-hingol-portfolio.vercel.app/"
+        },
+        "featured": true,
+        "metrics": "5,000+ Active Weekly Users"
+      },
+      {
+        "id": "heptaverse-b2b",
+        "title": "Heptaverse B2B Platform",
+        "subtitle": "Enterprise SaaS Platform Architecture",
+        "category": "SaaS & Enterprise",
+        "role": "Lead Frontend Engineer",
+        "description": "Architected a production-ready B2B enterprise platform with complex data dashboards, Zustand state synchronization, and Docker containerization.",
+        "challenge": "Managing complex state across asynchronous enterprise workflow pipelines under tight release timelines without sacrificing UI responsiveness.",
+        "solution": "Implemented a modular React 19 architecture backed by Zustand micro-stores and TanStack Query for optimal request deduplication and client state separation.",
+        "results": "Cut initial bundle sizes by 30% and enabled zero-downtime automated deployment via Dockerized CI/CD pipelines.",
+        "tech": ["React 19", "TypeScript 5.8", "Vite 7", "Zustand", "TanStack Query", "Tailwind CSS", "Docker"],
+        "links": {
+          "github": "https://github.com/dhruv-hingol",
+          "live": "https://github.com/dhruv-hingol"
+        },
+        "featured": true,
+        "metrics": "30% Bundle Size Reduction"
+      },
+      {
+        "id": "jalsa-bitez",
+        "title": "Jalsa Bitez",
+        "subtitle": "Luxury Cafe & Culinary Brand Web App",
+        "category": "Interactive Web Apps",
+        "role": "Software Developer",
+        "description": "Designed and engineered a high-end responsive culinary web app featuring bespoke keyframe animations and a particle-based HTML5 canvas loader.",
+        "challenge": "Creating a visual footprint that distinguishes a local boutique establishment from generic commercial chains.",
+        "solution": "Built custom keyframe animation sequences, radial ambient glow layers, an interactive canvas particle splash screen, and responsive partner integrations.",
+        "results": "Significantly elevated average session duration and reduced bounce rates through interactive visual craftsmanship.",
+        "tech": ["HTML5 Canvas", "CSS3 Keyframes", "JavaScript", "Responsive Layouts", "Particles.js"],
+        "links": {
+          "github": "https://github.com/dhruv-hingol",
+          "live": "https://jalsa-bitez.vercel.app/"
+        },
+        "featured": true,
+        "metrics": "60 FPS Custom Animations"
+      },
+      {
+        "id": "empowering-fitness",
+        "title": "Empowering Fitness",
+        "subtitle": "Interactive Health & Fitness Platform",
+        "category": "Interactive Web Apps",
+        "role": "Software Developer",
+        "description": "Developed a feature-packed web application containing client-side interactive calculators (BMI, TDEE, BMR, Hydration) and dynamic timetable schedules.",
+        "challenge": "Fitness platforms struggle with high user drop-offs when static timetables and non-interactive marketing pages fail to engage potential members.",
+        "solution": "Engineered real-time client-side fitness metric calculators and tabbed weekly schedule filters built with glassmorphic layout panels.",
+        "results": "Drove a direct increase in client conversion rates and membership inquiry form submissions.",
+        "tech": ["React", "JavaScript", "Glassmorphic UI", "Client Calculators", "Tailwind CSS"],
+        "links": {
+          "github": "https://github.com/dhruv-hingol",
+          "live": "https://empowering-fitness-hyp.vercel.app/"
+        },
+        "featured": true,
+        "metrics": "+40% User Retention Time"
       }
     ]
   },
   "skillsSection": {
-    "title": "Technical Skills",
-    "subtitle": "My toolbox of choice",
-    "additionalTitle": "Additional Expertise",
+    "title": "Engineering Stack & Skills",
+    "subtitle": "Production-tested tools, frameworks, and methodologies",
     "categories": [
       {
-        "name": "Languages",
-        "iconName": "Code",
-        "color": "primary",
-        "skills": ["JavaScript (ES6+)", "TypeScript 5.8"]
+        "name": "Frontend Core",
+        "skills": ["React 19", "Next.js", "React Native", "JavaScript (ES6+)", "TypeScript 5.8", "HTML5 & CSS3"]
       },
       {
-        "name": "Frontend",
-        "iconName": "Palette",
-        "color": "secondary",
-        "skills": ["React 19", "Next.js", "React Native"]
+        "name": "State & Data Layer",
+        "skills": ["Zustand", "TanStack Query", "Redux Toolkit", "RESTful APIs", "Axios", "GraphQL"]
       },
       {
-        "name": "State & Data",
-        "iconName": "Database",
-        "color": "accent",
-        "skills": ["Zustand", "TanStack Query", "Redux Toolkit", "Axios"]
+        "name": "Styling & UI Systems",
+        "skills": ["Tailwind CSS 4", "Material UI", "NextUI", "Radix UI", "Framer Motion", "Three.js / R3F"]
       },
       {
-        "name": "Styling & Tools",
-        "iconName": "Wrench",
-        "color": "primary",
-        "skills": [
-          "Tailwind CSS 4.1",
-          "Radix UI",
-          "Vite 7",
-          "Docker",
-          "Git & GitHub"
-        ]
-      }
-    ],
-    "additionalExpertise": [
-      "RESTful APIs",
-      "Chrome Extensions",
-      "Responsive Design",
-      "Performance Optimization",
-      "CI/CD Pipelines",
-      "Bitbucket",
-      "Code Splitting",
-      "Lazy Loading",
-      "SSR/SSG",
-      "Micro-animations",
-      "State Management",
-      "Component Architecture"
-    ]
-  },
-  "projectsSection": {
-    "badge": "Proof of Work",
-    "title": "Featured Case Studies",
-    "description": "Interactive web applications and technical solutions built for local businesses and Chrome users.",
-    "moreProjectsText": "Need to see more specific examples? View my code repositories on ",
-    "projects": [
-      {
-        "id": "heptaverse-fe",
-        "name": "Heptaverse-FE",
-        "role": "Lead Frontend",
-        "description": "Architected a production-ready B2B platform under tight launch deadlines, managing features end-to-end.",
-        "achievements": [
-          "Led remote frontend alignment and development in a distributed team, accelerating feature release cycles",
-          "Spearheaded performance optimizations using Zustand and React Query, cutting client-side load times",
-          "Autonomously built complex B2B client interfaces using Tailwind CSS and Radix UI with zero supervision",
-          "Dockerized frontend environments and built automated CI/CD pipelines, removing manual release bottlenecks"
-        ],
-        "tech": [
-          "React 19",
-          "TypeScript 5.8",
-          "Vite 7",
-          "Zustand",
-          "TanStack Query",
-          "Tailwind CSS 4.1",
-          "Docker"
-        ],
-        "color": "primary",
-        "isExperience": true,
-        "isFeatured": false
+        "name": "Engineering & Tooling",
+        "skills": ["Vite 7", "Git & GitHub", "Docker", "CI/CD Pipelines", "Chrome Extension API", "Figma"]
       },
       {
-        "id": "jalsa-bitez",
-        "name": "Jalsa Bitez",
-        "subtitle": "Boutique Cafe & Bakery Web Application",
-        "role": "Frontend Developer",
-        "description": "Designed and developed a premium responsive website for a boutique cafe & bakery with custom CSS animations and particle-based loading states.",
-        "image": "/assets/jalsa_bitez.png",
-        "desktopImage": "/assets/jalsa_bitez_desktop.png",
-        "mobileImage": "/assets/jalsa_bitez_mobile.png",
-        "challenge": "Local boutique cafes struggle to compete with large chain establishments due to a lack of a premium, engaging online brand presence, and integrated local food ordering solutions.",
-        "solution": "Engineered a high-end, responsive crimson-themed web application utilizing custom CSS animations for layout transitions. Designed a custom particle-based canvas splash screen to captivate site visitors on load and integrated online partner links (Zomato/Swiggy) with fully responsive contact forms for custom local catering bookings.",
-        "results": "Significantly increased average session duration and reduced bounce rates. The bespoke animations and branding established an immediate high-end visual footprint, boosting customer trust and driving local catering inquiries.",
-        "achievements": [
-          "Developed a premium responsive landing page featuring smooth keyframe animations and a radial glow color scheme matching the cafe's crimson-gold branding",
-          "Engineered an interactive, particle-based splash loading screen to engage visitors and reduce bounce rates",
-          "Integrated responsive contact/feedback forms and online ordering badges (Zomato/Swiggy) for local customers"
-        ],
-        "tech": [
-          "HTML5",
-          "CSS3 / Keyframe Animations",
-          "JavaScript",
-          "Responsive Design",
-          "Canvas Particles"
-        ],
-        "color": "accent",
-        "iconName": "Coffee",
-        "gradient": "from-red-600 to-amber-700",
-        "links": {
-          "live": "https://jalsa-bitez.vercel.app/",
-          "github": null
-        },
-        "isExperience": true,
-        "isFeatured": true
-      },
-      {
-        "id": "empowering-fitness",
-        "name": "Empowering Fitness",
-        "subtitle": "Premium Gym & Fitness Center Web Application",
-        "role": "Frontend Developer",
-        "description": "Created a comprehensive responsive web application for a premium gym & fitness center featuring interactive timetables and health calculators.",
-        "image": "/assets/empowering_fitness.png",
-        "desktopImage": "/assets/empowering_fitness_desktop.png",
-        "mobileImage": "/assets/empowering_fitness_mobile.png",
-        "challenge": "Fitness centers experience high drop-off rates on marketing sites if class timetables are static or difficult to browse, and if clients are unable to calculate their energy targets or health scores interactively.",
-        "solution": "Developed a responsive, feature-rich web application containing client-side interactive calculators for BMI scores, TDEE (BMR calorie maintenance metrics), and target daily hydration levels. Engineered a dynamic weekly class timetable schedule with tabbed active day filters, utilizing glassmorphic layouts and smooth transitions.",
-        "results": "Successfully raised average page visitor retention times. The calculators provided direct interactive value, resulting in a spike in membership plan inquiries submitted through the contact section.",
-        "achievements": [
-          "Designed and built interactive client-side calculators for BMI score tracking, BMR (calorie maintenance), and daily hydration targets",
-          "Created an interactive weekly class schedule timetable with active day filtering to simplify class time planning",
-          "Optimized responsive layout components and modern glassmorphic panels for performance and high-density screen display"
-        ],
-        "tech": [
-          "HTML5",
-          "CSS3 / Glassmorphic UI",
-          "JavaScript",
-          "Client-Side Calculators",
-          "Tabbed Filters"
-        ],
-        "color": "primary",
-        "iconName": "Dumbbell",
-        "gradient": "from-orange-500 to-amber-600",
-        "links": {
-          "live": "https://empowering-fitness-hyp.vercel.app/",
-          "github": null
-        },
-        "isExperience": true,
-        "isFeatured": true
-      },
-      {
-        "id": "rencoach",
-        "name": "RenCoach",
-        "role": "Frontend Developer",
-        "description": "Owned development of complex client-side portals, operating with high autonomy and direct communication.",
-        "achievements": [
-          "Optimized frontend data storage and caching to reduce costly API traffic by 25%",
-          "Boosted page performance by 20% within weeks through aggressive lazy loading and assets cleanup",
-          "Translated business wireframes into functional, production-ready code with weekly client demos"
-        ],
-        "tech": ["React.js", "Redux", "JavaScript"],
-        "color": "secondary",
-        "isExperience": true,
-        "isFeatured": false
-      },
-      {
-        "id": "bizzmitr",
-        "name": "Bizzmitr",
-        "role": "Frontend Developer",
-        "description": "Collaborated remotely to migrate legacy pages to high-performance Next.js architectures.",
-        "achievements": [
-          "Autonomously set up code splitting and lazy loading structures, slashing initial bundle sizes",
-          "Optimized Next.js Server-Side Rendering (SSR) to boost SEO rankings and speed up indexing",
-          "Independently managed tasks and deadlines in a fully remote setup, maintaining high delivery speed"
-        ],
-        "tech": ["Next.js", "SSR", "React", "Code Splitting"],
-        "color": "accent",
-        "isExperience": true,
-        "isFeatured": false
-      },
-      {
-        "id": "react-native-app",
-        "name": "React Native App",
-        "role": "Mobile Developer",
-        "description": "Engineered a cross-platform mobile application for dealer inventory and purchasing.",
-        "achievements": [
-          "Designed and implemented live product syncing and real-time purchasing logs via REST APIs",
-          "Developed cross-platform mobile builds in record time, allowing early client testing",
-          "Configured robust local database storage to ensure app utility during offline client visits"
-        ],
-        "tech": ["React Native", "RESTful APIs", "Mobile Development"],
-        "color": "primary",
-        "isExperience": true,
-        "isFeatured": false
-      },
-      {
-        "id": "ariel-ai",
-        "name": "Ariel AI",
-        "role": "Frontend Developer",
-        "description": "Built interactive AI features, cooperating with AI engineers to deploy streaming feedback loops.",
-        "achievements": [
-          "Created modern, responsive user interfaces with custom UI libraries and Tailwind CSS",
-          "Implemented real-time visual feedback loops and streaming text states for AI interactions",
-          "Iterated rapidly in fast-paced sprint cycles based on direct stakeholder and user feedback"
-        ],
-        "tech": ["Next.js", "Next UI", "Tailwind CSS", "AI Integration"],
-        "color": "secondary",
-        "isExperience": true,
-        "isFeatured": false
-      },
-      {
-        "id": "aegis-tracker",
-        "name": "Aegis Tracker",
-        "subtitle": "Privacy-First Productivity Extension (React)",
-        "challenge": "Productivity tracking tools usually require sending private user browser activity logs to external servers, violating user privacy and corporate security compliance.",
-        "solution": "Created a highly secure Chrome Extension utilizing React 19 and Vite with 100% client-side local storage and smart browser idle state detection algorithms.",
-        "results": "Deployed to the Chrome Web Store and secured 5,000+ active weekly users with zero server data transmissions. Visualized user activity metrics locally using Recharts charts.",
-        "tech": [
-          "React 19",
-          "Vite 7",
-          "Chrome Extension API",
-          "Recharts",
-          "TypeScript"
-        ],
-        "color": "primary",
-        "iconName": "Cpu",
-        "gradient": "from-cyan-500 to-blue-700",
-        "image": "/assets/aegis_tracker.png",
-        "desktopImage": "/assets/aegis_tracker.png",
-        "mobileImage": null,
-        "links": {
-          "live": "#",
-          "github": "#"
-        },
-        "isExperience": false,
-        "isFeatured": true
+        "name": "Architecture & Standards",
+        "skills": ["Performance Optimization", "Code Splitting", "Web Vitals", "Accessibility (WCAG)", "Responsive Design", "Testing Fundamentals"]
       }
     ]
   },
-  "experienceSection": {
-    "title": "Work Experience"
+  "achievementsSection": {
+    "title": "Engineering Impact",
+    "subtitle": "Quantifiable results delivered across web and mobile products",
+    "stats": [
+      { "label": "Years Experience", "value": 3, "suffix": "+", "description": "Hands-on SDE experience in production environments" },
+      { "label": "Production Projects", "value": 20, "suffix": "+", "description": "Scalable web apps, mobile apps, and enterprise modules" },
+      { "label": "API Traffic Saved", "value": 25, "suffix": "%", "description": "Latency & payload reduction via smart caching" },
+      { "label": "Active Users Served", "value": 5000, "suffix": "+", "description": "Active users on published web extensions & apps" },
+      { "label": "Animation Performance", "value": 60, "suffix": " FPS", "description": "GPU-accelerated UI micro-interactions" },
+      { "label": "Code Reliability", "value": 100, "suffix": "%", "description": "Type-safe TypeScript & accessible UI components" }
+    ]
   },
   "contactSection": {
-    "badge": "Let's Collaborate",
-    "title": "Start Your Project",
-    "description": "Ready to turn your idea into a functional product? Tell me about it below and let's build together.",
-    "whyWorkWithMe": {
-      "title": "Why work with me?",
-      "points": [
-        "Direct communication, no agency layers",
-        "Rapid turnaround with production-ready code",
-        "End-to-end support from cloud setup to App Stores"
-      ]
-    },
-    "directCoordinatesTitle": "Direct Coordinates",
-    "connectSociallyTitle": "Connect Socially",
-    "formTitle": "Project Inquiry Form",
-    "successTitle": "Inquiry Received!",
-    "successMessage": "Thank you, {name}! I've received your request.",
-    "successSubtitle": "I will review your project details and get back to you within 24 hours with some initial implementation ideas.",
-    "successConnectText": "Want to connect immediately?",
-    "successWhatsAppText": "Chat on WhatsApp",
-    "submitAnotherText": "Submit another inquiry",
-    "copyrightText": "© 2026 Dhruv Hingol. All rights reserved."
+    "title": "Let's Connect",
+    "subtitle": "Open for Senior SDE and Frontend Engineering roles at product-driven organizations.",
+    "email": "dhruvhingol2210@gmail.com",
+    "phone": "+91 8735099370",
+    "location": "Ahmedabad, India (GMT+5:30)",
+    "resumeUrl": "https://drive.google.com/file/d/1yTDemk33hibHzpSR0GO-8isEpFl0OTEJ/view",
+    "socials": {
+      "linkedin": "https://www.linkedin.com/in/dhruvhingol/",
+      "github": "https://github.com/dhruv-hingol"
+    }
   }
 }
