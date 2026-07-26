@@ -1,12 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export default function LayeredBackground() {
-  const [scrollY, setScrollY] = useState(0);
+  const blob1Ref = useRef<HTMLDivElement>(null);
+  const blob2Ref = useRef<HTMLDivElement>(null);
+  const blob3Ref = useRef<HTMLDivElement>(null);
+  const geo1Ref = useRef<HTMLDivElement>(null);
+  const geo2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY || 0);
+    let ticking = false;
+
+    const updateTransforms = () => {
+      const scrollY = window.scrollY || 0;
+      if (blob1Ref.current) blob1Ref.current.style.transform = `translateY(${scrollY * 0.05}px)`;
+      if (blob2Ref.current) blob2Ref.current.style.transform = `translateY(${-scrollY * 0.04}px)`;
+      if (blob3Ref.current) blob3Ref.current.style.transform = `translateY(${scrollY * 0.03}px)`;
+      if (geo1Ref.current) geo1Ref.current.style.transform = `translateY(${scrollY * 0.06}px) rotate(12deg)`;
+      if (geo2Ref.current) geo2Ref.current.style.transform = `translateY(${-scrollY * 0.05}px)`;
+      ticking = false;
     };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateTransforms);
+        ticking = true;
+      }
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -18,16 +38,16 @@ export default function LayeredBackground() {
 
       {/* Layer 2: Blurred Radial Gradients (Blue & Violet) */}
       <div
+        ref={blob1Ref}
         className="absolute top-[-10%] left-[20%] w-[800px] h-[800px] rounded-full bg-radial from-blue-500/8 via-indigo-500/4 to-transparent blur-3xl transition-transform duration-300 ease-out"
-        style={{ transform: `translateY(${scrollY * 0.05}px)` }}
       />
       <div
+        ref={blob2Ref}
         className="absolute top-[40%] right-[10%] w-[700px] h-[700px] rounded-full bg-radial from-violet-500/6 via-purple-500/3 to-transparent blur-3xl transition-transform duration-300 ease-out"
-        style={{ transform: `translateY(${-scrollY * 0.04}px)` }}
       />
       <div
+        ref={blob3Ref}
         className="absolute bottom-[-10%] left-[10%] w-[900px] h-[900px] rounded-full bg-radial from-blue-600/6 via-slate-400/3 to-transparent blur-3xl transition-transform duration-300 ease-out"
-        style={{ transform: `translateY(${scrollY * 0.03}px)` }}
       />
 
       {/* Layer 3: Faint Animated Linear / Figma Grid Pattern */}
@@ -40,12 +60,12 @@ export default function LayeredBackground() {
 
       {/* Layer 5: Floating Geometric Ambient Outlines */}
       <div
+        ref={geo1Ref}
         className="absolute top-[15%] left-[5%] w-64 h-64 border border-slate-200/50 rounded-3xl rotate-12 transition-transform duration-500"
-        style={{ transform: `translateY(${scrollY * 0.06}px) rotate(12deg)` }}
       />
       <div
+        ref={geo2Ref}
         className="absolute top-[60%] right-[6%] w-80 h-80 border border-indigo-200/40 rounded-full transition-transform duration-500"
-        style={{ transform: `translateY(${-scrollY * 0.05}px)` }}
       />
 
       {/* Layer 6: SVG Noise Texture (2-3% opacity) */}

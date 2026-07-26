@@ -154,11 +154,13 @@ export default function Navigation({ onLogoClick }: NavigationProps) {
         >
           <div className="w-9 h-9 rounded-xl overflow-hidden border border-slate-200/80 shadow-xs group-hover:border-blue-500 transition-colors flex-shrink-0 bg-slate-100 aspect-square">
             <img
-              src="/assets/profile.jpg"
+              src="/assets/profile-avatar.webp"
               alt="Dhruv Hingol"
               className="w-full h-full object-cover"
               width="36"
               height="36"
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="flex flex-col">
@@ -202,6 +204,8 @@ export default function Navigation({ onLogoClick }: NavigationProps) {
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
+              aria-expanded={dropdownOpen}
+              aria-label="Toggle More Sections Menu"
               className={`relative px-3.5 py-1.5 text-xs font-semibold rounded-full flex items-center gap-1 transition-colors duration-200 cursor-pointer ${
                 isDropdownActive || dropdownOpen
                   ? "text-slate-900"
@@ -288,6 +292,7 @@ export default function Navigation({ onLogoClick }: NavigationProps) {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-expanded={mobileMenuOpen}
           className="md:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition-colors"
           aria-label="Toggle Navigation Menu"
         >

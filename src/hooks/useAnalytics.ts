@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from "react";
 
 export function useAnalytics() {
   const [visitCount, setVisitCount] = useState<number>(1);
-  const [secondsSpent, setSecondsSpent] = useState<number>(0);
   const [projectsViewed, setProjectsViewed] = useState<Set<string>>(new Set());
   const [gameCount, setGameCount] = useState<number>(0);
 
@@ -22,14 +21,6 @@ export function useAnalytics() {
     }
   }, []);
 
-  // Timer spent on website
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setSecondsSpent((prev) => prev + 1);
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
   const logProjectView = useCallback((id: string) => {
     setProjectsViewed((prev) => new Set(prev).add(id));
   }, []);
@@ -46,16 +37,8 @@ export function useAnalytics() {
     });
   }, []);
 
-  const formatTime = (totalSeconds: number) => {
-    const mins = Math.floor(totalSeconds / 60);
-    const secs = totalSeconds % 60;
-    return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
-  };
-
   return {
     visitCount,
-    formattedTimeSpent: formatTime(secondsSpent),
-    secondsSpent,
     projectsViewedCount: projectsViewed.size,
     gameCount,
     logProjectView,

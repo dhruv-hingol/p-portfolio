@@ -1,17 +1,26 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 
 export function useMagnetic(strength: number = 0.2) {
   const ref = useRef<HTMLDivElement | HTMLButtonElement | HTMLAnchorElement | null>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
     let isHovering = false;
+    let ticking = false;
+    let targetX = 0;
+    let targetY = 0;
 
     const handleMouseEnter = () => {
       isHovering = true;
+    };
+
+    const updateTransform = () => {
+      if (el) {
+        el.style.transform = `translate3d(${targetX}px, ${targetY}px, 0px)`;
+      }
+      ticking = false;
     };
 
     const handleMouseMove = (evt: Event) => {
@@ -25,19 +34,26 @@ export function useMagnetic(strength: number = 0.2) {
       const rawY = (e.clientY - centerY) * strength;
 
       // Clamp max magnetic pull to ±6px to guarantee buttons NEVER overlap!
-      const clampedX = Math.min(Math.max(rawX, -6), 6);
-      const clampedY = Math.min(Math.max(rawY, -6), 6);
+      targetX = Math.min(Math.max(rawX, -6), 6);
+      targetY = Math.min(Math.max(rawY, -6), 6);
 
-      setPosition({ x: clampedX, y: clampedY });
+      if (!ticking) {
+        window.requestAnimationFrame(updateTransform);
+        ticking = true;
+      }
     };
 
     const handleMouseLeave = () => {
       isHovering = false;
-      setPosition({ x: 0, y: 0 });
+      targetX = 0;
+      targetY = 0;
+      if (el) {
+        el.style.transform = "translate3d(0px, 0px, 0px)";
+      }
     };
 
     el.addEventListener("mouseenter", handleMouseEnter);
-    el.addEventListener("mousemove", handleMouseMove);
+    el.addEventListener("mousemove", handleMouseMove, { passive: true });
     el.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
@@ -47,5 +63,5 @@ export function useMagnetic(strength: number = 0.2) {
     };
   }, [strength]);
 
-  return { ref, position };
+  return { ref, position: { x: 0, y: 0 } };
 }

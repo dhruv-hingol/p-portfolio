@@ -1,21 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Activity, Clock, Eye, Gamepad2, ChevronUp, ChevronDown } from "lucide-react";
 
 interface RecruiterAnalyticsProps {
   visitCount: number;
-  timeSpentFormatted: string;
   projectsViewedCount: number;
   gameCount: number;
 }
 
 export default function RecruiterAnalytics({
   visitCount,
-  timeSpentFormatted,
   projectsViewedCount,
   gameCount,
 }: RecruiterAnalyticsProps) {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [secondsSpent, setSecondsSpent] = useState<number>(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setSecondsSpent((prev) => prev + 1);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (totalSeconds: number) => {
+    const mins = Math.floor(totalSeconds / 60);
+    const secs = totalSeconds % 60;
+    return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+  };
 
   return (
     <div className="fixed bottom-5 right-5 z-40">
@@ -24,6 +36,8 @@ export default function RecruiterAnalytics({
         {/* Toggle Header Bar */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
+          aria-expanded={isExpanded}
+          aria-label="Toggle Recruiter Session Metrics"
           className="w-full px-4 py-2.5 flex items-center justify-between gap-3 text-xs font-bold text-slate-800 hover:text-blue-600 transition-colors cursor-pointer bg-slate-50/80 border-b border-slate-100"
         >
           <div className="flex items-center gap-2">
@@ -47,7 +61,7 @@ export default function RecruiterAnalytics({
                   <Clock className="w-3.5 h-3.5 text-blue-600" />
                   <span>Time on Site</span>
                 </div>
-                <span className="font-mono font-bold text-slate-900">{timeSpentFormatted}</span>
+                <span className="font-mono font-bold text-slate-900">{formatTime(secondsSpent)}</span>
               </div>
 
               <div className="flex items-center justify-between text-xs">

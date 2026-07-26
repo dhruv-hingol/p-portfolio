@@ -1,4 +1,4 @@
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -12,7 +12,7 @@ function ControlRoomScene({ wireframeMode = false, dramaticSpin = false }: Devel
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const linesRef = useRef<THREE.LineSegments>(null);
 
-  const count = 36;
+  const count = 32;
   const spinSpeed = useRef(0.005);
 
   // Generate position network for translucent glass cubes
@@ -157,13 +157,36 @@ export default function DeveloperCoreCanvas({
   wireframeMode = false,
   dramaticSpin = false,
 }: DeveloperCoreProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(true);
+
+  // Pause WebGL rendering loop when Canvas is scrolled offscreen or window is hidden
+  useEffect(() => {
+    const element = containerRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden opacity-75">
+    <div
+      ref={containerRef}
+      className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden opacity-75"
+    >
       <Canvas
+        frameloop={isVisible ? "always" : "never"}
         camera={{ position: [0, 0, 7], fov: 50 }}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
         style={{ width: "100%", height: "100%", background: "transparent" }}
-        dpr={[1, 2]}
+        dpr={[1, 1.5]}
       >
         <ambientLight intensity={1.8} />
         <directionalLight position={[10, 15, 8]} intensity={2.5} color="#FFFFFF" />

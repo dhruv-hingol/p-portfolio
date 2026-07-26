@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, ArrowUpRight, Award, Layers } from "lucide-react";
+import { Award, Layers } from "lucide-react";
 import portfolioData from "../data/portfolioData.json";
 import TiltCard from "./TiltCard";
 
@@ -8,7 +8,7 @@ interface ProjectsProps {
   onProjectView?: (id: string) => void;
 }
 
-export default function Projects({ onProjectView }: ProjectsProps) {
+export default function Projects(_props?: ProjectsProps) {
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredProjects = portfolioData.projectsSection.projects.filter(
@@ -142,34 +142,6 @@ export default function Projects({ onProjectView }: ProjectsProps) {
                               {t}
                             </span>
                           ))}
-                        </div>
-
-                        <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-slate-100">
-                          {project.links.live && (
-                            <a
-                              href={project.links.live}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={() => onProjectView && onProjectView(project.id)}
-                              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-blue-600 text-white font-semibold text-xs transition-all duration-200 shadow-sm"
-                            >
-                              <span>Live Demo</span>
-                              <ArrowUpRight className="w-4 h-4" />
-                            </a>
-                          )}
-
-                          {project.links.github && (
-                            <a
-                              href={project.links.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={() => onProjectView && onProjectView(project.id)}
-                              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-semibold text-xs border border-slate-200 transition-all duration-200"
-                            >
-                              <Github className="w-4 h-4" />
-                              <span>Source Code</span>
-                            </a>
-                          )}
                         </div>
                       </div>
                     </div>

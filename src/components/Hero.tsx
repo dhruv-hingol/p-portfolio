@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -11,8 +11,9 @@ import {
   Zap,
 } from "lucide-react";
 import portfolioData from "../data/portfolioData.json";
-import DeveloperCoreCanvas from "./canvas/DeveloperCoreCanvas";
 import MagneticButton from "./MagneticButton";
+
+const DeveloperCoreCanvas = lazy(() => import("./canvas/DeveloperCoreCanvas"));
 
 interface HeroProps {
   wireframeMode?: boolean;
@@ -37,8 +38,10 @@ export default function Hero({ wireframeMode = false }: HeroProps) {
       onDoubleClick={handleDoubleClick}
       className="relative min-h-screen pt-28 pb-16 flex items-center justify-center bg-white overflow-hidden select-none"
     >
-      {/* Signature 3D WebGL Developer Core Canvas */}
-      <DeveloperCoreCanvas wireframeMode={wireframeMode} dramaticSpin={dramaticSpin} />
+      {/* Signature 3D WebGL Developer Core Canvas (Async Loaded) */}
+      <Suspense fallback={<div className="absolute inset-0 pointer-events-none" />}>
+        <DeveloperCoreCanvas wireframeMode={wireframeMode} dramaticSpin={dramaticSpin} />
+      </Suspense>
 
       {/* Ambient background light glows & patterns */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-blue-100/50 via-slate-100/30 to-indigo-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
@@ -157,9 +160,13 @@ export default function Hero({ wireframeMode = false }: HeroProps) {
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 rounded-2xl overflow-hidden border border-slate-200 shadow-md flex-shrink-0 bg-slate-100">
                       <img
-                        src="/assets/profile.jpg"
+                        src="/assets/profile-avatar.webp"
                         alt="Dhruv Hingol"
                         className="w-full h-full object-cover"
+                        width="48"
+                        height="48"
+                        fetchPriority="high"
+                        decoding="async"
                       />
                     </div>
                     <div>
@@ -250,6 +257,7 @@ export default function Hero({ wireframeMode = false }: HeroProps) {
         <div className="mt-16 flex justify-center">
           <button
             onClick={() => scrollToSection("about")}
+            aria-label="Scroll to about section"
             className="flex flex-col items-center gap-2 text-slate-400 hover:text-blue-600 transition-colors cursor-pointer group"
           >
             <span className="text-xs font-semibold tracking-wider uppercase">

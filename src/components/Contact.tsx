@@ -47,6 +47,7 @@ export default function Contact() {
               {/* Email */}
               <a
                 href={`mailto:${portfolioData.contactSection.email}`}
+                aria-label={`Send email to ${portfolioData.contactSection.email}`}
                 className="flex items-center justify-between p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-blue-300 hover:bg-blue-50/40 transition-all duration-200 group"
               >
                 <div className="flex items-center gap-3.5">
@@ -66,6 +67,7 @@ export default function Contact() {
               {/* Phone */}
               <a
                 href={`tel:${portfolioData.contactSection.phone}`}
+                aria-label={`Call ${portfolioData.contactSection.phone}`}
                 className="flex items-center justify-between p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-blue-300 hover:bg-blue-50/40 transition-all duration-200 group"
               >
                 <div className="flex items-center gap-3.5">
@@ -101,6 +103,7 @@ export default function Contact() {
                   href={portfolioData.contactSection.socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Visit Dhruv Hingol LinkedIn Profile"
                   className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-700 text-xs font-semibold transition-colors border border-slate-200/80"
                 >
                   <Linkedin className="w-4 h-4" />
@@ -110,6 +113,7 @@ export default function Contact() {
                   href={portfolioData.contactSection.socials.github}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Visit Dhruv Hingol GitHub Profile"
                   className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-700 text-xs font-semibold transition-colors border border-slate-200/80"
                 >
                   <Github className="w-4 h-4" />
@@ -147,12 +151,15 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-2">
+                      <label htmlFor="contact-name" className="block text-xs font-bold text-slate-700 mb-2">
                         Your Name *
                       </label>
                       <input
+                        id="contact-name"
+                        name="name"
                         type="text"
                         required
+                        aria-required="true"
                         value={formState.name}
                         onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                         placeholder="e.g. Sarah Jenkins"
@@ -161,12 +168,15 @@ export default function Contact() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-2">
+                      <label htmlFor="contact-email" className="block text-xs font-bold text-slate-700 mb-2">
                         Email Address *
                       </label>
                       <input
+                        id="contact-email"
+                        name="email"
                         type="email"
                         required
+                        aria-required="true"
                         value={formState.email}
                         onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                         placeholder="s.jenkins@company.com"
@@ -176,10 +186,12 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-2">
+                    <label htmlFor="contact-company" className="block text-xs font-bold text-slate-700 mb-2">
                       Company / Organization (Optional)
                     </label>
                     <input
+                      id="contact-company"
+                      name="company"
                       type="text"
                       value={formState.company}
                       onChange={(e) => setFormState({ ...formState, company: e.target.value })}
@@ -189,12 +201,15 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-2">
+                    <label htmlFor="contact-message" className="block text-xs font-bold text-slate-700 mb-2">
                       Message / Requirement *
                     </label>
                     <textarea
+                      id="contact-message"
+                      name="message"
                       rows={4}
                       required
+                      aria-required="true"
                       value={formState.message}
                       onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                       placeholder="Tell me about the role or project opportunities..."
@@ -204,6 +219,7 @@ export default function Contact() {
 
                   <button
                     type="submit"
+                    aria-label="Send Inquiry Form Message"
                     className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition-all duration-200 cursor-pointer"
                   >
                     <Send className="w-4 h-4" />
