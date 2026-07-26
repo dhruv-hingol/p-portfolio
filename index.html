@@ -2,7 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-weight=%22bold%22 fill=%22%232563eb%22>DH</text></svg>" />
+    <link rel="apple-touch-icon" href="/assets/profile.jpg" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="canonical" href="https://dhruv-hingol-portfolio.vercel.app/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    
     <title>Dhruv Hingol | Software Developer</title>
     
     <!-- Meta & Open Graph -->
@@ -13,15 +19,17 @@
     <meta name="author" content="Dhruv Hingol" />
     <meta
       name="keywords"
-      content="Dhruv Hingol, Software Developer, Software Development Engineer, SDE, React 19, Next.js, React Native, TypeScript, Tailwind CSS, Web Vitals, Performance Engineering"
+      content="Dhruv Hingol, Software Developer, Software Development Engineer, SDE, React 19, Next.js, React Native, TypeScript, Tailwind CSS, Web Vitals, Performance Engineering, Enterprise Architecture"
     />
     <meta property="og:title" content="Dhruv Hingol | Software Developer" />
     <meta property="og:description" content="Software Developer building high-performance, accessible enterprise web & mobile applications." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://dhruv-hingol-portfolio.vercel.app/" />
+    <meta property="og:image" content="https://dhruv-hingol-portfolio.vercel.app/assets/profile.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Dhruv Hingol | Software Developer" />
     <meta name="twitter:description" content="Software Developer specializing in React 19, Next.js, React Native, and enterprise web architecture." />
+    <meta name="twitter:image" content="https://dhruv-hingol-portfolio.vercel.app/assets/profile.jpg" />
 
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,21 +39,57 @@
       rel="stylesheet"
     />
 
-    <!-- Structured Data (JSON-LD) -->
+    <!-- Comprehensive Schema.org JSON-LD Structured Graph -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Dhruv Hingol",
-        "jobTitle": "Software Developer",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Elixir Techne"
-        },
-        "url": "https://dhruv-hingol-portfolio.vercel.app/",
-        "sameAs": [
-          "https://www.linkedin.com/in/dhruvhingol/",
-          "https://github.com/dhruv-hingol"
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://dhruv-hingol-portfolio.vercel.app/#person",
+            "name": "Dhruv Hingol",
+            "jobTitle": "Software Development Engineer",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Elixir Techne"
+            },
+            "url": "https://dhruv-hingol-portfolio.vercel.app/",
+            "sameAs": [
+              "https://www.linkedin.com/in/dhruvhingol/",
+              "https://github.com/dhruv-hingol"
+            ],
+            "knowsAbout": [
+              "React 19",
+              "Next.js",
+              "React Native",
+              "TypeScript",
+              "JavaScript",
+              "Tailwind CSS",
+              "Zustand",
+              "TanStack Query",
+              "Performance Engineering",
+              "Web Vitals",
+              "Enterprise Architecture"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://dhruv-hingol-portfolio.vercel.app/#website",
+            "url": "https://dhruv-hingol-portfolio.vercel.app/",
+            "name": "Dhruv Hingol Portfolio",
+            "publisher": {
+              "@id": "https://dhruv-hingol-portfolio.vercel.app/#person"
+            }
+          },
+          {
+            "@type": "SoftwareSourceCode",
+            "name": "Aegis Tracker Extension",
+            "codeRepository": "https://github.com/dhruv-hingol",
+            "programmingLanguage": "TypeScript",
+            "author": {
+              "@id": "https://dhruv-hingol-portfolio.vercel.app/#person"
+            }
+          }
         ]
       }
     </script>

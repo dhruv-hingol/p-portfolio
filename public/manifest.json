@@ -1,0 +1,20 @@
+{
+  "short_name": "Dhruv Hingol",
+  "name": "Dhruv Hingol | Software Developer Portfolio",
+  "icons": [
+    {
+      "src": "/assets/profile.jpg",
+      "type": "image/jpeg",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/assets/profile.jpg",
+      "type": "image/jpeg",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "display": "standalone"
+}

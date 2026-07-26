@@ -4,7 +4,7 @@ import portfolioData from "../data/portfolioData.json";
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 bg-white relative overflow-hidden">
+    <section id="experience" className="section-padding relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}

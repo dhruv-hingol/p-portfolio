@@ -2,15 +2,27 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import portfolioData from "../data/portfolioData.json";
+import MagneticButton from "./MagneticButton";
 
-export default function Navigation() {
+interface NavigationProps {
+  onLogoClick?: () => void;
+}
+
+export default function Navigation({ onLogoClick }: NavigationProps) {
   const [activeSection, setActiveSection] = useState("hero");
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      // Calculate scroll progress percentage
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        setScrollProgress((window.scrollY / totalHeight) * 100);
+      }
 
       const sections = portfolioData.navigationLinks.map((link) =>
         link.href.replace("#", ""),
@@ -49,24 +61,35 @@ export default function Navigation() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/85 backdrop-blur-md border-b border-slate-200/80 shadow-sm py-3"
-          : "bg-transparent py-5"
+          ? "bg-white/85 backdrop-blur-md border-b border-slate-200/80 shadow-sm"
+          : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Logo */}
+      {/* Scroll Progress Bar at Top */}
+      <div
+        className="absolute top-0 left-0 h-[3px] bg-blue-600 transition-all duration-150 ease-out z-50"
+        style={{ width: `${scrollProgress}%` }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+        {/* Brand Logo with 5-Click Easter Egg Trigger */}
         <a
           href="#hero"
-          onClick={(e) => scrollToSection(e, "#hero")}
-          className="flex items-center gap-2.5 group"
+          onClick={(e) => {
+            scrollToSection(e, "#hero");
+            if (onLogoClick) onLogoClick();
+          }}
+          className="flex items-center gap-2.5 group cursor-pointer"
         >
-          <div className="w-9 h-9 rounded-xl overflow-hidden border border-slate-200/80 shadow-xs group-hover:border-blue-500 transition-colors flex-shrink-0 bg-slate-100">
+          <div className="w-9 h-9 rounded-xl overflow-hidden border border-slate-200/80 shadow-xs group-hover:border-blue-500 transition-colors flex-shrink-0 bg-slate-100 aspect-square">
             <img
               src="/assets/profile.jpg"
               alt="Dhruv Hingol"
               className="w-full h-full object-cover"
+              width="36"
+              height="36"
             />
           </div>
           <div className="flex flex-col">
@@ -110,22 +133,23 @@ export default function Navigation() {
 
         {/* CTA Actions */}
         <div className="hidden sm:flex items-center gap-3">
-          <a
+          <MagneticButton
             href={portfolioData.contactSection.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-blue-600 px-3.5 py-2 rounded-lg border border-slate-200 hover:border-blue-300 hover:bg-blue-50/50 transition-all duration-200"
+            className="text-xs font-semibold text-slate-700 hover:text-blue-600 px-3.5 py-2 rounded-lg border border-slate-200 hover:border-blue-300 hover:bg-blue-50/50 transition-all duration-200"
           >
             <span>Resume</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
-          <a
+            <ArrowUpRight className="w-3.5 h-3.5 ml-1.5" />
+          </MagneticButton>
+
+          <MagneticButton
             href="#contact"
-            onClick={(e) => scrollToSection(e, "#contact")}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-slate-900 hover:bg-blue-600 px-4 py-2 rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
+            onClick={(e) => scrollToSection(e as unknown as React.MouseEvent<HTMLAnchorElement>, "#contact")}
+            className="text-xs font-semibold text-white bg-slate-900 hover:bg-blue-600 px-4 py-2 rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
           >
             <span>Contact</span>
-          </a>
+          </MagneticButton>
         </div>
 
         {/* Mobile Menu Button */}

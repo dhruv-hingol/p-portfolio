@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -10,21 +11,34 @@ import {
   Zap,
 } from "lucide-react";
 import portfolioData from "../data/portfolioData.json";
-import Hero3DCanvas from "./canvas/Hero3DCanvas";
+import DeveloperCoreCanvas from "./canvas/DeveloperCoreCanvas";
+import MagneticButton from "./MagneticButton";
 
-export default function Hero() {
+interface HeroProps {
+  wireframeMode?: boolean;
+}
+
+export default function Hero({ wireframeMode = false }: HeroProps) {
+  const [dramaticSpin, setDramaticSpin] = useState(false);
+
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
+  const handleDoubleClick = () => {
+    setDramaticSpin(true);
+    setTimeout(() => setDramaticSpin(false), 2500);
+  };
+
   return (
     <section
       id="hero"
-      className="relative min-h-screen pt-28 pb-16 flex items-center justify-center bg-white overflow-hidden"
+      onDoubleClick={handleDoubleClick}
+      className="relative min-h-screen pt-28 pb-16 flex items-center justify-center bg-white overflow-hidden select-none"
     >
-      {/* 3D R3F Canvas Background */}
-      <Hero3DCanvas />
+      {/* Signature 3D WebGL Developer Core Canvas */}
+      <DeveloperCoreCanvas wireframeMode={wireframeMode} dramaticSpin={dramaticSpin} />
 
       {/* Ambient background light glows & patterns */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-gradient-to-tr from-blue-100/50 via-slate-100/30 to-indigo-100/40 rounded-full blur-3xl pointer-events-none -z-10" />
@@ -99,33 +113,33 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* CTAs */}
+            {/* Magnetic CTAs */}
             <div className="flex flex-wrap items-center gap-4">
-              <button
+              <MagneticButton
                 onClick={() => scrollToSection("projects")}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
+                className="px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm shadow-md hover:shadow-lg transition-all duration-200"
               >
                 <span>View Projects</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </MagneticButton>
 
-              <a
+              <MagneticButton
                 href={portfolioData.contactSection.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-semibold text-sm border border-slate-200 shadow-2xs hover:border-slate-300 transition-all duration-200"
+                className="px-5 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 font-semibold text-sm border border-slate-200 shadow-2xs hover:border-slate-300 transition-all duration-200"
               >
-                <Download className="w-4 h-4 text-slate-500" />
+                <Download className="w-4 h-4 text-slate-500 mr-2" />
                 <span>Download Resume</span>
-              </a>
+              </MagneticButton>
 
-              <button
+              <MagneticButton
                 onClick={() => scrollToSection("contact")}
-                className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm shadow-sm transition-all duration-200 cursor-pointer"
+                className="px-5 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-sm shadow-sm transition-all duration-200"
               >
-                <Mail className="w-4 h-4" />
+                <Mail className="w-4 h-4 mr-2" />
                 <span>Contact Me</span>
-              </button>
+              </MagneticButton>
             </div>
           </motion.div>
 

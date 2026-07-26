@@ -6,7 +6,7 @@ export default function Achievements() {
   const statIcons = [Clock, Cpu, TrendingUp, Users, Zap, ShieldCheck];
 
   return (
-    <section id="achievements" className="py-24 bg-slate-900 text-white relative overflow-hidden">
+    <section id="achievements" className="section-padding bg-slate-900 text-white relative overflow-hidden">
       {/* Background ambient light */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
