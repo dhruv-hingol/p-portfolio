@@ -159,6 +159,24 @@ export default function DeveloperCoreCanvas({
 }: DeveloperCoreProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(true);
+  const [shouldMountCanvas, setShouldMountCanvas] = useState(false);
+
+  // Defer Three.js WebGL Canvas mounting until main thread is idle after initial paint
+  useEffect(() => {
+    if ("requestIdleCallback" in window) {
+      const handle = (window as unknown as { requestIdleCallback: (cb: () => void) => number }).requestIdleCallback(() => {
+        setShouldMountCanvas(true);
+      });
+      return () => {
+        if ("cancelIdleCallback" in window) {
+          (window as unknown as { cancelIdleCallback: (id: number) => void }).cancelIdleCallback(handle);
+        }
+      };
+    } else {
+      const timer = setTimeout(() => setShouldMountCanvas(true), 600);
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   // Pause WebGL rendering loop when Canvas is scrolled offscreen or window is hidden
   useEffect(() => {
@@ -181,19 +199,21 @@ export default function DeveloperCoreCanvas({
       ref={containerRef}
       className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden opacity-75"
     >
-      <Canvas
-        frameloop={isVisible ? "always" : "never"}
-        camera={{ position: [0, 0, 7], fov: 50 }}
-        gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-        style={{ width: "100%", height: "100%", background: "transparent" }}
-        dpr={[1, 1.5]}
-      >
-        <ambientLight intensity={1.8} />
-        <directionalLight position={[10, 15, 8]} intensity={2.5} color="#FFFFFF" />
-        <pointLight position={[-8, -8, -5]} intensity={1.2} color="#2563EB" />
-        <spotLight position={[0, 10, 0]} intensity={1.5} color="#7C3AED" angle={0.6} penumbra={1} />
-        <ControlRoomScene wireframeMode={wireframeMode} dramaticSpin={dramaticSpin} />
-      </Canvas>
+      {shouldMountCanvas ? (
+        <Canvas
+          frameloop={isVisible ? "always" : "never"}
+          camera={{ position: [0, 0, 7], fov: 50 }}
+          gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+          style={{ width: "100%", height: "100%", background: "transparent" }}
+          dpr={[1, 1.5]}
+        >
+          <ambientLight intensity={1.8} />
+          <directionalLight position={[10, 15, 8]} intensity={2.5} color="#FFFFFF" />
+          <pointLight position={[-8, -8, -5]} intensity={1.2} color="#2563EB" />
+          <spotLight position={[0, 10, 0]} intensity={1.5} color="#7C3AED" angle={0.6} penumbra={1} />
+          <ControlRoomScene wireframeMode={wireframeMode} dramaticSpin={dramaticSpin} />
+        </Canvas>
+      ) : null}
     </div>
   );
 }
