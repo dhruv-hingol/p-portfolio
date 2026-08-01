@@ -4,8 +4,8 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://dhruv-hingol-portfolio.vercel.app/</loc>
-    <lastmod>2026-07-26</lastmod>
+    <loc>https://dhruv-hingol.vercel.app/</loc>
+    <lastmod>2026-08-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>

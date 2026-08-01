@@ -64,7 +64,7 @@ export default function Hero({ wireframeMode = false }: HeroProps) {
 
             <div className="flex flex-wrap items-center gap-3 mb-6">
               <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-600">
-                Software Developer
+                React.js &amp; Frontend Developer
               </span>
               <span className="text-slate-300 hidden sm:inline">•</span>
               <span className="text-sm font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-3 py-1 rounded-md border border-slate-200/80">

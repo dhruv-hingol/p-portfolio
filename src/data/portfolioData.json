@@ -139,7 +139,7 @@
         "metrics": "Sub-800ms Canvas Render",
         "tech": ["Next.js", "React 19", "TypeScript", "Tailwind CSS", "Canvas API", "Zustand"],
         "links": {
-          "live": "https://dhruv-hingol-portfolio.vercel.app/",
+          "live": "https://dhruv-hingol.vercel.app/",
           "github": "https://github.com/dhruv-hingol"
         }
       },
@@ -156,7 +156,7 @@
         "metrics": "60 FPS WebGL Scene Render",
         "tech": ["React", "Three.js", "React Three Fiber", "TypeScript", "Zustand", "Tailwind CSS"],
         "links": {
-          "live": "https://dhruv-hingol-portfolio.vercel.app/",
+          "live": "https://dhruv-hingol.vercel.app/",
           "github": "https://github.com/dhruv-hingol"
         }
       },
@@ -173,7 +173,7 @@
         "metrics": "25% Network Latency Cut",
         "tech": ["Next.js", "TypeScript", "WebSocket API", "Tailwind CSS", "Mapbox GL", "TanStack Query"],
         "links": {
-          "live": "https://dhruv-hingol-portfolio.vercel.app/",
+          "live": "https://dhruv-hingol.vercel.app/",
           "github": "https://github.com/dhruv-hingol"
         }
       },
@@ -190,7 +190,7 @@
         "metrics": "35% Faster Order Processing",
         "tech": ["React", "TypeScript", "React Hook Form", "Zod", "Tailwind CSS", "Vite"],
         "links": {
-          "live": "https://dhruv-hingol-portfolio.vercel.app/",
+          "live": "https://dhruv-hingol.vercel.app/",
           "github": "https://github.com/dhruv-hingol"
         }
       },
@@ -207,7 +207,7 @@
         "metrics": "5,000+ Daily Orders Handled",
         "tech": ["React", "TypeScript", "Tailwind CSS", "Zustand", "PWA Web Push"],
         "links": {
-          "live": "https://dhruv-hingol-portfolio.vercel.app/",
+          "live": "https://dhruv-hingol.vercel.app/",
           "github": "https://github.com/dhruv-hingol"
         }
       },
@@ -224,7 +224,7 @@
         "metrics": "4.8 Star App Store Rating",
         "tech": ["React Native", "TypeScript", "Reanimated 3", "Redux Toolkit", "Native Modules"],
         "links": {
-          "live": "https://dhruv-hingol-portfolio.vercel.app/",
+          "live": "https://dhruv-hingol.vercel.app/",
           "github": "https://github.com/dhruv-hingol"
         }
       }

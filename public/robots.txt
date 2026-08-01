@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap URL
-Sitemap: https://dhruv-hingol-portfolio.vercel.app/sitemap.xml
+Sitemap: https://dhruv-hingol.vercel.app/sitemap.xml
