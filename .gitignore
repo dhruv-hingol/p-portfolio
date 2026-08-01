@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 *.local
+package-lock.json
+
 
 # Editor directories and files
 .vscode/*
@@ -36,6 +38,5 @@ coverage
 .cache
 
 # OS files
-Thumbs.db
-package-lock.json
+Thumbs.db 
 
