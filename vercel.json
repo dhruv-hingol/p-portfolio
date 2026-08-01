@@ -1,0 +1,17 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "dhruv-hingol-portfolio.vercel.app"
+        }
+      ],
+      "destination": "https://dhruv-hingol.vercel.app/:path*",
+      "permanent": true
+    }
+  ]
+}
