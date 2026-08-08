@@ -39,8 +39,13 @@ export default function Hero({ wireframeMode = false }: HeroProps) {
       className="relative min-h-screen pt-28 pb-16 flex items-center justify-center bg-white overflow-hidden select-none"
     >
       {/* Signature 3D WebGL Developer Core Canvas (Async Loaded) */}
-      <Suspense fallback={<div className="absolute inset-0 pointer-events-none" />}>
-        <DeveloperCoreCanvas wireframeMode={wireframeMode} dramaticSpin={dramaticSpin} />
+      <Suspense
+        fallback={<div className="absolute inset-0 pointer-events-none" />}
+      >
+        <DeveloperCoreCanvas
+          wireframeMode={wireframeMode}
+          dramaticSpin={dramaticSpin}
+        />
       </Suspense>
 
       {/* Ambient background light glows & patterns */}
@@ -88,7 +93,7 @@ export default function Hero({ wireframeMode = false }: HeroProps) {
 
             {/* High-Impact Professional Introduction */}
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl font-normal">
-              "{portfolioData.personalInfo.bio}"
+              {portfolioData.personalInfo.bio}
             </p>
 
             {/* Key Engineering Impact Highlights */}
@@ -174,7 +179,7 @@ export default function Hero({ wireframeMode = false }: HeroProps) {
                     </div>
                   </div>
                   <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-100">
-                    SDE @ Elixir Techne
+                    SDE @ Lamda Logs
                   </span>
                 </div>
 

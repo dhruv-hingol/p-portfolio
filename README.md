@@ -5,7 +5,7 @@
 [![GitHub](https://img.shields.io/badge/GitHub-dhruv--hingol-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dhruv-hingol)
 [![Tech Stack](https://img.shields.io/badge/React_19-Next.js_15-React_Native-TypeScript-blue?style=for-the-badge)](https://dhruv-hingol.vercel.app/)
 
-Welcome to the official repository for **Dhruv Hingol's** interactive developer portfolio and engineering case study showcase. This platform highlights 3+ years of enterprise experience building scalable web apps, mobile products, spatial WebGL scenes, and high-throughput real-time dashboards at **Elixir Techne**.
+Welcome to the official repository for **Dhruv Hingol's** interactive developer portfolio and engineering case study showcase. This platform highlights 3+ years of enterprise experience building scalable web apps, mobile products, spatial WebGL scenes, and high-throughput real-time dashboards at **Lamda Logs**.
 
 ---
 
@@ -14,7 +14,7 @@ Welcome to the official repository for **Dhruv Hingol's** interactive developer 
 - **Name**: Dhruv Hingol
 - **Role**: React.js & Frontend Developer | Software Development Engineer (SDE)
 - **Location**: Ahmedabad, Gujarat, India (GMT +5:30)
-- **Experience**: 3+ Years Enterprise Software Engineering at Elixir Techne
+- **Experience**: 3+ Years Enterprise Software Engineering at Lamda Logs
 - **Live Portfolio**: [https://dhruv-hingol.vercel.app/](https://dhruv-hingol.vercel.app/)
 - **Core Tech Stack**: React 19, Next.js 15, React Native, TypeScript 5.8, Tailwind CSS 4, Zustand, TanStack Query, Three.js / WebGL, Vite 6
 
@@ -24,7 +24,7 @@ Welcome to the official repository for **Dhruv Hingol's** interactive developer 
 
 | Metric | Outcome & Impact | Description |
 | :--- | :--- | :--- |
-| **3+ Years** | Enterprise SDE Experience | Spearheaded frontend engineering from zero to production at Elixir Techne. |
+| **3+ Years** | Enterprise SDE Experience | Spearheaded frontend engineering from zero to production at Lamda Logs. |
 | **6+ Apps** | Production Case Studies | Architected web, mobile, AI, logistics, spatial 3D, and food tech platforms. |
 | **25% Cut** | Network API Latency | Reduced redundant network requests using TanStack Query cache & batching. |
 | **32% Cut** | JavaScript Bundle Size | Optimized assets via tree-shaking, code splitting, and Web Workers. |

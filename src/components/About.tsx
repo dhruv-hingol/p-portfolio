@@ -95,7 +95,7 @@ export default function About() {
               <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
               <div>
                 <h4 className="text-xs font-bold text-slate-900">3+ Years SDE Experience</h4>
-                <p className="text-[11px] text-slate-500">Full-time Software Development Engineer at Elixir Techne</p>
+                <p className="text-[11px] text-slate-500">Full-time Software Development Engineer at Lamda Logs</p>
               </div>
             </div>
           </div>

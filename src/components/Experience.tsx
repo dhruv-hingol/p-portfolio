@@ -10,7 +10,7 @@ export default function Experience() {
     { label: "SDE Tenure", value: "3+ Years", icon: Briefcase },
     { label: "Production Apps", value: "6+ Shipped", icon: Award },
     { label: "Latency Cut", value: "25% Reduced", icon: Zap },
-    { label: "Factual Employer", value: "Elixir Techne", icon: Sparkles },
+    { label: "Factual Employer", value: "Lamda Logs", icon: Sparkles },
   ];
 
   return (

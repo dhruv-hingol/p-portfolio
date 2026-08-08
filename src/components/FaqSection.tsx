@@ -11,7 +11,7 @@ const FAQS: FaqItem[] = [
   {
     question: "Who is Dhruv Hingol?",
     answer:
-      "Dhruv Hingol is a Software Development Engineer (SDE) with 3+ years of professional experience at Elixir Techne in Ahmedabad, India. He specializes in engineering production-grade web and mobile applications using React 19, Next.js 15, React Native, and TypeScript 5.8.",
+      "Dhruv Hingol is a Software Development Engineer (SDE) with 3+ years of professional experience at Lamda Logs in Ahmedabad, India. He specializes in engineering production-grade web and mobile applications using React 19, Next.js 15, React Native, and TypeScript 5.8.",
   },
   {
     question: "What technologies does Dhruv Hingol specialize in?",
@@ -26,7 +26,7 @@ const FAQS: FaqItem[] = [
   {
     question: "What production applications has Dhruv Hingol developed?",
     answer:
-      "At Elixir Techne, Dhruv has developed 6+ production case study applications: Matisse AI Studio (Generative AI platform), Heptaverse B2B Portal (Spatial VR/AR asset portal), Aegis Fleet Tracker (Real-time telemetry dashboard), Bizmitr Dealer Portal (B2B inventory platform), Jalsa Bitez Ecosystem (Food tech POS), and Empowering Fitness App (Health tech React Native app).",
+      "At Lamda Logs, Dhruv has developed 6+ production case study applications: Matisse AI Studio (Generative AI platform), Heptaverse B2B Portal (Spatial VR/AR asset portal), Aegis Fleet Tracker (Real-time telemetry dashboard), Bizmitr Dealer Portal (B2B inventory platform), Jalsa Bitez Ecosystem (Food tech POS), and Empowering Fitness App (Health tech React Native app).",
   },
   {
     question: "Can Dhruv Hingol build scalable enterprise applications?",

@@ -182,7 +182,7 @@ export default function Projects(_props?: ProjectsProps) {
 
                         <div className="pt-4 border-t border-white/10 text-right">
                           <span className="text-[11px] text-slate-400">
-                            Built at Elixir Techne
+                            Built at Lamda Logs
                           </span>
                         </div>
                       </div>

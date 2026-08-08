@@ -68,7 +68,7 @@ function App() {
         {/* Engineering Pillars & Delivery */}
         <About />
 
-        {/* Career Record (Elixir Techne SDE) */}
+        {/* Career Record (Lamda Logs SDE) */}
         <Experience />
 
         {/* Case Studies with 3D Tilt Cards & Category Filters */}

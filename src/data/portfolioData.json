@@ -31,7 +31,7 @@
     ],
     "currentJob": {
       "title": "Software Development Engineer (SDE)",
-      "company": "Elixir Techne",
+      "company": "Lamda Logs",
       "timeline": "Feb 2023 – Present",
       "location": "Ahmedabad, India"
     }
@@ -52,8 +52,8 @@
     "title": "About Me",
     "subtitle": "Engineering Scalable Web & Mobile Products",
     "bioParagraphs": [
-      "I am a Software Developer with 3+ years of professional experience engineering production-grade web and mobile applications at Elixir Techne. I specialize in building scalable user interfaces, decoupled state architectures, and optimizing client-side performance.",
-      "Throughout my tenure at Elixir Techne, I have spearheaded frontend initiatives from zero to production for diverse client domains—ranging from AI generative platforms and spatial enterprise asset portals to real-time logistics tracking and mobile health apps."
+      "I am a Software Developer with 3+ years of professional experience engineering production-grade web and mobile applications at Lamda Logs. I specialize in building scalable user interfaces, decoupled state architectures, and optimizing client-side performance.",
+      "Throughout my tenure at Lamda Logs, I have spearheaded frontend initiatives from zero to production for diverse client domains—ranging from AI generative platforms and spatial enterprise asset portals to real-time logistics tracking and mobile health apps."
     ],
     "pillars": [
       {
@@ -83,11 +83,11 @@
   },
   "experienceSection": {
     "title": "Work Experience",
-    "subtitle": "3+ Years of SDE Experience at Elixir Techne",
+    "subtitle": "3+ Years of SDE Experience at Lamda Logs",
     "experiences": [
       {
-        "id": "elixir-techne",
-        "company": "Elixir Techne",
+        "id": "lamda-logs",
+        "company": "Lamda Logs",
         "position": "Software Development Engineer (SDE)",
         "duration": "Feb 2023 – Present",
         "location": "Ahmedabad, India",
@@ -264,7 +264,7 @@
         "value": "3",
         "suffix": "+",
         "label": "Years SDE Experience",
-        "description": "Engineering production frontend systems and mobile apps at Elixir Techne."
+        "description": "Engineering production frontend systems and mobile apps at Lamda Logs."
       },
       {
         "value": "6",
