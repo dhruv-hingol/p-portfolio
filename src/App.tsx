@@ -9,6 +9,7 @@ import LayeredBackground from "./components/LayeredBackground";
 import LazySection from "./components/LazySection";
 import { useEasterEggs } from "./hooks/useEasterEggs";
 import { useAnalytics } from "./hooks/useAnalytics";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // Lazy load below-the-fold sections to minimize initial JavaScript bundle & TBT
 const Projects = lazy(() => import("./components/Projects"));
@@ -135,6 +136,9 @@ function App() {
           onClose={() => setShowBadgeModal(false)}
         />
       </Suspense>
+
+      {/* Vercel Speed Insights */}
+      <SpeedInsights />
     </div>
   );
 }
